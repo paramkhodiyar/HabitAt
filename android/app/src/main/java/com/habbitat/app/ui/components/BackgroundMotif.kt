@@ -33,14 +33,14 @@ fun BackgroundMotif(
     color: Color = LineArtMuted
 ) {
     val motion = rememberInfiniteTransition(label = "background_motif")
-    val phase by motion.animateFloat(
-        initialValue = 0f,
-        targetValue = (2 * Math.PI).toFloat(),
+    val alphaPulse by motion.animateFloat(
+        initialValue = 0.05f,
+        targetValue = 0.09f,
         animationSpec = infiniteRepeatable(
-            animation = tween(durationMillis = 12000, easing = LinearEasing),
-            repeatMode = RepeatMode.Restart
+            animation = tween(durationMillis = 4000, easing = LinearEasing),
+            repeatMode = RepeatMode.Reverse
         ),
-        label = "particle_phase"
+        label = "alpha_pulse"
     )
 
     Canvas(modifier = modifier.fillMaxSize()) {
@@ -48,58 +48,49 @@ fun BackgroundMotif(
         val height = size.height
 
         val gridSpacing = 44.dp.toPx()
-        val baseRadius = 1.6.dp.toPx()
+        val baseRadius = 1.5.dp.toPx()
         val strokeWidth = 0.8.dp.toPx()
 
+        val drawColor = color.copy(alpha = alphaPulse)
+
         var y = gridSpacing / 2
-        var colIndex = 0
         while (y < height) {
             var x = gridSpacing / 2
-            var rowIndex = 0
             while (x < width) {
-                // Compute organic floating displacement using double sine/cosine wave
-                val dx = sin(phase + colIndex * 0.5f + rowIndex * 0.3f) * 4.dp.toPx()
-                val dy = cos(phase * 0.8f + colIndex * 0.3f + rowIndex * 0.6f) * 4.dp.toPx()
-                val pulseRadius = baseRadius + sin(phase + colIndex + rowIndex) * 0.4.dp.toPx()
-
                 drawCircle(
-                    color = color.copy(alpha = 0.08f),
-                    radius = pulseRadius.coerceAtLeast(1.dp.toPx()),
-                    center = Offset(x + dx, y + dy)
+                    color = drawColor,
+                    radius = baseRadius,
+                    center = Offset(x, y)
                 )
-
                 x += gridSpacing
-                rowIndex++
             }
             y += gridSpacing
-            colIndex++
         }
 
         if (variant == MotifVariant.KOLAM_DOT_GRID) {
-            // Soft Kolam accent curves in corners
+            // Static lightweight Kolam accent curves
             val path = Path().apply {
                 var cy = gridSpacing * 3
                 while (cy < height - gridSpacing * 2) {
                     var cx = gridSpacing * 3
                     while (cx < width - gridSpacing * 2) {
-                        val floatOffset = sin(phase + cx * 0.01f) * 3.dp.toPx()
-                        moveTo(cx - 20.dp.toPx(), cy + floatOffset)
+                        moveTo(cx - 20.dp.toPx(), cy)
                         cubicTo(
-                            cx - 20.dp.toPx(), cy - 28.dp.toPx() + floatOffset,
-                            cx + 20.dp.toPx(), cy - 28.dp.toPx() + floatOffset,
-                            cx + 20.dp.toPx(), cy + floatOffset
+                            cx - 20.dp.toPx(), cy - 28.dp.toPx(),
+                            cx + 20.dp.toPx(), cy - 28.dp.toPx(),
+                            cx + 20.dp.toPx(), cy
                         )
                         cubicTo(
-                            cx + 20.dp.toPx(), cy + 28.dp.toPx() + floatOffset,
-                            cx - 20.dp.toPx(), cy + 28.dp.toPx() + floatOffset,
-                            cx - 20.dp.toPx(), cy + floatOffset
+                            cx + 20.dp.toPx(), cy + 28.dp.toPx(),
+                            cx - 20.dp.toPx(), cy + 28.dp.toPx(),
+                            cx - 20.dp.toPx(), cy
                         )
                         cx += gridSpacing * 5
                     }
                     cy += gridSpacing * 6
                 }
             }
-            drawPath(path = path, color = color.copy(alpha = 0.05f), style = Stroke(width = strokeWidth))
+            drawPath(path = path, color = drawColor, style = Stroke(width = strokeWidth))
         }
     }
 }

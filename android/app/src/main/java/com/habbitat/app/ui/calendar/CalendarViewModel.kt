@@ -74,21 +74,27 @@ class CalendarViewModel(private val repository: HabitRepository) : ViewModel() {
         initialValue = null
     )
 
-    @OptIn(kotlinx.coroutines.ExperimentalCoroutinesApi::class)
-    val currentRecords: StateFlow<List<CompletionRecord>> = currentHabit
-        .flatMapLatest { habit ->
-            if (habit != null) {
-                repository.getCompletionRecords(habit.id)
-            } else {
-                flowOf(emptyList())
-            }
-        }
+    val allCompletionRecords: StateFlow<List<CompletionRecord>> = repository.allCompletionRecords
         .catch { emit(emptyList()) }
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(5000),
             initialValue = emptyList()
         )
+
+    @OptIn(kotlinx.coroutines.ExperimentalCoroutinesApi::class)
+    val currentRecords: StateFlow<List<CompletionRecord>> = combine(allCompletionRecords, selectedHabitId) { records, habitId ->
+        if (habitId != null) {
+            records.filter { it.habitId == habitId }
+        } else {
+            records
+        }
+    }.catch { emit(emptyList()) }
+    .stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000),
+        initialValue = emptyList()
+    )
 
     fun calculateStats(records: List<CompletionRecord>): StreakStats {
         if (records.isEmpty()) return StreakStats(0, 0, 0)

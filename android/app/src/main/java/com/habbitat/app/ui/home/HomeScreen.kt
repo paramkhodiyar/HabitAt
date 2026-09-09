@@ -13,6 +13,7 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.slideInVertically
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -271,21 +272,23 @@ fun HomeScreen(
                         }
                     }
 
-                    // View Mode Switcher Buttons
+                    // View Mode Switcher Buttons (Centered 34dp touch targets)
                     Row(
                         modifier = Modifier
                             .clip(RoundedCornerShape(12.dp))
                             .background(CardSurface)
                             .border(1.dp, GlassBorder, RoundedCornerShape(12.dp))
-                            .padding(2.dp),
-                        verticalAlignment = Alignment.CenterVertically
+                            .padding(3.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(2.dp)
                     ) {
-                        IconButton(
-                            onClick = { viewMode = HomeViewMode.COMPACT_LIST },
+                        Box(
                             modifier = Modifier
-                                .size(32.dp)
-                                .clip(RoundedCornerShape(10.dp))
+                                .size(34.dp)
+                                .clip(RoundedCornerShape(9.dp))
                                 .background(if (viewMode == HomeViewMode.COMPACT_LIST) IndigoLight else CardSurface)
+                                .clickable { viewMode = HomeViewMode.COMPACT_LIST },
+                            contentAlignment = Alignment.Center
                         ) {
                             Icon(
                                 imageVector = Icons.Rounded.ViewList,
@@ -295,12 +298,13 @@ fun HomeScreen(
                             )
                         }
 
-                        IconButton(
-                            onClick = { viewMode = HomeViewMode.DETAILED_CARD },
+                        Box(
                             modifier = Modifier
-                                .size(32.dp)
-                                .clip(RoundedCornerShape(10.dp))
+                                .size(34.dp)
+                                .clip(RoundedCornerShape(9.dp))
                                 .background(if (viewMode == HomeViewMode.DETAILED_CARD) IndigoLight else CardSurface)
+                                .clickable { viewMode = HomeViewMode.DETAILED_CARD },
+                            contentAlignment = Alignment.Center
                         ) {
                             Icon(
                                 imageVector = Icons.Rounded.ViewAgenda,
@@ -310,12 +314,13 @@ fun HomeScreen(
                             )
                         }
 
-                        IconButton(
-                            onClick = { viewMode = HomeViewMode.GRID },
+                        Box(
                             modifier = Modifier
-                                .size(32.dp)
-                                .clip(RoundedCornerShape(10.dp))
+                                .size(34.dp)
+                                .clip(RoundedCornerShape(9.dp))
                                 .background(if (viewMode == HomeViewMode.GRID) IndigoLight else CardSurface)
+                                .clickable { viewMode = HomeViewMode.GRID },
+                            contentAlignment = Alignment.Center
                         ) {
                             Icon(
                                 imageVector = Icons.Rounded.GridView,
@@ -457,7 +462,7 @@ fun HomeScreen(
                                         visible = true,
                                         enter = slideInVertically(initialOffsetY = { 30 * (index + 1) }) + fadeIn()
                                     ) {
-                                        CompactHabitRow(
+                                        GridHabitCard(
                                             habit = habit,
                                             streakCount = streak,
                                             dueStatus = dueStatus,
