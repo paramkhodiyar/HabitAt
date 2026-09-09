@@ -1,0 +1,447 @@
+package com.habbitat.app.ui.home
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Add
+import androidx.compose.material.icons.rounded.Close
+import androidx.compose.material.icons.rounded.Remove
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
+import androidx.compose.material3.Text
+import androidx.compose.material3.rememberModalBottomSheetState
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import com.habbitat.app.ui.theme.CardSurface
+import com.habbitat.app.ui.theme.GlassBorder
+import com.habbitat.app.ui.theme.HabbitAtTypography
+import com.habbitat.app.ui.theme.IndigoLight
+import com.habbitat.app.ui.theme.IndigoSecondary
+import com.habbitat.app.ui.theme.InkMuted
+import com.habbitat.app.ui.theme.InkPrimary
+import com.habbitat.app.ui.theme.InkSecondary
+import com.habbitat.app.ui.theme.SaffronLight
+import com.habbitat.app.ui.theme.SaffronPrimary
+import com.habbitat.app.ui.theme.TerracottaTertiary
+
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
+@Composable
+fun CreateHabitSheet(
+    onDismiss: () -> Unit,
+    onAddHabit: (name: String, duration: Int, proof: String, interval: Int, frequency: String) -> Unit
+) {
+    val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+
+    var habitName by remember { mutableStateOf("") }
+    var selectedFrequency by remember { mutableStateOf("DAILY") }
+    var targetDurationMinutes by remember { mutableIntStateOf(30) }
+    var proofDescription by remember { mutableStateOf("") }
+    var reminderIntervalMinutes by remember { mutableIntStateOf(60) }
+
+    var isError by remember { mutableStateOf(false) }
+
+    val quickPresets = listOf(
+        Triple("📖 Reading", 30, "Photo of book or page"),
+        Triple("🧘 Mindfulness", 15, "Photo of calm space"),
+        Triple("💧 Hydration", 5, "Photo of water container"),
+        Triple("🏋️ Fitness", 45, "Photo of workout area"),
+        Triple("💻 Skill Practice", 60, "Photo of workspace")
+    )
+
+    val durationPresets = listOf(10, 15, 30, 45, 60, 90, 120)
+    val frequencyOptions = listOf("DAILY" to "Daily", "WEEKLY" to "Weekly", "MONTHLY" to "Monthly")
+    val intervalPresets = listOf(15, 30, 45, 60, 90)
+
+    ModalBottomSheet(
+        onDismissRequest = onDismiss,
+        sheetState = sheetState,
+        containerColor = CardSurface,
+        scrimColor = InkPrimary.copy(alpha = 0.32f),
+        shape = RoundedCornerShape(topStart = 28.dp, topEnd = 28.dp)
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 24.dp, vertical = 12.dp)
+                .padding(bottom = 32.dp)
+                .verticalScroll(rememberScrollState())
+        ) {
+            // Header
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "Craft a Habit",
+                    style = HabbitAtTypography.displaySmall,
+                    color = InkPrimary
+                )
+                IconButton(onClick = onDismiss) {
+                    Icon(
+                        imageVector = Icons.Rounded.Close,
+                        contentDescription = "Close",
+                        tint = InkMuted
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.height(14.dp))
+
+            // Quick Idea Preset Pills
+            Text(
+                text = "Quick Inspiration",
+                style = HabbitAtTypography.labelMedium,
+                color = InkSecondary
+            )
+            Spacer(modifier = Modifier.height(6.dp))
+            FlowRow(
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                quickPresets.forEach { (presetName, presetDuration, presetProof) ->
+                    Box(
+                        modifier = Modifier
+                            .clip(CircleShape)
+                            .background(IndigoLight)
+                            .border(width = 1.dp, color = GlassBorder, shape = CircleShape)
+                            .clickable {
+                                habitName = presetName.substringAfter(" ")
+                                targetDurationMinutes = presetDuration
+                                proofDescription = presetProof
+                                if (isError) isError = false
+                            }
+                            .padding(horizontal = 12.dp, vertical = 6.dp)
+                    ) {
+                        Text(
+                            text = presetName,
+                            style = HabbitAtTypography.labelMedium,
+                            color = IndigoSecondary
+                        )
+                    }
+                }
+            }
+
+            Spacer(modifier = Modifier.height(18.dp))
+
+            // Habit Title Input
+            Text(
+                text = "Habit Title",
+                style = HabbitAtTypography.labelLarge,
+                color = InkPrimary
+            )
+            Spacer(modifier = Modifier.height(6.dp))
+            OutlinedTextField(
+                value = habitName,
+                onValueChange = {
+                    habitName = it
+                    if (isError && it.isNotBlank()) isError = false
+                },
+                placeholder = {
+                    Text(
+                        text = "Enter habit title…",
+                        color = InkMuted.copy(alpha = 0.45f)
+                    )
+                },
+                isError = isError,
+                singleLine = true,
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(14.dp),
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedBorderColor = SaffronPrimary,
+                    unfocusedBorderColor = GlassBorder,
+                    focusedContainerColor = CardSurface,
+                    unfocusedContainerColor = CardSurface
+                )
+            )
+            if (isError) {
+                Text(
+                    text = "Please enter a habit title",
+                    style = HabbitAtTypography.labelMedium,
+                    color = TerracottaTertiary,
+                    modifier = Modifier.padding(start = 4.dp, top = 4.dp)
+                )
+            }
+
+            Spacer(modifier = Modifier.height(18.dp))
+
+            // Schedule Cadence (Daily, Weekly, Monthly)
+            Text(
+                text = "Schedule Cadence",
+                style = HabbitAtTypography.labelLarge,
+                color = InkPrimary
+            )
+            Spacer(modifier = Modifier.height(6.dp))
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                frequencyOptions.forEach { (code, label) ->
+                    val isSelected = code == selectedFrequency
+                    Box(
+                        modifier = Modifier
+                            .weight(1f)
+                            .clip(RoundedCornerShape(12.dp))
+                            .background(if (isSelected) SaffronLight else CardSurface)
+                            .border(
+                                width = 1.dp,
+                                color = if (isSelected) SaffronPrimary else GlassBorder,
+                                shape = RoundedCornerShape(12.dp)
+                            )
+                            .clickable { selectedFrequency = code }
+                            .padding(vertical = 10.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = label,
+                            style = HabbitAtTypography.labelMedium,
+                            color = if (isSelected) SaffronPrimary else InkPrimary,
+                            fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal
+                        )
+                    }
+                }
+            }
+
+            Spacer(modifier = Modifier.height(18.dp))
+
+            // Target Duration Picker & Stepper
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "Target Duration",
+                    style = HabbitAtTypography.labelLarge,
+                    color = InkPrimary
+                )
+                Text(
+                    text = "$targetDurationMinutes mins",
+                    style = HabbitAtTypography.titleMedium,
+                    fontWeight = FontWeight.Bold,
+                    color = SaffronPrimary
+                )
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+
+            // Duration Stepper + Preset Chips
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                // Minus button
+                Box(
+                    modifier = Modifier
+                        .size(40.dp)
+                        .clip(CircleShape)
+                        .background(SaffronLight)
+                        .clickable {
+                            if (targetDurationMinutes > 5) targetDurationMinutes -= 5
+                        },
+                    contentAlignment = Alignment.Center
+                ) {
+                    Icon(
+                        imageVector = Icons.Rounded.Remove,
+                        contentDescription = "Decrease",
+                        tint = SaffronPrimary,
+                        modifier = Modifier.size(18.dp)
+                    )
+                }
+
+                // Preset Pills
+                FlowRow(
+                    modifier = Modifier.weight(1f),
+                    horizontalArrangement = Arrangement.spacedBy(6.dp),
+                    verticalArrangement = Arrangement.spacedBy(6.dp)
+                ) {
+                    durationPresets.forEach { dur ->
+                        val isSel = dur == targetDurationMinutes
+                        Box(
+                            modifier = Modifier
+                                .clip(CircleShape)
+                                .background(if (isSel) SaffronPrimary else CardSurface)
+                                .border(
+                                    width = 1.dp,
+                                    color = if (isSel) SaffronPrimary else GlassBorder,
+                                    shape = CircleShape
+                                )
+                                .clickable { targetDurationMinutes = dur }
+                                .padding(horizontal = 10.dp, vertical = 6.dp)
+                        ) {
+                            Text(
+                                text = "${dur}m",
+                                style = HabbitAtTypography.labelMedium,
+                                color = if (isSel) CardSurface else InkPrimary
+                            )
+                        }
+                    }
+                }
+
+                // Plus button
+                Box(
+                    modifier = Modifier
+                        .size(40.dp)
+                        .clip(CircleShape)
+                        .background(SaffronLight)
+                        .clickable { targetDurationMinutes += 5 },
+                    contentAlignment = Alignment.Center
+                ) {
+                    Icon(
+                        imageVector = Icons.Rounded.Add,
+                        contentDescription = "Increase",
+                        tint = SaffronPrimary,
+                        modifier = Modifier.size(18.dp)
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.height(18.dp))
+
+            // Photo Proof Description
+            Text(
+                text = "Required Photo Proof",
+                style = HabbitAtTypography.labelLarge,
+                color = InkPrimary
+            )
+            Spacer(modifier = Modifier.height(6.dp))
+            OutlinedTextField(
+                value = proofDescription,
+                onValueChange = { proofDescription = it },
+                placeholder = {
+                    Text(
+                        text = "Describe photo evidence required…",
+                        color = InkMuted.copy(alpha = 0.45f)
+                    )
+                },
+                singleLine = true,
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(14.dp),
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedBorderColor = SaffronPrimary,
+                    unfocusedBorderColor = GlassBorder
+                )
+            )
+
+            Spacer(modifier = Modifier.height(18.dp))
+
+            // Escalation Reminder Interval
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "Nudge Reminder Frequency",
+                    style = HabbitAtTypography.labelLarge,
+                    color = InkPrimary
+                )
+                Text(
+                    text = "Every $reminderIntervalMinutes mins",
+                    style = HabbitAtTypography.titleSmall,
+                    color = InkSecondary
+                )
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                intervalPresets.forEach { interval ->
+                    val isSelected = interval == reminderIntervalMinutes
+                    Box(
+                        modifier = Modifier
+                            .weight(1f)
+                            .clip(RoundedCornerShape(10.dp))
+                            .background(if (isSelected) SaffronLight else CardSurface)
+                            .border(
+                                width = 1.dp,
+                                color = if (isSelected) SaffronPrimary else GlassBorder,
+                                shape = RoundedCornerShape(10.dp)
+                            )
+                            .clickable { reminderIntervalMinutes = interval }
+                            .padding(vertical = 8.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "${interval}m",
+                            style = HabbitAtTypography.labelMedium,
+                            color = if (isSelected) SaffronPrimary else InkPrimary
+                        )
+                    }
+                }
+            }
+
+            Spacer(modifier = Modifier.height(24.dp))
+
+            // Submit Button
+            Button(
+                onClick = {
+                    if (habitName.isBlank()) {
+                        isError = true
+                    } else {
+                        onAddHabit(
+                            habitName.trim(),
+                            targetDurationMinutes,
+                            proofDescription.trim(),
+                            reminderIntervalMinutes,
+                            selectedFrequency
+                        )
+                    }
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(52.dp),
+                shape = RoundedCornerShape(16.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = SaffronPrimary,
+                    contentColor = InkPrimary
+                )
+            ) {
+                Icon(
+                    imageVector = Icons.Rounded.Add,
+                    contentDescription = null,
+                    modifier = Modifier.size(20.dp)
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(
+                    text = "Create Habit",
+                    style = HabbitAtTypography.titleMedium,
+                    color = InkPrimary
+                )
+            }
+        }
+    }
+}

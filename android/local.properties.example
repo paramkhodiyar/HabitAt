@@ -1,0 +1,13 @@
+sdk.dir=/path/to/Android/sdk
+
+# Keep this file local. Never commit real credential or signing values.
+AI_VERIFICATION_API_KEY=
+AI_NOTIFICATION_API_KEY=
+OPENROUTER_API_KEY=
+GOOGLE_OAUTH_CLIENT_ID=
+
+# Required to build an installable release APK.
+RELEASE_STORE_FILE=/absolute/path/to/habbitat-release.jks
+RELEASE_STORE_PASSWORD=
+RELEASE_KEY_ALIAS=
+RELEASE_KEY_PASSWORD=

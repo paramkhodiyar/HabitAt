@@ -1,0 +1,17 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Swift/Xcode
+.build/
+**/build/
+**/bin/
+xcuserdata/
+DerivedData/
+DerivedData/
+.bundle/
+
+# Backup/scratch
+scratch/
+*.apk
