@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
@@ -110,7 +111,7 @@ fun OnboardingScreen(
     val repository = remember { (context.applicationContext as HabbitAtApp).repository }
 
     var step by remember { mutableStateOf(1) }
-    var nicknameInput by remember { mutableStateOf(userPrefs.nickname) }
+    var nicknameInput by remember { mutableStateOf("") }
     var isSubmitting by remember { mutableStateOf(false) }
     var showCompletionAnimation by remember { mutableStateOf(false) }
 
@@ -225,8 +226,9 @@ fun OnboardingScreen(
             Column(
                 modifier = Modifier
                     .fillMaxSize()
+                    .imePadding()
                     .padding(horizontal = 24.dp)
-                    .padding(top = topInset + 24.dp, bottom = 32.dp),
+                    .padding(top = topInset + 16.dp, bottom = 24.dp),
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
                 // Header Step Indicator
@@ -321,19 +323,22 @@ fun OnboardingScreen(
                     }
 
                     2 -> {
-                        // Step 2: Nickname Input (Auto Focus Keyboard)
+                        // Step 2: Nickname Input (Auto Focus Keyboard + Elevator Grouping)
                         LaunchedEffect(Unit) {
                             focusRequester.requestFocus()
                         }
 
                         Column(
-                            modifier = Modifier.fillMaxWidth(),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .weight(1f, fill = false),
+                            verticalArrangement = Arrangement.Center,
                             horizontalAlignment = Alignment.Start
                         ) {
                             Text(
                                 text = "What should we call you?",
                                 style = HabbitAtTypography.displayLarge,
-                                fontSize = 28.sp,
+                                fontSize = 26.sp,
                                 color = InkPrimary
                             )
 
@@ -345,7 +350,7 @@ fun OnboardingScreen(
                                 color = InkSecondary
                             )
 
-                            Spacer(modifier = Modifier.height(28.dp))
+                            Spacer(modifier = Modifier.height(20.dp))
 
                             OutlinedTextField(
                                 value = nicknameInput,
@@ -364,36 +369,38 @@ fun OnboardingScreen(
                                     .fillMaxWidth()
                                     .focusRequester(focusRequester)
                             )
-                        }
 
-                        Button(
-                            onClick = {
-                                if (nicknameInput.isNotBlank()) {
-                                    userPrefs.nickname = nicknameInput
-                                    step = 3
+                            Spacer(modifier = Modifier.height(20.dp))
+
+                            Button(
+                                onClick = {
+                                    if (nicknameInput.isNotBlank()) {
+                                        userPrefs.nickname = nicknameInput
+                                        step = 3
+                                    }
+                                },
+                                enabled = nicknameInput.isNotBlank(),
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .height(52.dp),
+                                shape = RoundedCornerShape(14.dp),
+                                colors = ButtonDefaults.buttonColors(containerColor = SaffronPrimary)
+                            ) {
+                                Row(verticalAlignment = Alignment.CenterVertically) {
+                                    Text(
+                                        text = "Continue",
+                                        style = HabbitAtTypography.labelLarge,
+                                        color = InkPrimary,
+                                        fontSize = 16.sp
+                                    )
+                                    Spacer(modifier = Modifier.width(8.dp))
+                                    Icon(
+                                        imageVector = Icons.AutoMirrored.Rounded.ArrowForward,
+                                        contentDescription = null,
+                                        tint = InkPrimary,
+                                        modifier = Modifier.size(20.dp)
+                                    )
                                 }
-                            },
-                            enabled = nicknameInput.isNotBlank(),
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(52.dp),
-                            shape = RoundedCornerShape(14.dp),
-                            colors = ButtonDefaults.buttonColors(containerColor = SaffronPrimary)
-                        ) {
-                            Row(verticalAlignment = Alignment.CenterVertically) {
-                                Text(
-                                    text = "Continue",
-                                    style = HabbitAtTypography.labelLarge,
-                                    color = InkPrimary,
-                                    fontSize = 16.sp
-                                )
-                                Spacer(modifier = Modifier.width(8.dp))
-                                Icon(
-                                    imageVector = Icons.AutoMirrored.Rounded.ArrowForward,
-                                    contentDescription = null,
-                                    tint = InkPrimary,
-                                    modifier = Modifier.size(20.dp)
-                                )
                             }
                         }
                     }

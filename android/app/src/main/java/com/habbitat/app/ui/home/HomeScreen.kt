@@ -188,22 +188,38 @@ fun HomeScreen(
                     .padding(horizontal = 20.dp)
                     .padding(top = topInset + 12.dp)
             ) {
-                // Header Title
+                // Header Title with Welcome Greeting Above App Name
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Column {
+                        val displayName = userPrefs.nickname.ifBlank { "User" }
+                        Text(
+                            text = "Welcome $displayName,",
+                            style = HabbitAtTypography.bodyMedium.copy(
+                                fontStyle = androidx.compose.ui.text.font.FontStyle.Italic,
+                                fontSize = 15.sp,
+                                fontWeight = FontWeight.Medium
+                            ),
+                            color = SaffronPrimary
+                        )
+                        Spacer(modifier = Modifier.height(1.dp))
                         Text(
                             text = "HabitAt",
-                            style = HabbitAtTypography.displayLarge,
+                            style = HabbitAtTypography.displayMedium.copy(
+                                fontSize = 26.sp,
+                                fontWeight = FontWeight.Bold
+                            ),
                             color = InkPrimary
                         )
-                        Spacer(modifier = Modifier.height(2.dp))
+                        Spacer(modifier = Modifier.height(1.dp))
                         Text(
                             text = "Today's Discipline & Proof Ledger",
-                            style = HabbitAtTypography.bodyMedium,
+                            style = HabbitAtTypography.labelMedium.copy(
+                                fontSize = 12.sp
+                            ),
                             color = InkSecondary
                         )
                     }
@@ -336,11 +352,6 @@ fun HomeScreen(
                 }
 
                 Spacer(modifier = Modifier.height(14.dp))
-
-                // Borderless Welcome Greeting
-                MotivationalBanner(userName = userPrefs.nickname)
-
-                Spacer(modifier = Modifier.height(10.dp))
 
                 if (filteredHabits.isEmpty()) {
                     // Empty State

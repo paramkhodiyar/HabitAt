@@ -9,9 +9,9 @@ class UserPreferences(context: Context) {
         context.getSharedPreferences("habbitat_user_prefs", Context.MODE_PRIVATE)
 
     var nickname: String
-        get() = prefs.getString(KEY_NICKNAME, "User") ?: "User"
+        get() = prefs.getString(KEY_NICKNAME, "") ?: ""
         set(value) {
-            prefs.edit().putString(KEY_NICKNAME, value.trim().ifBlank { "User" }).apply()
+            prefs.edit().putString(KEY_NICKNAME, value.trim()).apply()
         }
 
     var isOnboardingCompleted: Boolean
