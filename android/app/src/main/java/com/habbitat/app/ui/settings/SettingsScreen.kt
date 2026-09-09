@@ -55,11 +55,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.runtime.rememberCoroutineScope
 import com.habbitat.app.BuildConfig
+import com.habbitat.app.HabbitAtApp
+import com.habbitat.app.data.HabitScheduleHelper
+import com.habbitat.app.data.local.entity.Habit
+import com.habbitat.app.notifications.LlmNotificationCopywriter
 import com.habbitat.app.notifications.NotificationHelper
 import com.habbitat.app.sync.GoogleDriveSyncManager
 import com.habbitat.app.ui.components.BackgroundMotif
 import com.habbitat.app.ui.components.MotifVariant
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import com.habbitat.app.ui.theme.CardSurface
 import com.habbitat.app.ui.theme.GlassBorder
 import com.habbitat.app.ui.theme.HabbitAtTypography
@@ -85,6 +94,10 @@ fun SettingsScreen(
     val aiVerificationConfigured = BuildConfig.AI_VERIFICATION_API_KEY.isNotBlank()
     val aiNotificationConfigured = BuildConfig.AI_NOTIFICATION_API_KEY.isNotBlank()
     val driveConfigured = GoogleDriveSyncManager().isConfigured()
+
+    val coroutineScope = rememberCoroutineScope()
+    var isGeneratingTestNotif by remember { mutableStateOf(false) }
+    val repository = remember { (context.applicationContext as HabbitAtApp).repository }
 
     var selectedTone by remember { mutableStateOf("Motivational") }
     var showTermsSheet by remember { mutableStateOf(false) }
@@ -179,32 +192,88 @@ fun SettingsScreen(
 
                     Button(
                         onClick = {
-                            NotificationHelper.showNotification(
-                                context = context,
-                                habitId = 9999L,
-                                title = "HabitAt Daily Reminder",
-                                message = "Time to complete your habit! Capture your daily photo proof to maintain your streak.",
-                                escalationLevel = 1
-                            )
-                            Toast.makeText(context, "Test notification dispatched!", Toast.LENGTH_SHORT).show()
+                            if (isGeneratingTestNotif) return@Button
+                            isGeneratingTestNotif = true
+                            coroutineScope.launch(Dispatchers.IO) {
+                                try {
+                                    var habits = repository.getHabitsList()
+                                    if (habits.isEmpty()) {
+                                        val defaultHabit = Habit(
+                                            name = "Morning Workout",
+                                            targetDurationMinutes = 20,
+                                            proofDescription = "Photo of gym gear or workout space",
+                                            reminderIntervalMinutes = 60,
+                                            frequency = "DAILY"
+                                        )
+                                        val newId = repository.insertHabit(defaultHabit)
+                                        habits = listOf(defaultHabit.copy(id = newId))
+                                    }
+
+                                    val targetHabit = habits.first()
+                                    val records = repository.getAllCompletionRecordsList().filter { it.habitId == targetHabit.id }
+                                    val streak = HabitScheduleHelper.calculateStreak(records)
+
+                                    val copywriter = LlmNotificationCopywriter()
+                                    val copy = copywriter.generateCopy(
+                                        habitName = targetHabit.name,
+                                        frequency = targetHabit.frequency,
+                                        targetDurationMinutes = targetHabit.targetDurationMinutes,
+                                        streakCount = streak,
+                                        escalationLevel = 1,
+                                        tone = selectedTone
+                                    )
+
+                                    withContext(Dispatchers.Main) {
+                                        NotificationHelper.showNotification(
+                                            context = context,
+                                            habitId = targetHabit.id,
+                                            title = copy.title,
+                                            message = copy.message,
+                                            escalationLevel = 1
+                                        )
+                                        Toast.makeText(context, "AI Demo Reminder sent for '${targetHabit.name}'!", Toast.LENGTH_SHORT).show()
+                                    }
+                                } catch (e: Exception) {
+                                    withContext(Dispatchers.Main) {
+                                        Toast.makeText(context, "Reminder error: ${e.localizedMessage}", Toast.LENGTH_SHORT).show()
+                                    }
+                                } finally {
+                                    isGeneratingTestNotif = false
+                                }
+                            }
                         },
+                        enabled = !isGeneratingTestNotif,
                         modifier = Modifier.fillMaxWidth(),
                         colors = ButtonDefaults.buttonColors(containerColor = SaffronLight),
                         shape = RoundedCornerShape(12.dp)
                     ) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
-                            Icon(
-                                imageVector = Icons.Rounded.NotificationsActive,
-                                contentDescription = null,
-                                tint = SaffronPrimary,
-                                modifier = Modifier.size(18.dp)
-                            )
-                            Spacer(modifier = Modifier.width(8.dp))
-                            Text(
-                                text = "Send a test reminder",
-                                style = HabbitAtTypography.labelLarge,
-                                color = SaffronPrimary
-                            )
+                            if (isGeneratingTestNotif) {
+                                CircularProgressIndicator(
+                                    modifier = Modifier.size(18.dp),
+                                    color = SaffronPrimary,
+                                    strokeWidth = 2.dp
+                                )
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Text(
+                                    text = "Generating AI reminder...",
+                                    style = HabbitAtTypography.labelLarge,
+                                    color = SaffronPrimary
+                                )
+                            } else {
+                                Icon(
+                                    imageVector = Icons.Rounded.NotificationsActive,
+                                    contentDescription = null,
+                                    tint = SaffronPrimary,
+                                    modifier = Modifier.size(18.dp)
+                                )
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Text(
+                                    text = "Send a test reminder (AI)",
+                                    style = HabbitAtTypography.labelLarge,
+                                    color = SaffronPrimary
+                                )
+                            }
                         }
                     }
                 }
