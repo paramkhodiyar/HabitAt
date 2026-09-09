@@ -87,6 +87,11 @@ fun NavGraph(
         composable(Screen.Calendar.route) {
             CalendarScreen(
                 viewModel = calendarViewModel,
+                onNavigateToHome = {
+                    navController.navigate(Screen.Home.route) {
+                        popUpTo(Screen.Home.route) { inclusive = true }
+                    }
+                },
                 onOpenCreateHabit = {
                     navController.navigate(Screen.Home.route)
                     homeViewModel.openCreateSheet()
@@ -94,7 +99,13 @@ fun NavGraph(
             )
         }
         composable(Screen.Settings.route) {
-            SettingsScreen()
+            SettingsScreen(
+                onNavigateToHome = {
+                    navController.navigate(Screen.Home.route) {
+                        popUpTo(Screen.Home.route) { inclusive = true }
+                    }
+                }
+            )
         }
         composable(
             route = Screen.ProofCapture.route,

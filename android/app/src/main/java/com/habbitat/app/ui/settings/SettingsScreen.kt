@@ -90,9 +90,12 @@ import com.habbitat.app.ui.theme.TerracottaTertiary
 import com.habbitat.app.ui.theme.TurmericGreenSuccess
 import com.habbitat.app.ui.theme.TurmericLight
 
+import androidx.activity.compose.BackHandler
+
 @OptIn(ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun SettingsScreen(
+    onNavigateToHome: () -> Unit = {},
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
@@ -114,6 +117,18 @@ fun SettingsScreen(
     var selectedTone by remember { mutableStateOf("Motivational") }
     var showTermsSheet by remember { mutableStateOf(false) }
     var showStatusSheet by remember { mutableStateOf(false) }
+
+    BackHandler(enabled = true) {
+        if (showTermsSheet) {
+            showTermsSheet = false
+        } else if (showStatusSheet) {
+            showStatusSheet = false
+        } else if (showNicknameDialog) {
+            showNicknameDialog = false
+        } else {
+            onNavigateToHome()
+        }
+    }
 
     val toneOptions = listOf(
         "Motivational",

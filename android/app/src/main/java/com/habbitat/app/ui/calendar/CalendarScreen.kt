@@ -61,9 +61,12 @@ import com.habbitat.app.ui.theme.InkSecondary
 import com.habbitat.app.ui.theme.SaffronPrimary
 import com.habbitat.app.ui.theme.WarmIvory
 
+import androidx.activity.compose.BackHandler
+
 @Composable
 fun CalendarScreen(
     viewModel: CalendarViewModel,
+    onNavigateToHome: () -> Unit = {},
     onOpenCreateHabit: () -> Unit = {},
     modifier: Modifier = Modifier
 ) {
@@ -78,6 +81,16 @@ fun CalendarScreen(
 
     var selectedRecordForProofModal: CompletionRecord? by remember { mutableStateOf(null) }
     var selectedDateForBreakdown: String? by remember { mutableStateOf(null) }
+
+    BackHandler(enabled = true) {
+        if (selectedRecordForProofModal != null) {
+            selectedRecordForProofModal = null
+        } else if (selectedDateForBreakdown != null) {
+            selectedDateForBreakdown = null
+        } else {
+            onNavigateToHome()
+        }
+    }
 
     val filteredHabits = remember(habits, searchQuery, selectedFrequencyFilter) {
         habits.filter { habit ->

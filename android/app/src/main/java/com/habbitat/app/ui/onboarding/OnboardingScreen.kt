@@ -86,6 +86,9 @@ import androidx.compose.material.icons.rounded.WaterDrop
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextOverflow
+import android.app.Activity
+import androidx.activity.compose.BackHandler
+import com.habbitat.app.ui.components.ExitConfirmationDialog
 import com.habbitat.app.ui.components.GPaySuccessCheckmark
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -114,8 +117,17 @@ fun OnboardingScreen(
     var nicknameInput by remember { mutableStateOf("") }
     var isSubmitting by remember { mutableStateOf(false) }
     var showCompletionAnimation by remember { mutableStateOf(false) }
+    var showExitConfirmation by remember { mutableStateOf(false) }
 
     val focusRequester = remember { FocusRequester() }
+
+    BackHandler(enabled = !showCompletionAnimation) {
+        if (step > 1) {
+            step--
+        } else {
+            showExitConfirmation = true
+        }
+    }
 
     val presetList = remember {
         listOf(
@@ -588,6 +600,13 @@ fun OnboardingScreen(
                     }
                 }
             }
+        }
+
+        if (showExitConfirmation) {
+            ExitConfirmationDialog(
+                onConfirmExit = { (context as? Activity)?.finish() },
+                onDismiss = { showExitConfirmation = false }
+            )
         }
     }
 }

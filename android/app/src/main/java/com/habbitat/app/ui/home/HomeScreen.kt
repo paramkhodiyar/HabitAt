@@ -1,12 +1,15 @@
 package com.habbitat.app.ui.home
 
+import android.app.Activity
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
+import androidx.activity.compose.BackHandler
 import androidx.activity.compose.rememberLauncherForActivityResult
+import com.habbitat.app.ui.components.ExitConfirmationDialog
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
@@ -107,6 +110,19 @@ fun HomeScreen(
     var selectedHabitForDetail by remember { mutableStateOf<Habit?>(null) }
     var searchQuery by remember { mutableStateOf("") }
     var viewMode by remember { mutableStateOf(HomeViewMode.COMPACT_LIST) }
+    var showExitConfirmation by remember { mutableStateOf(false) }
+
+    BackHandler(enabled = true) {
+        if (selectedHabitForDetail != null) {
+            selectedHabitForDetail = null
+        } else if (isCreateSheetOpen) {
+            viewModel.closeCreateSheet()
+        } else if (showPermissionDialog) {
+            showPermissionDialog = false
+        } else {
+            showExitConfirmation = true
+        }
+    }
 
     // Organize records per habit
     val recordsByHabit = remember(completionRecords) {
@@ -544,6 +560,13 @@ fun HomeScreen(
                             }
                         }
                     }
+                )
+            }
+
+            if (showExitConfirmation) {
+                ExitConfirmationDialog(
+                    onConfirmExit = { (context as? Activity)?.finish() },
+                    onDismiss = { showExitConfirmation = false }
                 )
             }
         }
