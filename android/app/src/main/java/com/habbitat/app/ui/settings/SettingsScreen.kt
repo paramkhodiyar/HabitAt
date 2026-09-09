@@ -31,11 +31,14 @@ import androidx.compose.material.icons.rounded.Cloud
 import androidx.compose.material.icons.rounded.Description
 import androidx.compose.material.icons.rounded.Info
 import androidx.compose.material.icons.rounded.Key
+import androidx.compose.material.icons.rounded.Code
 import androidx.compose.material.icons.rounded.Notifications
 import androidx.compose.material.icons.rounded.NotificationsActive
+import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material.icons.rounded.Security
 import androidx.compose.material.icons.rounded.Shield
 import androidx.compose.material.icons.rounded.Warning
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -43,7 +46,10 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -60,6 +66,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import com.habbitat.app.BuildConfig
 import com.habbitat.app.HabbitAtApp
 import com.habbitat.app.data.HabitScheduleHelper
+import com.habbitat.app.data.UserPreferences
 import com.habbitat.app.data.local.entity.Habit
 import com.habbitat.app.notifications.LlmNotificationCopywriter
 import com.habbitat.app.notifications.NotificationHelper
@@ -98,6 +105,11 @@ fun SettingsScreen(
     val coroutineScope = rememberCoroutineScope()
     var isGeneratingTestNotif by remember { mutableStateOf(false) }
     val repository = remember { (context.applicationContext as HabbitAtApp).repository }
+
+    val userPrefs = remember { UserPreferences(context) }
+    var currentNickname by remember { mutableStateOf(userPrefs.nickname) }
+    var showNicknameDialog by remember { mutableStateOf(false) }
+    var nicknameInput by remember { mutableStateOf(currentNickname) }
 
     var selectedTone by remember { mutableStateOf("Motivational") }
     var showTermsSheet by remember { mutableStateOf(false) }
@@ -335,6 +347,104 @@ fun SettingsScreen(
 
             Spacer(modifier = Modifier.height(14.dp))
 
+            // Change Nickname Card
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .border(width = 1.dp, color = GlassBorder, shape = RoundedCornerShape(16.dp))
+                    .clickable {
+                        nicknameInput = currentNickname
+                        showNicknameDialog = true
+                    },
+                shape = RoundedCornerShape(16.dp),
+                colors = CardDefaults.cardColors(containerColor = CardSurface)
+            ) {
+                Row(
+                    modifier = Modifier.padding(16.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .size(38.dp)
+                            .clip(CircleShape)
+                            .background(SaffronLight),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Icon(
+                            imageVector = Icons.Rounded.Person,
+                            contentDescription = null,
+                            tint = SaffronPrimary,
+                            modifier = Modifier.size(20.dp)
+                        )
+                    }
+                    Spacer(modifier = Modifier.width(12.dp))
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text(
+                            text = "Change Nickname",
+                            style = HabbitAtTypography.titleMedium,
+                            color = InkPrimary
+                        )
+                        Text(
+                            text = "Current: $currentNickname",
+                            style = HabbitAtTypography.bodyMedium,
+                            color = InkSecondary
+                        )
+                    }
+                    Icon(
+                        imageVector = Icons.Rounded.ChevronRight,
+                        contentDescription = null,
+                        tint = InkSecondary
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.height(14.dp))
+
+            // Developer Credits Card
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .border(width = 1.dp, color = GlassBorder, shape = RoundedCornerShape(16.dp)),
+                shape = RoundedCornerShape(16.dp),
+                colors = CardDefaults.cardColors(containerColor = CardSurface)
+            ) {
+                Row(
+                    modifier = Modifier.padding(16.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .size(38.dp)
+                            .clip(CircleShape)
+                            .background(IndigoLight),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Icon(
+                            imageVector = Icons.Rounded.Code,
+                            contentDescription = null,
+                            tint = IndigoSecondary,
+                            modifier = Modifier.size(20.dp)
+                        )
+                    }
+                    Spacer(modifier = Modifier.width(12.dp))
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text(
+                            text = "Developer Credits",
+                            style = HabbitAtTypography.titleMedium,
+                            color = InkPrimary
+                        )
+                        Spacer(modifier = Modifier.height(2.dp))
+                        Text(
+                            text = "Made by Param Khodiyar • Proof or it didn't happen 📸",
+                            style = HabbitAtTypography.bodyMedium,
+                            color = InkSecondary
+                        )
+                    }
+                }
+            }
+
+            Spacer(modifier = Modifier.height(14.dp))
+
             // Terms of Service & Privacy Policy Card
             Card(
                 modifier = Modifier
@@ -540,6 +650,61 @@ fun SettingsScreen(
                     Spacer(modifier = Modifier.height(28.dp))
                 }
             }
+        }
+        if (showNicknameDialog) {
+            AlertDialog(
+                onDismissRequest = { showNicknameDialog = false },
+                title = {
+                    Text(
+                        text = "Change Nickname",
+                        style = HabbitAtTypography.headlineMedium,
+                        color = InkPrimary
+                    )
+                },
+                text = {
+                    Column {
+                        Text(
+                            text = "Enter your nickname for daily welcome greetings.",
+                            style = HabbitAtTypography.bodyMedium,
+                            color = InkSecondary
+                        )
+                        Spacer(modifier = Modifier.height(12.dp))
+                        OutlinedTextField(
+                            value = nicknameInput,
+                            onValueChange = { nicknameInput = it },
+                            singleLine = true,
+                            textStyle = HabbitAtTypography.bodyMedium.copy(color = InkPrimary),
+                            colors = OutlinedTextFieldDefaults.colors(
+                                focusedBorderColor = SaffronPrimary,
+                                unfocusedBorderColor = GlassBorder
+                            ),
+                            shape = RoundedCornerShape(12.dp),
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                    }
+                },
+                confirmButton = {
+                    Button(
+                        onClick = {
+                            if (nicknameInput.isNotBlank()) {
+                                userPrefs.nickname = nicknameInput
+                                currentNickname = nicknameInput
+                                showNicknameDialog = false
+                            }
+                        },
+                        colors = ButtonDefaults.buttonColors(containerColor = SaffronPrimary)
+                    ) {
+                        Text("Save", color = InkPrimary)
+                    }
+                },
+                dismissButton = {
+                    TextButton(onClick = { showNicknameDialog = false }) {
+                        Text("Cancel", color = InkSecondary)
+                    }
+                },
+                containerColor = CardSurface,
+                shape = RoundedCornerShape(16.dp)
+            )
         }
     }
 }

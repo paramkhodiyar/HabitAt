@@ -85,7 +85,13 @@ fun NavGraph(
             )
         }
         composable(Screen.Calendar.route) {
-            CalendarScreen(viewModel = calendarViewModel)
+            CalendarScreen(
+                viewModel = calendarViewModel,
+                onOpenCreateHabit = {
+                    navController.navigate(Screen.Home.route)
+                    homeViewModel.openCreateSheet()
+                }
+            )
         }
         composable(Screen.Settings.route) {
             SettingsScreen()

@@ -73,6 +73,18 @@ class HomeViewModel(private val repository: HabitRepository) : ViewModel() {
         }
     }
 
+    fun updateHabit(habit: Habit) {
+        viewModelScope.launch {
+            repository.updateHabit(habit)
+        }
+    }
+
+    fun deleteHabit(habit: Habit) {
+        viewModelScope.launch {
+            repository.deleteHabit(habit)
+        }
+    }
+
     fun simulateCompletion(context: Context, habitId: Long) {
         viewModelScope.launch {
             val todayDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())

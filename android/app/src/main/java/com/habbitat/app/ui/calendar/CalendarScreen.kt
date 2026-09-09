@@ -25,6 +25,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material.icons.rounded.CalendarToday
 import androidx.compose.material.icons.rounded.Clear
 import androidx.compose.material.icons.rounded.Search
@@ -63,6 +64,7 @@ import com.habbitat.app.ui.theme.WarmIvory
 @Composable
 fun CalendarScreen(
     viewModel: CalendarViewModel,
+    onOpenCreateHabit: () -> Unit = {},
     modifier: Modifier = Modifier
 ) {
     val habits by viewModel.habits.collectAsState()
@@ -245,17 +247,37 @@ fun CalendarScreen(
                         )
                         Spacer(modifier = Modifier.height(14.dp))
                         Text(
-                            text = "No Matching Habits",
+                            text = if (habits.isEmpty()) "No Habits Tracked" else "No Matching Habits",
                             style = HabbitAtTypography.headlineMedium,
                             color = InkPrimary
                         )
                         Spacer(modifier = Modifier.height(6.dp))
                         Text(
-                            text = "Try clearing filters or search query to view proof ledger.",
+                            text = if (habits.isEmpty()) "Create a habit to build your photographic ledger of discipline." else "Try clearing filters or search query to view proof ledger.",
                             style = HabbitAtTypography.bodyMedium,
                             textAlign = TextAlign.Center,
                             color = InkSecondary
                         )
+
+                        if (habits.isEmpty()) {
+                            Spacer(modifier = Modifier.height(18.dp))
+                            androidx.compose.material3.Button(
+                                onClick = onOpenCreateHabit,
+                                colors = androidx.compose.material3.ButtonDefaults.buttonColors(containerColor = SaffronPrimary),
+                                shape = RoundedCornerShape(12.dp)
+                            ) {
+                                Row(verticalAlignment = Alignment.CenterVertically) {
+                                    Icon(
+                                        imageVector = Icons.Rounded.Add,
+                                        contentDescription = "Create Habit",
+                                        tint = InkPrimary,
+                                        modifier = Modifier.size(18.dp)
+                                    )
+                                    Spacer(modifier = Modifier.width(6.dp))
+                                    Text(text = "Create Habit", color = InkPrimary)
+                                }
+                            }
+                        }
                     }
                 }
             } else {

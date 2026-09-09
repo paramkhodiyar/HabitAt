@@ -10,12 +10,18 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import com.habbitat.app.data.UserPreferences
 import com.habbitat.app.ui.calendar.CalendarViewModel
 import com.habbitat.app.ui.calendar.CalendarViewModelFactory
 import com.habbitat.app.ui.home.HomeViewModel
 import com.habbitat.app.ui.home.HomeViewModelFactory
 import com.habbitat.app.ui.navigation.FloatingBottomBar
 import com.habbitat.app.ui.navigation.NavGraph
+import com.habbitat.app.ui.onboarding.OnboardingScreen
 import com.habbitat.app.ui.theme.HabbitAtTheme
 import com.habbitat.app.ui.theme.WarmIvory
 
@@ -37,23 +43,36 @@ class MainActivity : ComponentActivity() {
             // Fallback for custom ROMs
         }
 
+        val userPrefs = UserPreferences(this)
+
         setContent {
             HabbitAtTheme {
-                val navController = rememberNavController()
+                var isOnboardingDone by remember { mutableStateOf(userPrefs.isOnboardingCompleted) }
 
-                Scaffold(
-                    modifier = Modifier.fillMaxSize(),
-                    containerColor = WarmIvory,
-                    bottomBar = {
-                        FloatingBottomBar(navController = navController)
-                    }
-                ) { innerPadding ->
-                    Box(modifier = Modifier.fillMaxSize()) {
-                        NavGraph(
-                            navController = navController,
-                            homeViewModel = homeViewModel,
-                            calendarViewModel = calendarViewModel
-                        )
+                if (!isOnboardingDone) {
+                    OnboardingScreen(
+                        onOnboardingComplete = {
+                            userPrefs.isOnboardingCompleted = true
+                            isOnboardingDone = true
+                        }
+                    )
+                } else {
+                    val navController = rememberNavController()
+
+                    Scaffold(
+                        modifier = Modifier.fillMaxSize(),
+                        containerColor = WarmIvory,
+                        bottomBar = {
+                            FloatingBottomBar(navController = navController)
+                        }
+                    ) { innerPadding ->
+                        Box(modifier = Modifier.fillMaxSize()) {
+                            NavGraph(
+                                navController = navController,
+                                homeViewModel = homeViewModel,
+                                calendarViewModel = calendarViewModel
+                            )
+                        }
                     }
                 }
             }

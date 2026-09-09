@@ -65,8 +65,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.text.font.FontWeight
 import androidx.core.content.ContextCompat
 import com.habbitat.app.data.HabitScheduleHelper
+import com.habbitat.app.data.UserPreferences
 import com.habbitat.app.data.local.entity.Habit
 import com.habbitat.app.ui.components.BackgroundMotif
 import com.habbitat.app.ui.components.MotifVariant
@@ -96,6 +98,7 @@ fun HomeScreen(
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
+    val userPrefs = remember { UserPreferences(context) }
     val habits by viewModel.habits.collectAsState()
     val completionRecords by viewModel.completionRecords.collectAsState()
     val isCreateSheetOpen by viewModel.isCreateSheetOpen.collectAsState()
@@ -334,13 +337,10 @@ fun HomeScreen(
 
                 Spacer(modifier = Modifier.height(14.dp))
 
-                // Daily AI Motivational Banner (Accurate Due Counter)
-                MotivationalBanner(
-                    totalHabitsCount = totalDueToday,
-                    completedTodayCount = completedTodayCount
-                )
+                // Borderless Welcome Greeting
+                MotivationalBanner(userName = userPrefs.nickname)
 
-                Spacer(modifier = Modifier.height(14.dp))
+                Spacer(modifier = Modifier.height(10.dp))
 
                 if (filteredHabits.isEmpty()) {
                     // Empty State
@@ -496,6 +496,12 @@ fun HomeScreen(
                     },
                     onQuickMarkCompleted = {
                         viewModel.simulateCompletion(context, targetHabit.id)
+                    },
+                    onUpdateHabit = { updated ->
+                        viewModel.updateHabit(updated)
+                    },
+                    onDeleteHabit = { deleted ->
+                        viewModel.deleteHabit(deleted)
                     }
                 )
             }

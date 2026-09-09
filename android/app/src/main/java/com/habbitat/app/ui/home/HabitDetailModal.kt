@@ -25,12 +25,15 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Check
 import androidx.compose.material.icons.rounded.CheckCircle
 import androidx.compose.material.icons.rounded.Close
+import androidx.compose.material.icons.rounded.Delete
 import androidx.compose.material.icons.rounded.Description
+import androidx.compose.material.icons.rounded.Edit
 import androidx.compose.material.icons.rounded.Event
 import androidx.compose.material.icons.rounded.LocalFireDepartment
 import androidx.compose.material.icons.rounded.Notifications
 import androidx.compose.material.icons.rounded.Schedule
 import androidx.compose.material.icons.rounded.Verified
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -41,6 +44,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -86,10 +90,14 @@ fun HabitDetailModal(
     isCompletedToday: Boolean,
     onDismiss: () -> Unit,
     onOpenProofCapture: () -> Unit,
-    onQuickMarkCompleted: () -> Unit
+    onQuickMarkCompleted: () -> Unit,
+    onUpdateHabit: ((Habit) -> Unit)? = null,
+    onDeleteHabit: ((Habit) -> Unit)? = null
 ) {
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
     var selectedRecordForView by remember { mutableStateOf<CompletionRecord?>(null) }
+    var isEditing by remember { mutableStateOf(false) }
+    var showDeleteConfirm by remember { mutableStateOf(false) }
 
     val todayDateStr = remember {
         SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
@@ -157,7 +165,7 @@ fun HabitDetailModal(
                 .padding(horizontal = 24.dp, vertical = 8.dp)
                 .padding(bottom = 24.dp)
         ) {
-            // Header: Title & Close Button
+            // Header: Title & Edit/Delete Action Buttons
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -177,12 +185,36 @@ fun HabitDetailModal(
                     )
                 }
 
-                IconButton(onClick = onDismiss) {
-                    Icon(
-                        imageVector = Icons.Rounded.Close,
-                        contentDescription = "Close",
-                        tint = InkSecondary
-                    )
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    if (onUpdateHabit != null) {
+                        IconButton(onClick = { isEditing = true }) {
+                            Icon(
+                                imageVector = Icons.Rounded.Edit,
+                                contentDescription = "Edit Habit",
+                                tint = IndigoSecondary,
+                                modifier = Modifier.size(20.dp)
+                            )
+                        }
+                    }
+
+                    if (onDeleteHabit != null) {
+                        IconButton(onClick = { showDeleteConfirm = true }) {
+                            Icon(
+                                imageVector = Icons.Rounded.Delete,
+                                contentDescription = "Delete Habit",
+                                tint = TerracottaHairline,
+                                modifier = Modifier.size(20.dp)
+                            )
+                        }
+                    }
+
+                    IconButton(onClick = onDismiss) {
+                        Icon(
+                            imageVector = Icons.Rounded.Close,
+                            contentDescription = "Close",
+                            tint = InkSecondary
+                        )
+                    }
                 }
             }
 
@@ -466,6 +498,56 @@ fun HabitDetailModal(
                 }
             }
         }
+    }
+
+    if (isEditing && onUpdateHabit != null) {
+        EditHabitSheet(
+            habit = habit,
+            onDismiss = { isEditing = false },
+            onUpdateHabit = { updatedHabit ->
+                onUpdateHabit(updatedHabit)
+                onDismiss()
+            }
+        )
+    }
+
+    if (showDeleteConfirm && onDeleteHabit != null) {
+        AlertDialog(
+            onDismissRequest = { showDeleteConfirm = false },
+            title = {
+                Text(
+                    text = "Delete Habit?",
+                    style = HabbitAtTypography.headlineMedium,
+                    color = InkPrimary
+                )
+            },
+            text = {
+                Text(
+                    text = "Are you sure you want to delete '${habit.name}'? This will remove all habit parameters.",
+                    style = HabbitAtTypography.bodyMedium,
+                    color = InkSecondary
+                )
+            },
+            confirmButton = {
+                Button(
+                    onClick = {
+                        showDeleteConfirm = false
+                        onDeleteHabit(habit)
+                        onDismiss()
+                    },
+                    colors = ButtonDefaults.buttonColors(containerColor = TerracottaHairline)
+                ) {
+                    Text("Delete", color = CardSurface)
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showDeleteConfirm = false }) {
+                    Text("Cancel", color = InkSecondary)
+                }
+            },
+            containerColor = CardSurface,
+            shape = RoundedCornerShape(16.dp)
+        )
     }
 }
 
