@@ -77,6 +77,15 @@ import com.habbitat.app.ui.theme.SaffronPrimary
 import com.habbitat.app.ui.theme.TurmericGreenSuccess
 import com.habbitat.app.ui.theme.TurmericLight
 import com.habbitat.app.ui.theme.WarmIvory
+import androidx.compose.material.icons.rounded.Book
+import androidx.compose.material.icons.rounded.Code
+import androidx.compose.material.icons.rounded.DirectionsRun
+import androidx.compose.material.icons.rounded.EditNote
+import androidx.compose.material.icons.rounded.WaterDrop
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.style.TextOverflow
+import com.habbitat.app.ui.components.GPaySuccessCheckmark
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -84,7 +93,11 @@ data class PresetHabitItem(
     val name: String,
     val durationMinutes: Int,
     val frequency: String,
-    val proofDescription: String
+    val proofDescription: String,
+    val description: String = "",
+    val icon: ImageVector,
+    val iconBgColor: Color,
+    val iconTint: Color
 )
 
 @Composable
@@ -105,12 +118,66 @@ fun OnboardingScreen(
 
     val presetList = remember {
         listOf(
-            PresetHabitItem("Morning Workout", 20, "DAILY", "Photo of gym gear or workout space"),
-            PresetHabitItem("Read 20 Pages", 30, "DAILY", "Photo of book open to current chapter"),
-            PresetHabitItem("Meditation & Breathing", 15, "DAILY", "Photo of meditation space"),
-            PresetHabitItem("Daily Code Commit", 45, "DAILY", "Photo of terminal / editor code"),
-            PresetHabitItem("Cold Shower", 5, "DAILY", "Photo of bathroom setup"),
-            PresetHabitItem("Night Journal", 10, "DAILY", "Photo of handwritten journal page")
+            PresetHabitItem(
+                name = "Morning Workout",
+                durationMinutes = 20,
+                frequency = "DAILY",
+                proofDescription = "Photo of gym gear or workout space",
+                description = "High-energy morning exercise session to ignite focus.",
+                icon = Icons.Rounded.DirectionsRun,
+                iconBgColor = SaffronGlow,
+                iconTint = SaffronPrimary
+            ),
+            PresetHabitItem(
+                name = "Read 20 Pages",
+                durationMinutes = 30,
+                frequency = "DAILY",
+                proofDescription = "Photo of book open to current chapter",
+                description = "Non-fiction or literature reading for continuous learning.",
+                icon = Icons.Rounded.Book,
+                iconBgColor = IndigoLight,
+                iconTint = IndigoSecondary
+            ),
+            PresetHabitItem(
+                name = "Meditation & Breathing",
+                durationMinutes = 15,
+                frequency = "DAILY",
+                proofDescription = "Photo of meditation space",
+                description = "Mindfulness and deep breathwork for mental clarity.",
+                icon = Icons.Rounded.SelfImprovement,
+                iconBgColor = TurmericLight,
+                iconTint = TurmericGreenSuccess
+            ),
+            PresetHabitItem(
+                name = "Daily Code Commit",
+                durationMinutes = 45,
+                frequency = "DAILY",
+                proofDescription = "Photo of terminal / editor code",
+                description = "Dedicated deep work coding block for personal projects.",
+                icon = Icons.Rounded.Code,
+                iconBgColor = SaffronGlow,
+                iconTint = SaffronPrimary
+            ),
+            PresetHabitItem(
+                name = "Cold Shower",
+                durationMinutes = 5,
+                frequency = "DAILY",
+                proofDescription = "Photo of bathroom setup",
+                description = "Physical resilience building and instant wakefulness.",
+                icon = Icons.Rounded.WaterDrop,
+                iconBgColor = IndigoLight,
+                iconTint = IndigoSecondary
+            ),
+            PresetHabitItem(
+                name = "Night Journal",
+                durationMinutes = 10,
+                frequency = "DAILY",
+                proofDescription = "Photo of handwritten journal page",
+                description = "Reflective journaling on daily wins and lessons learned.",
+                icon = Icons.Rounded.EditNote,
+                iconBgColor = TurmericLight,
+                iconTint = TurmericGreenSuccess
+            )
         )
     }
 
@@ -126,7 +193,7 @@ fun OnboardingScreen(
         BackgroundMotif(variant = MotifVariant.KOLAM_DOT_GRID)
 
         if (showCompletionAnimation) {
-            // Serious, professional completion tick screen
+            // Animated spring checkmark tick screen
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -134,21 +201,7 @@ fun OnboardingScreen(
                 contentAlignment = Alignment.Center
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Box(
-                        modifier = Modifier
-                            .size(96.dp)
-                            .clip(CircleShape)
-                            .background(TurmericLight)
-                            .border(2.dp, TurmericGreenSuccess, CircleShape),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Icon(
-                            imageVector = Icons.Rounded.Check,
-                            contentDescription = "Completed",
-                            tint = TurmericGreenSuccess,
-                            modifier = Modifier.size(54.dp)
-                        )
-                    }
+                    GPaySuccessCheckmark(sizeDp = 84)
 
                     Spacer(modifier = Modifier.height(24.dp))
 
@@ -379,7 +432,7 @@ fun OnboardingScreen(
                                     Card(
                                         modifier = Modifier
                                             .fillMaxWidth()
-                                            .clip(RoundedCornerShape(14.dp))
+                                            .clip(RoundedCornerShape(16.dp))
                                             .clickable {
                                                 if (isSelected) selectedPresets.remove(preset)
                                                 else selectedPresets.add(preset)
@@ -387,9 +440,9 @@ fun OnboardingScreen(
                                             .border(
                                                 width = 1.dp,
                                                 color = if (isSelected) SaffronPrimary else GlassBorder,
-                                                shape = RoundedCornerShape(14.dp)
+                                                shape = RoundedCornerShape(16.dp)
                                             ),
-                                        shape = RoundedCornerShape(14.dp),
+                                        shape = RoundedCornerShape(16.dp),
                                         colors = CardDefaults.cardColors(
                                             containerColor = if (isSelected) SaffronGlow else CardSurface
                                         )
@@ -398,9 +451,26 @@ fun OnboardingScreen(
                                             modifier = Modifier
                                                 .fillMaxWidth()
                                                 .padding(14.dp),
-                                            horizontalArrangement = Arrangement.SpaceBetween,
                                             verticalAlignment = Alignment.CenterVertically
                                         ) {
+                                            // Icon Badge
+                                            Box(
+                                                modifier = Modifier
+                                                    .size(42.dp)
+                                                    .clip(CircleShape)
+                                                    .background(preset.iconBgColor),
+                                                contentAlignment = Alignment.Center
+                                            ) {
+                                                Icon(
+                                                    imageVector = preset.icon,
+                                                    contentDescription = preset.name,
+                                                    tint = preset.iconTint,
+                                                    modifier = Modifier.size(22.dp)
+                                                )
+                                            }
+
+                                            Spacer(modifier = Modifier.width(12.dp))
+
                                             Column(modifier = Modifier.weight(1f)) {
                                                 Text(
                                                     text = preset.name,
@@ -409,12 +479,16 @@ fun OnboardingScreen(
                                                 )
                                                 Spacer(modifier = Modifier.height(2.dp))
                                                 Text(
-                                                    text = "${preset.durationMinutes} min • ${preset.frequency}",
+                                                    text = "${preset.durationMinutes} min • ${preset.frequency} • ${preset.description}",
                                                     style = HabbitAtTypography.bodyMedium,
                                                     color = InkSecondary,
-                                                    fontSize = 12.sp
+                                                    fontSize = 12.sp,
+                                                    maxLines = 1,
+                                                    overflow = TextOverflow.Ellipsis
                                                 )
                                             }
+
+                                            Spacer(modifier = Modifier.width(8.dp))
 
                                             Box(
                                                 modifier = Modifier
@@ -477,6 +551,7 @@ fun OnboardingScreen(
                                             repository.insertHabit(
                                                 Habit(
                                                     name = preset.name,
+                                                    description = preset.description,
                                                     targetDurationMinutes = preset.durationMinutes,
                                                     proofDescription = preset.proofDescription,
                                                     reminderIntervalMinutes = 60,
@@ -486,7 +561,7 @@ fun OnboardingScreen(
                                         }
                                         userPrefs.isOnboardingCompleted = true
                                         showCompletionAnimation = true
-                                        delay(1400L)
+                                        delay(1800L)
                                         onOnboardingComplete()
                                     }
                                 },

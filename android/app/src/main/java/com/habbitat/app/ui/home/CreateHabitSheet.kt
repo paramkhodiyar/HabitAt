@@ -57,14 +57,24 @@ import com.habbitat.app.ui.theme.SaffronPrimary
 import com.habbitat.app.ui.theme.TerracottaTertiary
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
+data class QuickPresetIdea(
+    val pillName: String,
+    val habitName: String,
+    val description: String,
+    val durationMinutes: Int,
+    val proofDescription: String
+)
+
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun CreateHabitSheet(
     onDismiss: () -> Unit,
-    onAddHabit: (name: String, duration: Int, proof: String, interval: Int, frequency: String) -> Unit
+    onAddHabit: (name: String, description: String, duration: Int, proof: String, interval: Int, frequency: String) -> Unit
 ) {
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
 
     var habitName by remember { mutableStateOf("") }
+    var habitDescription by remember { mutableStateOf("") }
     var selectedFrequency by remember { mutableStateOf("DAILY") }
     var targetDurationMinutes by remember { mutableIntStateOf(30) }
     var proofDescription by remember { mutableStateOf("") }
@@ -73,11 +83,11 @@ fun CreateHabitSheet(
     var isError by remember { mutableStateOf(false) }
 
     val quickPresets = listOf(
-        Triple("📖 Reading", 30, "Photo of book or page"),
-        Triple("🧘 Mindfulness", 15, "Photo of calm space"),
-        Triple("💧 Hydration", 5, "Photo of water container"),
-        Triple("🏋️ Fitness", 45, "Photo of workout area"),
-        Triple("💻 Skill Practice", 60, "Photo of workspace")
+        QuickPresetIdea("📖 Reading", "Reading", "Read 20 pages of non-fiction or book chapter", 30, "Photo of book open to current page"),
+        QuickPresetIdea("🧘 Mindfulness", "Mindfulness", "15 minutes of meditation & breathwork", 15, "Photo of calm meditation space"),
+        QuickPresetIdea("💧 Hydration", "Hydration", "Drink 3 liters of water throughout the day", 5, "Photo of water container"),
+        QuickPresetIdea("🏋️ Fitness", "Fitness", "High-intensity morning workout session", 45, "Photo of workout space or gym gear"),
+        QuickPresetIdea("💻 Skill Practice", "Skill Practice", "Deep work block practicing code or design", 60, "Photo of IDE / workspace screen")
     )
 
     val durationPresets = listOf(10, 15, 30, 45, 60, 90, 120)
@@ -131,22 +141,23 @@ fun CreateHabitSheet(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                quickPresets.forEach { (presetName, presetDuration, presetProof) ->
+                quickPresets.forEach { preset ->
                     Box(
                         modifier = Modifier
                             .clip(CircleShape)
                             .background(IndigoLight)
                             .border(width = 1.dp, color = GlassBorder, shape = CircleShape)
                             .clickable {
-                                habitName = presetName.substringAfter(" ")
-                                targetDurationMinutes = presetDuration
-                                proofDescription = presetProof
+                                habitName = preset.habitName
+                                habitDescription = preset.description
+                                targetDurationMinutes = preset.durationMinutes
+                                proofDescription = preset.proofDescription
                                 if (isError) isError = false
                             }
                             .padding(horizontal = 12.dp, vertical = 6.dp)
                     ) {
                         Text(
-                            text = presetName,
+                            text = preset.pillName,
                             style = HabbitAtTypography.labelMedium,
                             color = IndigoSecondary
                         )
@@ -194,6 +205,36 @@ fun CreateHabitSheet(
                     modifier = Modifier.padding(start = 4.dp, top = 4.dp)
                 )
             }
+
+            Spacer(modifier = Modifier.height(18.dp))
+
+            // Optional Habit Description
+            Text(
+                text = "Habit Description (Optional)",
+                style = HabbitAtTypography.labelLarge,
+                color = InkPrimary
+            )
+            Spacer(modifier = Modifier.height(6.dp))
+            OutlinedTextField(
+                value = habitDescription,
+                onValueChange = { habitDescription = it },
+                placeholder = {
+                    Text(
+                        text = "Optional context or goal details…",
+                        color = InkMuted.copy(alpha = 0.45f)
+                    )
+                },
+                singleLine = false,
+                maxLines = 2,
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(14.dp),
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedBorderColor = SaffronPrimary,
+                    unfocusedBorderColor = GlassBorder,
+                    focusedContainerColor = CardSurface,
+                    unfocusedContainerColor = CardSurface
+                )
+            )
 
             Spacer(modifier = Modifier.height(18.dp))
 
@@ -414,6 +455,7 @@ fun CreateHabitSheet(
                     } else {
                         onAddHabit(
                             habitName.trim(),
+                            habitDescription.trim(),
                             targetDurationMinutes,
                             proofDescription.trim(),
                             reminderIntervalMinutes,

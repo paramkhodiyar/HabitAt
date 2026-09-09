@@ -10,7 +10,8 @@ data class Habit(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
     val name: String,
-    val frequency: String = "DAILY", // DAILY, WEEKDAYS, CUSTOM
+    val description: String = "",
+    val frequency: String = "DAILY", // DAILY, WEEKLY, MONTHLY, WEEKDAYS, CUSTOM
     val targetDurationMinutes: Int = 30,
     val proofDescription: String = "",
     val reminderIntervalMinutes: Int = 60,

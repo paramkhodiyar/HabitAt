@@ -11,7 +11,7 @@ import com.habbitat.app.data.local.entity.NotificationLog
 
 @Database(
     entities = [Habit::class, CompletionRecord::class, NotificationLog::class],
-    version = 2,
+    version = 3,
     exportSchema = false
 )
 abstract class HabbitAtDatabase : RoomDatabase() {

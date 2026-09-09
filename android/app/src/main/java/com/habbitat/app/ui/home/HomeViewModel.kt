@@ -51,6 +51,7 @@ class HomeViewModel(private val repository: HabitRepository) : ViewModel() {
     fun addHabit(
         context: Context,
         name: String,
+        description: String = "",
         targetDurationMinutes: Int,
         proofDescription: String,
         reminderIntervalMinutes: Int,
@@ -59,6 +60,7 @@ class HomeViewModel(private val repository: HabitRepository) : ViewModel() {
         viewModelScope.launch {
             val newHabit = Habit(
                 name = name,
+                description = description,
                 frequency = frequency,
                 targetDurationMinutes = targetDurationMinutes,
                 proofDescription = proofDescription,

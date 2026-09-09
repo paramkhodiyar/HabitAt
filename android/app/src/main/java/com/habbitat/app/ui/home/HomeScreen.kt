@@ -509,8 +509,8 @@ fun HomeScreen(
             if (isCreateSheetOpen) {
                 CreateHabitSheet(
                     onDismiss = { viewModel.closeCreateSheet() },
-                    onAddHabit = { name, duration, proof, interval, frequency ->
-                        viewModel.addHabit(context, name, duration, proof, interval, frequency)
+                    onAddHabit = { name, description, duration, proof, interval, frequency ->
+                        viewModel.addHabit(context, name, description, duration, proof, interval, frequency)
                     }
                 )
             }
