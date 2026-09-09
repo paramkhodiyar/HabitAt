@@ -8,9 +8,10 @@ data class NotificationCopy(
 interface NotificationCopywriter {
     suspend fun generateCopy(
         habitName: String,
+        frequency: String,
         targetDurationMinutes: Int,
         streakCount: Int,
         escalationLevel: Int,
-        tone: String = "Motivational"
+        tone: String = "Brutal"
     ): NotificationCopy
 }

@@ -21,6 +21,7 @@ class LlmNotificationCopywriter : NotificationCopywriter {
 
     override suspend fun generateCopy(
         habitName: String,
+        frequency: String,
         targetDurationMinutes: Int,
         streakCount: Int,
         escalationLevel: Int,
@@ -32,9 +33,10 @@ class LlmNotificationCopywriter : NotificationCopywriter {
             .trim()
 
         val fallbackCopy = NotificationCopy(
-            title = NotificationTemplates.getTitle(habitName, escalationLevel),
+            title = NotificationTemplates.getTitle(habitName, frequency, escalationLevel),
             message = NotificationTemplates.getMessage(
                 habitName = habitName,
+                frequency = frequency,
                 targetDurationMinutes = targetDurationMinutes,
                 streakCount = streakCount,
                 escalationLevel = escalationLevel
@@ -45,22 +47,29 @@ class LlmNotificationCopywriter : NotificationCopywriter {
             return@withContext fallbackCopy
         }
 
-        // Strict 5-second timeout per spec
+        // Strict 5-second timeout
         val result = withTimeoutOrNull(5000L) {
             try {
                 val prompt = """
-                    You are generating a mobile notification for a habit tracking app called HabbitAt.
+                    You are an unyielding, brutal AI discipline supervisor for a habit tracking app called HabbitAt.
                     Habit Name: "$habitName"
+                    Frequency: "${frequency.uppercase()}"
                     Target Duration: $targetDurationMinutes minutes
                     Current Streak: $streakCount days
-                    Escalation Level: $escalationLevel (1 = gentle initial reminder, 2 = firm follow-up, 3 = streak at risk alert, 4 = urgent midnight warning)
-                    Desired Tone: "$tone" (Motivational, Sarcastic, Aggressive, Teasing, Disappointed, Celebratory)
+                    Escalation Level: $escalationLevel (1 = initial alert, 2 = stern warning, 3 = urgent streak alert, 4 = final midnight warning)
+                    Tone: Brutal, rude, uncompromising, sarcastic discipline supervisor.
+
+                    Context & Content Rules:
+                    - Explicitly mention that the ${frequency.uppercase()} habit "$habitName" is PENDING.
+                    - Remind the user to log photo proof before EOD (End Of Day).
+                    - Title MUST be strictly under 40 characters.
+                    - Message MUST be strictly under 120 characters.
+                    - Absolutely NO emojis anywhere.
                     
-                    Constraint: Strictly NO emojis. Output JSON format with keys "title" and "message".
+                    Return strictly valid JSON format with keys "title" and "message".
                 """.trimIndent()
 
-                val (title, message) = if (apiKey.startsWith("sk-or-")) {
-                    // OpenRouter API call
+                val (rawTitle, rawMessage) = if (apiKey.startsWith("sk-or-")) {
                     val jsonPayload = JSONObject().apply {
                         put("model", "google/gemini-2.5-flash")
                         put("messages", JSONArray().apply {
@@ -88,7 +97,6 @@ class LlmNotificationCopywriter : NotificationCopywriter {
                     val parsed = JSONObject(text.replace("```json", "").replace("```", "").trim())
                     Pair(parsed.optString("title", fallbackCopy.title), parsed.optString("message", fallbackCopy.message))
                 } else {
-                    // Direct Gemini API call
                     val jsonPayload = JSONObject().apply {
                         put("contents", JSONArray().put(JSONObject().apply {
                             put("parts", JSONArray().put(JSONObject().apply {
@@ -123,8 +131,8 @@ class LlmNotificationCopywriter : NotificationCopywriter {
                     Pair(parsed.optString("title", fallbackCopy.title), parsed.optString("message", fallbackCopy.message))
                 }
 
-                val cleanTitle = title.replace(Regex("[\\p{So}\\p{Cn}]"), "").trim()
-                val cleanMessage = message.replace(Regex("[\\p{So}\\p{Cn}]"), "").trim()
+                val cleanTitle = NotificationTemplates.enforceLength(rawTitle, maxChars = 40)
+                val cleanMessage = NotificationTemplates.enforceLength(rawMessage, maxChars = 120)
 
                 NotificationCopy(
                     title = cleanTitle.ifBlank { fallbackCopy.title },

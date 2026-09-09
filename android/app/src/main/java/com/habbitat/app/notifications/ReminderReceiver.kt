@@ -38,6 +38,7 @@ class ReminderReceiver : BroadcastReceiver() {
                 val copywriter = LlmNotificationCopywriter()
                 val copy = copywriter.generateCopy(
                     habitName = habit.name,
+                    frequency = habit.frequency,
                     targetDurationMinutes = habit.targetDurationMinutes,
                     streakCount = 1,
                     escalationLevel = escalationLevel
