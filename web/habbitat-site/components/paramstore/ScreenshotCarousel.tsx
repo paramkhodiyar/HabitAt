@@ -1,81 +1,110 @@
 "use client";
 
 import React from "react";
-import { Camera, Calendar, ShieldCheck, Flame } from "lucide-react";
+import Image from "next/image";
+import { Camera, Calendar, ShieldCheck, Flame, HardDrive, LayoutList } from "lucide-react";
 
-const SCREENSHOT_PLACEHOLDERS = [
+// Exact measured native Android device dimensions: 1080 x 2392 px (Aspect ratio: 2.215)
+const REAL_SCREENSHOTS = [
   {
     id: 1,
-    title: "Home Habit List & Due Today Counter",
-    description: "Daily commitments with exact reminder alarms",
+    title: "Habit Dashboard & Active Streaks",
+    description: "Daily commitments with zero-based real streak indicators",
     icon: Flame,
+    src: "/images/screenshots/Screenshot_20260910-091455.png",
   },
   {
     id: 2,
-    title: "Camera Photo-Proof Capture Flow",
-    description: "Timestamped photo capture directly in app",
-    icon: Camera,
+    title: "Habit Detail & Schedule Cadence",
+    description: "Frequency-aware daily, weekly, and monthly target tracking",
+    icon: LayoutList,
+    src: "/images/screenshots/Screenshot_20260910-091507.png",
   },
   {
     id: 3,
-    title: "Vision AI Verification Result",
-    description: "Contextual AI confidence rating & accept/reject beat",
-    icon: ShieldCheck,
+    title: "Camera Photo-Proof Capture",
+    description: "Timestamped camera evidence verified by Vision AI",
+    icon: Camera,
+    src: "/images/screenshots/Screenshot_20260910-091522.png",
   },
   {
     id: 4,
-    title: "Photographic Ledger & Monthly Grid",
-    description: "Month-by-month proof photo history calendar",
+    title: "Photographic Calendar Ledger",
+    description: "Expandable month-by-month proof photo history grid",
     icon: Calendar,
+    src: "/images/screenshots/Screenshot_20260910-091550.png",
+  },
+  {
+    id: 5,
+    title: "AI Verification Pipeline",
+    description: "Contextual confidence scoring preventing photo spoofing",
+    icon: ShieldCheck,
+    src: "/images/screenshots/Screenshot_20260910-091552.png",
+  },
+  {
+    id: 6,
+    title: "Private Google Drive Sync",
+    description: "Encrypted cross-device cloud sync contract",
+    icon: HardDrive,
+    src: "/images/screenshots/Screenshot_20260910-091600.png",
   },
 ];
 
 export default function ScreenshotCarousel() {
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <h2 className="font-serif text-2xl font-bold text-ink">
-          App Preview & Screenshots
-        </h2>
-        <span className="text-xs font-mono text-ink-muted">
-          Scroll horizontally to inspect screens
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div>
+          <h2 className="font-serif text-2xl font-bold text-ink">
+            App Preview & Screens
+          </h2>
+          <p className="text-xs text-ink-muted mt-0.5">
+            Native 1080&times;2392 Android interface captures showing photo proof, AI verification, and streaks.
+          </p>
+        </div>
+        <span className="text-[11px] font-mono text-ink-muted self-start sm:self-auto border border-border bg-bg px-2.5 py-1 rounded-[2px]">
+          Swipe or scroll horizontally &rarr;
         </span>
       </div>
 
-      <div className="w-full overflow-x-auto snap-x snap-mandatory flex gap-6 pb-4 scrollbar-none">
-        {SCREENSHOT_PLACEHOLDERS.map((item) => {
+      <div className="w-full overflow-x-auto snap-x snap-mandatory flex gap-6 pb-4 pt-2 scrollbar-none">
+        {REAL_SCREENSHOTS.map((item) => {
           const Icon = item.icon;
           return (
-            <div
-              key={item.id}
-              className="snap-start shrink-0 w-[260px] sm:w-[300px] h-[520px] bg-surface border border-border rounded-[12px] p-4 flex flex-col justify-between space-y-4"
-            >
-              {/* Phone Status Bar Frame Representation */}
-              <div className="w-full flex items-center justify-between border-b border-border pb-2 text-[10px] font-mono text-ink-muted">
-                <span>06:30 AM</span>
-                <span>HabbitAt v1.0.2</span>
+            <div key={item.id} className="snap-start shrink-0 space-y-3">
+              {/* Phone Device Shell container matching exact 1080:2392 aspect ratio */}
+              <div className="relative shrink-0 w-[240px] sm:w-[270px] aspect-[1080/2392] bg-ink rounded-[24px] p-2 border-2 border-border flex flex-col justify-between overflow-hidden shadow-none">
+                {/* Device Camera Punchhole Notch */}
+                <div className="absolute top-3 left-1/2 -translate-x-1/2 w-16 h-3 bg-surface/80 rounded-full z-20 flex items-center justify-center border border-border/30">
+                  <div className="w-2 h-2 bg-ink rounded-full" />
+                </div>
+
+                {/* Exact Aspect Housing */}
+                <div className="relative w-full h-full bg-[#121110] rounded-[18px] overflow-hidden border border-border/40 flex items-center justify-center">
+                  <Image
+                    src={item.src}
+                    alt={item.title}
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 640px) 240px, 270px"
+                    priority={item.id <= 2}
+                  />
+                </div>
               </div>
 
-              {/* Placeholder Content Block */}
-              <div className="flex-1 bg-bg border border-dashed border-border rounded-[8px] p-6 flex flex-col items-center justify-center text-center gap-3">
-                <div className="w-12 h-12 rounded-[8px] bg-surface border border-border flex items-center justify-center text-accent">
-                  <Icon size={24} />
-                </div>
-                <div className="space-y-1">
-                  <span className="text-xs font-bold text-ink block">
+              {/* Labeled Screen Description Card */}
+              <div className="w-[240px] sm:w-[270px] bg-surface border border-border p-3.5 rounded-[4px] space-y-1.5">
+                <div className="flex items-center gap-2">
+                  <div className="w-6 h-6 rounded-[3px] bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shrink-0">
+                    <Icon size={14} />
+                  </div>
+                  <span className="text-xs font-bold text-ink truncate">
                     {item.title}
                   </span>
-                  <span className="text-[11px] text-ink-muted block leading-relaxed">
-                    {item.description}
-                  </span>
                 </div>
-                <span className="text-[10px] font-mono text-ink-muted bg-surface px-2.5 py-1 rounded-[4px] border border-border mt-2">
-                  [ Screenshot Pending ]
-                </span>
-              </div>
-
-              <div className="text-[11px] font-mono text-ink-muted text-center">
-                Screen {item.id} of {SCREENSHOT_PLACEHOLDERS.length}
+                <p className="text-[11px] text-ink-muted leading-tight">
+                  {item.description}
+                </p>
               </div>
             </div>
           );
