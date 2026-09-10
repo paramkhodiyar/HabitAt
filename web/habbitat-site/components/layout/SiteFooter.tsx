@@ -126,7 +126,7 @@ export default function SiteFooter() {
                   className="inline-flex items-center gap-2 text-ink hover:text-accent transition-colors"
                 >
                   <GithubIcon size={16} />
-                  <span>GitHub Repository</span>
+                  <span>GitHub (@paramkhodiyar)</span>
                   <ArrowUpRight size={14} className="text-ink-muted" />
                 </a>
               </li>
@@ -138,7 +138,19 @@ export default function SiteFooter() {
                   className="inline-flex items-center gap-2 text-ink hover:text-accent transition-colors"
                 >
                   <LinkedinIcon size={16} />
-                  <span>LinkedIn Profile</span>
+                  <span>LinkedIn (in/paramkhodiyar)</span>
+                  <ArrowUpRight size={14} className="text-ink-muted" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href={SITE_CONFIG.links.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-ink hover:text-accent transition-colors"
+                >
+                  <Mail size={16} className="text-accent" />
+                  <span>paramkhodiyar.dev</span>
                   <ArrowUpRight size={14} className="text-ink-muted" />
                 </a>
               </li>

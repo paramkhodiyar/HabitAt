@@ -11,8 +11,9 @@ export const SITE_CONFIG = {
   developer: "Param Khodiyar",
   contactEmail: "paramkhodiyar1008@gmail.com",
   links: {
-    github: "#",
-    linkedin: "#",
+    github: "https://github.com/paramkhodiyar",
+    linkedin: "https://www.linkedin.com/in/paramkhodiyar",
+    website: "https://www.paramkhodiyar.dev",
   },
   apk: {
     version: "1.0.2",

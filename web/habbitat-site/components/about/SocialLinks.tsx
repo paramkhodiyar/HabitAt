@@ -1,5 +1,6 @@
 import React from "react";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Globe } from "lucide-react";
+import { SITE_CONFIG } from "@/lib/constants";
 
 function GithubIcon({ className = "w-5 h-5" }: { className?: string }) {
   return (
@@ -24,17 +25,24 @@ export default function SocialLinks() {
   const links = [
     {
       name: "GitHub",
-      description: "Code repositories & open source projects",
+      description: "Open-source projects & code repositories",
       icon: GithubIcon,
-      href: "#",
-      note: "URL pending from Param",
+      href: SITE_CONFIG.links.github,
+      handle: "@paramkhodiyar",
     },
     {
       name: "LinkedIn",
       description: "Professional background & experience",
       icon: LinkedinIcon,
-      href: "#",
-      note: "URL pending from Param",
+      href: SITE_CONFIG.links.linkedin,
+      handle: "in/paramkhodiyar",
+    },
+    {
+      name: "Personal Portfolio",
+      description: "Developer website & project showcases",
+      icon: Globe,
+      href: SITE_CONFIG.links.website,
+      handle: "paramkhodiyar.dev",
     },
   ];
 
@@ -42,20 +50,22 @@ export default function SocialLinks() {
     <div className="bg-surface border border-border p-6 md:p-10 rounded-[4px] space-y-6">
       <div>
         <h2 className="font-serif text-2xl font-bold text-ink">
-          Connect & Links
+          Connect &amp; Profiles
         </h2>
         <p className="text-xs text-ink-muted mt-1">
-          Explore developer profiles and source code repositories.
+          Explore code repositories, professional networks, and personal projects.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {links.map((link) => {
           const Icon = link.icon;
           return (
             <a
               key={link.name}
               href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group border border-border bg-bg p-5 rounded-[4px] hover:border-accent transition-colors flex flex-col justify-between gap-4"
             >
               <div className="flex items-start justify-between gap-3">
@@ -70,8 +80,8 @@ export default function SocialLinks() {
                   <span className="text-base font-semibold text-ink group-hover:text-accent transition-colors">
                     {link.name}
                   </span>
-                  <span className="text-[10px] font-mono text-ink-muted">
-                    {link.note}
+                  <span className="text-[10px] font-mono text-accent font-semibold">
+                    {link.handle}
                   </span>
                 </div>
                 <p className="text-xs text-ink-muted mt-1">
