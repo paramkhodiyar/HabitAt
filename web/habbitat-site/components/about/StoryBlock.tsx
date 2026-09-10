@@ -44,7 +44,7 @@ export default function StoryBlock() {
         </p>
 
         <p>
-          My streak addiction started on GitHub — watching green contribution tiles light up day after day. There was something undeniably satisfying about honest, visible proof of work: code written, bugs fixed, commits pushed. I wanted that exact same unyielding discipline applied to my personal life: waking up on time, reading technical books, working out, and building daily habits that actually stick long-term.
+          My streak addiction started on GitHub watching green contribution tiles light up day after day. There was something undeniably satisfying about honest, visible proof of work: code written, bugs fixed, commits pushed. I wanted that exact same unyielding discipline applied to my personal life: waking up on time, reading technical books, working out, and building daily habits that actually stick long-term.
         </p>
 
         <p>
