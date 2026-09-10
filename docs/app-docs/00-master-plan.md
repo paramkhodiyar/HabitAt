@@ -8,7 +8,7 @@ habitAt is an AI-powered habit enforcer for personal use: you log a habit, it sc
 
 ## 2. Two apps, one system
 - **habitAt (Android, Kotlin)** — the primary app. Habit creation, scheduling, camera proof, AI verification, calendar history, notifications.
-- **habitAt Sync (macOS, Swift/SwiftUI)** — a real native app (menu bar + full window), not a script. Pulls the same Drive-backed data and renders the same calendar/streak experience on the Mac, read-first, with a small set of desktop-only conveniences.
+- **habitAt Sync (macOS, Swift/SwiftUI - Under Development)** — a real native app (menu bar + full window), not a script. Pulls the same Drive-backed data and renders the same calendar/streak experience on the Mac, read-first, with a small set of desktop-only conveniences.
 
 Both apps share one design language (see `DESIGN.md`) and one data contract (Room schema + Drive folder structure), defined in Phase 1 and Phase 5 respectively.
 

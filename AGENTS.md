@@ -5,7 +5,7 @@ This file is the entry point for any coding agent (Claude Code, Cursor, Copilot 
 ## What this project is
 habitAt is a two-app system:
 - **habitAt** — Android/Kotlin habit-enforcement app (photo-proof + AI verification + escalating notifications + a photographic calendar history).
-- **habitAt Sync** — native macOS/SwiftUI companion that mirrors the same data.
+- **habitAt Sync** — native macOS/SwiftUI companion that mirrors the same data (Under Development).
 
 Full product spec, phase breakdown, and design law live in `docs/app-docs/`. This file does not repeat them — it tells you the order to read them in and the rules that apply no matter which phase you're on.
 
@@ -28,7 +28,7 @@ If any of these documents conflict, `INSTRUCTIONS.md` wins on process questions,
 
 ## Repo expectations (fill in once the actual project is scaffolded)
 - Android module: `/android` — Gradle build, run via Android Studio or `./gradlew installDebug`.
-- macOS module: `/mac` — Xcode project, run via Xcode or `xcodebuild`.
+- macOS module: `/mac` — Xcode project (Under Development), run via Xcode or `xcodebuild`.
 - Shared contract (Drive folder structure, `sync-metadata.json` shape): defined in `phase-5-drive-sync-ai-notifications.md`, consumed by both modules — do not let the two platforms drift into incompatible assumptions about this shape.
 
 ## When you're blocked

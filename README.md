@@ -1,8 +1,8 @@
 # habitAt — AI-Verified Habit Enforcement System
 
 [![Android Version](https://img.shields.io/badge/Android-8.0%2B%20%28API%2026%2B%29-3DDC84?style=flat-square&logo=android&logoColor=white)](https://github.com/paramkhodiyar/HabitAt)
-[![macOS Companion](https://img.shields.io/badge/macOS-14.0%2B%20%28Sonoma%2B%29-000000?style=flat-square&logo=apple&logoColor=white)](https://github.com/paramkhodiyar/HabitAt)
-[![Web App](https://img.shields.io/badge/Next.js-16.3%20%28App%20Router%29-000000?style=flat-square&logo=nextdotjs&logoColor=white)](https://habitAt.app)
+[![macOS Companion](https://img.shields.io/badge/macOS-Under%20Development-orange?style=flat-square&logo=apple&logoColor=white)](https://github.com/paramkhodiyar/HabitAt)
+[![Web App](https://img.shields.io/badge/Next.js-16.3%20%28App%20Router%29-000000?style=flat-square&logo=nextdotjs&logoColor=white)](https://habbitat.app)
 [![Developer](https://img.shields.io/badge/Developer-Param%20Khodiyar-B5502E?style=flat-square)](https://www.paramkhodiyar.dev)
 
 > **Habits verified by proof, not promises.**  
@@ -17,7 +17,7 @@ The repository is structured as a unified monorepo containing three core modules
 ```
 HabitAt/
 ├── android/                    # Android/Kotlin native app (Compose + CameraX + ML + Room)
-├── mac/                        # macOS/SwiftUI native desktop companion app
+├── mac/                        # macOS/SwiftUI native desktop companion app (Under Development)
 ├── web/                        # Public web platform & ParamStore APK download hub
 │   ├── habbitat-landing-docs/  # Web design system & phase execution docs
 │   └── habbitat-site/          # Next.js 16 + Tailwind CSS v4 + Framer Motion site
@@ -47,7 +47,7 @@ HabitAt/
    Direct, signed Android APK distribution channel with cryptographic SHA-256 package verification.
 
 6. **Private Cloud Sync**:
-   Encrypted Google Drive sync contract for private user-owned cloud backups across Android and macOS devices.
+   Encrypted Google Drive sync contract for private user-owned cloud backups across Android and macOS (Under Development) devices.
 
 ---
 
@@ -72,7 +72,7 @@ HabitAt/
   ```
   Open `http://localhost:3000` in your browser.
 
-### macOS Companion App (`/mac`)
+### macOS Companion App (`/mac` - Under Development)
 - **Requirements**: macOS 14.0+, Xcode 15+, Swift 5.9+.
 - **Run via Xcode**: Open `mac/HabbitAtSync/HabbitAtSync.xcodeproj` and click **Run**.
 
