@@ -10,7 +10,7 @@
 
 ---
 
-## 🏛️ Project Architecture
+## Project Architecture
 
 The repository is structured as a unified monorepo containing three core modules:
 
@@ -29,7 +29,7 @@ HabitAt/
 
 ---
 
-## ✨ Key Features
+## Key Features
 
 1. **Proof-Based Verification**:
    No self-reported checkmarks or easy credit. Submit a timestamped photo of your completed habit (e.g. laptop code, gym equipment, reading material).
@@ -51,9 +51,9 @@ HabitAt/
 
 ---
 
-## 🚀 Quick Start & Installation
+## Quick Start & Installation
 
-### 📱 Android Application (`/android`)
+### Android Application (`/android`)
 - **Requirements**: Android Studio Ladybug+ / Gradle 8.x, JDK 17+.
 - **Run via CLI**:
   ```bash
@@ -62,7 +62,7 @@ HabitAt/
   ```
 - **Direct APK Sideload**: Download `HabitAt-v1.0.2.apk` from [`apks/`](./apks) or via [ParamStore](https://habbitat.app/paramstore).
 
-### 🌐 Web Site & ParamStore (`/web/habbitat-site`)
+### Web Site & ParamStore (`/web/habbitat-site`)
 - **Requirements**: Node.js 20+, `npm`.
 - **Run Locally**:
   ```bash
@@ -72,13 +72,13 @@ HabitAt/
   ```
   Open `http://localhost:3000` in your browser.
 
-### 💻 macOS Companion App (`/mac`)
+### macOS Companion App (`/mac`)
 - **Requirements**: macOS 14.0+, Xcode 15+, Swift 5.9+.
 - **Run via Xcode**: Open `mac/HabbitAtSync/HabbitAtSync.xcodeproj` and click **Run**.
 
 ---
 
-## 📄 Documentation Index
+## Documentation Index
 
 - **[Root Agent Guidelines](./AGENTS.md)**: Operating rules and reading order for coding agents.
 - **[App Master Plan](./docs/app-docs/00-master-plan.md)**: Native app architecture and phase breakdown.
@@ -87,7 +87,7 @@ HabitAt/
 
 ---
 
-## 👤 Developer & Contact
+## Developer & Contact
 
 **Param Khodiyar**  
 *Creator & Lead Engineer, HabbitAt*
@@ -104,6 +104,6 @@ HabitAt/
 
 ---
 
-## 📜 License
+## License
 
 &copy; 2026 Param Khodiyar. All rights reserved.
