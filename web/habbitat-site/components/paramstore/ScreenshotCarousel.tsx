@@ -2,50 +2,50 @@
 
 import React from "react";
 import Image from "next/image";
-import { Camera, Calendar, ShieldCheck, Flame, HardDrive, LayoutList } from "lucide-react";
+import { Camera, Calendar, ShieldCheck, Flame, CheckCircle2, FileCode } from "lucide-react";
 
 // Exact measured native Android device dimensions: 1080 x 2392 px (Aspect ratio: 2.215)
 const REAL_SCREENSHOTS = [
   {
     id: 1,
-    title: "Habit Dashboard & Active Streaks",
-    description: "Daily commitments with zero-based real streak indicators",
+    title: "Today's Discipline Ledger",
+    description: "Home dashboard with active daily habits, target times, and camera actions",
     icon: Flame,
     src: "/images/screenshots/Screenshot_20260910-091455.png",
   },
   {
     id: 2,
-    title: "Habit Detail & Schedule Cadence",
-    description: "Frequency-aware daily, weekly, and monthly target tracking",
-    icon: LayoutList,
+    title: "Photographic Calendar History",
+    description: "Monthly ledger displaying real proof-photo thumbnails inside calendar tiles",
+    icon: Calendar,
     src: "/images/screenshots/Screenshot_20260910-091507.png",
   },
   {
     id: 3,
-    title: "Camera Photo-Proof Capture",
-    description: "Timestamped camera evidence verified by Vision AI",
-    icon: Camera,
+    title: "Habit Rules & AI Criteria",
+    description: "Habit sheet detailing target intervals, schedule, and AI vision rules",
+    icon: FileCode,
     src: "/images/screenshots/Screenshot_20260910-091522.png",
   },
   {
     id: 4,
-    title: "Photographic Calendar Ledger",
-    description: "Expandable month-by-month proof photo history grid",
-    icon: Calendar,
+    title: "Live Photo-Proof Camera",
+    description: "Camera capture interface recording live proof (e.g. coding during lecture)",
+    icon: Camera,
     src: "/images/screenshots/Screenshot_20260910-091550.png",
   },
   {
     id: 5,
-    title: "AI Verification Pipeline",
-    description: "Contextual confidence scoring preventing photo spoofing",
+    title: "Vision AI Analysis Pipeline",
+    description: "Real-time AI evaluation checking photo evidence against habit criteria",
     icon: ShieldCheck,
     src: "/images/screenshots/Screenshot_20260910-091552.png",
   },
   {
     id: 6,
-    title: "Private Google Drive Sync",
-    description: "Encrypted cross-device cloud sync contract",
-    icon: HardDrive,
+    title: "Proof Verified & Streak Updated",
+    description: "AI confidence rating (90%), verification summary, and streak increment",
+    icon: CheckCircle2,
     src: "/images/screenshots/Screenshot_20260910-091600.png",
   },
 ];
@@ -56,10 +56,10 @@ export default function ScreenshotCarousel() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
         <div>
           <h2 className="font-serif text-2xl font-bold text-ink">
-            App Preview & Screens
+            App Experience & Screenshots
           </h2>
           <p className="text-xs text-ink-muted mt-0.5">
-            Native 1080&times;2392 Android interface captures showing photo proof, AI verification, and streaks.
+            Real Android app screens showing habit creation, camera proof capture, and AI verification.
           </p>
         </div>
         <span className="text-[11px] font-mono text-ink-muted self-start sm:self-auto border border-border bg-bg px-2.5 py-1 rounded-[2px]">
