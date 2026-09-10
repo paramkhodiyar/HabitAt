@@ -40,15 +40,23 @@ export default function StoryBlock() {
       {/* Story Narrative Prose */}
       <div className="space-y-6 text-sm text-ink leading-relaxed">
         <p>
-          I&apos;ve always preferred staying away from the crowd and meaningless social media noise. I never liked Snapchat or the idea of sending 3-second black screen photos back and forth just to keep a meaningless flame icon alive. But the raw psychological mechanics of <strong className="text-accent font-semibold">streaks</strong>? That part actually fascinated me.
+          I&apos;ve always preferred staying away from the crowd and mindless social media noise. I never liked Snapchat or the idea of sending 3-second black screen photos back and forth just to keep a meaningless flame icon alive. Sending blank pixels back and forth for vanity numbers felt hollow. But the raw psychological mechanics of <strong className="text-accent font-semibold">streaks</strong>? That part actually fascinated me.
         </p>
 
         <p>
-          My streak addiction started on GitHub — watching green contribution tiles light up day after day. There was something undeniably satisfying about honest, visible proof of work. I wanted that exact same unyielding discipline applied to my personal life: waking up on time, reading, working out, and building habits that actually stick.
+          My streak addiction started on GitHub — watching green contribution tiles light up day after day. There was something undeniably satisfying about honest, visible proof of work: code written, bugs fixed, commits pushed. I wanted that exact same unyielding discipline applied to my personal life: waking up on time, reading technical books, working out, and building daily habits that actually stick long-term.
         </p>
 
         <p>
-          The problem? Standard habit trackers rely on self-reported checkmarks — which are far too easy to tap when snooze-button temptation strikes. So, sitting in the middle of a university lecture with VS Code open under my class notes, I decided to build my own solution. One week of intense Kotlin, vision AI, and Android architecture hacking later, the first working build of <strong className="font-semibold text-ink">HabbitAt</strong> was deployed.
+          The problem was simple: standard habit trackers rely on self-reported checkmarks — which are far too easy to tap when snooze-button temptation strikes. If you can cheat your own tracker without consequences, the streak is meaningless.
+        </p>
+
+        <p>
+          So, sitting in the middle of a college lecture with <strong className="font-semibold text-ink">Antigravity IDE &amp; Gemini</strong> open right under my class slides, I decided to build my own solution. I wanted a system that demands real proof: timestamped camera capture, vision AI model evaluation, zero-based streak resets, and private Google Drive sync contracts.
+        </p>
+
+        <p>
+          One week of intense Kotlin engineering, agentic pairing in Antigravity, and Android architecture hacking later, the initial production build of <strong className="font-semibold text-ink">HabbitAt</strong> was deployed and live on ParamStore.
         </p>
 
         <div className="p-4 bg-bg border border-border rounded-[4px] text-xs text-ink-muted space-y-2">
@@ -56,7 +64,7 @@ export default function StoryBlock() {
             <Sparkles size={14} /> The HabbitAt Rulebook
           </div>
           <p className="leading-relaxed">
-            No artificial streak boosts. No fake praise. Just timestamped photo proof evaluated by vision AI before your streak advances. Starting strictly at zero.
+            No artificial initial streak boosts. No unearned checkmarks. Just timestamped photo proof evaluated by vision AI before your streak advances. Starting strictly at zero.
           </p>
         </div>
       </div>
