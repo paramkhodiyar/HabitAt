@@ -370,7 +370,9 @@ export default function HomePage() {
                   </div>
                   <div className="border border-border p-3 rounded-[4px] bg-bg flex items-center justify-between">
                     <span className="text-sm font-semibold text-ink">Read 30 Pages</span>
-                    <span className="text-xs font-mono text-accent font-semibold">🔥 Due 9:00 PM</span>
+                    <span className="text-xs font-mono text-accent font-semibold inline-flex items-center gap-1">
+                      <Flame size={13} className="text-accent" /> Due 9:00 PM
+                    </span>
                   </div>
                 </div>
               )}
@@ -379,7 +381,7 @@ export default function HomePage() {
                 <div className="border border-border p-4 rounded-[4px] bg-bg space-y-3">
                   <div className="flex items-center justify-between">
                     <h4 className="font-serif font-bold text-base text-ink">Morning 5km Run</h4>
-                    <Chip variant="accent">🔥 19 Day Streak</Chip>
+                    <Chip variant="accent" icon={<Flame size={13} />}>19 Day Streak</Chip>
                   </div>
                   <p className="text-xs text-ink-muted">
                     Photo proof submitted at 06:30 AM &bull; AI Verification Confidence 98.4%
