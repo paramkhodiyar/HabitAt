@@ -7,15 +7,15 @@ HabbitAt is a two-app system:
 - **HabbitAt** — Android/Kotlin habit-enforcement app (photo-proof + AI verification + escalating notifications + a photographic calendar history).
 - **HabbitAt Sync** — native macOS/SwiftUI companion that mirrors the same data.
 
-Full product spec, phase breakdown, and design law live in this same docs folder. This file does not repeat them — it tells you the order to read them in and the rules that apply no matter which phase you're on.
+Full product spec, phase breakdown, and design law live in `docs/app-docs/`. This file does not repeat them — it tells you the order to read them in and the rules that apply no matter which phase you're on.
 
 ## Required reading order, every time
-1. `INSTRUCTIONS.md` — the operating rules. Non-negotiable.
-2. `DESIGN.md` — the complete visual and motion language. Applies to every screen on both platforms.
-3. `00-master-plan.md` — architecture, stack, and the phase index.
-4. `ENVIRONMENT.md` — what credentials exist, what's still blank, and how to treat a blank key.
-5. `LOGO.md` — only relevant when working on branding/app-icon/launch-screen assets.
-6. The specific `phase-N-*.md` file for the task at hand — and **only** that phase. Do not read ahead and pre-build later phases "since you're in there."
+1. `docs/app-docs/INSTRUCTIONS.md` — the operating rules. Non-negotiable.
+2. `docs/app-docs/DESIGN.md` — the complete visual and motion language. Applies to every screen on both platforms.
+3. `docs/app-docs/00-master-plan.md` — architecture, stack, and the phase index.
+4. `docs/app-docs/ENVIRONMENT.md` — what credentials exist, what's still blank, and how to treat a blank key.
+5. `docs/app-docs/LOGO.md` — only relevant when working on branding/app-icon/launch-screen assets.
+6. The specific `docs/app-docs/phases/phase-N-*.md` file for the task at hand — and **only** that phase. Do not read ahead and pre-build later phases "since you're in there."
 
 If any of these documents conflict, `INSTRUCTIONS.md` wins on process questions, `DESIGN.md` wins on anything visual, and the specific phase doc wins on scope. If a genuine gap exists between them, stop and ask Param rather than resolving it yourself.
 
