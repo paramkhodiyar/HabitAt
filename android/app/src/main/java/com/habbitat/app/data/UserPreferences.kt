@@ -1,4 +1,4 @@
-package com.habbitat.app.data
+package com.habitAt.app.data
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -6,7 +6,7 @@ import android.content.SharedPreferences
 class UserPreferences(context: Context) {
 
     private val prefs: SharedPreferences =
-        context.getSharedPreferences("habbitat_user_prefs", Context.MODE_PRIVATE)
+        context.getSharedPreferences("habitAt_user_prefs", Context.MODE_PRIVATE)
 
     var nickname: String
         get() = prefs.getString(KEY_NICKNAME, "") ?: ""

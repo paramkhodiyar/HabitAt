@@ -16,7 +16,7 @@ export function constructMetadata({
   noIndex = false,
   path = "",
 }: MetadataProps = {}): Metadata {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://habbitat.app";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://habitAt.app";
   const fullTitle = title ? `${title} | ${SITE_CONFIG.name}` : `${SITE_CONFIG.name} — AI Habit Enforcer`;
   const canonicalUrl = `${siteUrl}${path}`;
 
@@ -24,7 +24,7 @@ export function constructMetadata({
     title: fullTitle,
     description,
     keywords: [
-      "HabbitAt",
+      "habitAt",
       "AI Habit Enforcer",
       "Habit Tracker",
       "Photo Proof Habit Verification",
@@ -74,19 +74,19 @@ export function constructMetadata({
     },
     robots: noIndex
       ? {
-          index: false,
-          follow: false,
-        }
+        index: false,
+        follow: false,
+      }
       : {
+        index: true,
+        follow: true,
+        googleBot: {
           index: true,
           follow: true,
-          googleBot: {
-            index: true,
-            follow: true,
-            "max-video-preview": -1,
-            "max-image-preview": "large",
-            "max-snippet": -1,
-          },
+          "max-video-preview": -1,
+          "max-image-preview": "large",
+          "max-snippet": -1,
         },
+      },
   };
 }

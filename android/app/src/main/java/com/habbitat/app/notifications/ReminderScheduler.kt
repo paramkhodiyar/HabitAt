@@ -1,4 +1,4 @@
-package com.habbitat.app.notifications
+package com.habitAt.app.notifications
 
 import android.app.AlarmManager
 import android.app.PendingIntent
@@ -8,7 +8,7 @@ import android.os.Build
 import androidx.work.Data
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
-import com.habbitat.app.data.local.entity.Habit
+import com.habitAt.app.data.local.entity.Habit
 import java.util.concurrent.TimeUnit
 
 object ReminderScheduler {

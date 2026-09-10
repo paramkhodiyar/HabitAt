@@ -1,4 +1,4 @@
-package com.habbitat.app.ui.components
+package com.habitAt.app.ui.components
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutSlowInEasing
@@ -27,7 +27,7 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.unit.dp
-import com.habbitat.app.ui.theme.TurmericGreenSuccess
+import com.habitAt.app.ui.theme.TurmericGreenSuccess
 
 @Composable
 fun GPaySuccessCheckmark(

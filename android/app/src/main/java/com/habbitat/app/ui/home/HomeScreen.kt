@@ -1,4 +1,4 @@
-package com.habbitat.app.ui.home
+package com.habitAt.app.ui.home
 
 import android.app.Activity
 import android.Manifest
@@ -9,7 +9,7 @@ import android.os.Build
 import android.provider.Settings
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.rememberLauncherForActivityResult
-import com.habbitat.app.ui.components.ExitConfirmationDialog
+import com.habitAt.app.ui.components.ExitConfirmationDialog
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
@@ -70,22 +70,22 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.text.font.FontWeight
 import androidx.core.content.ContextCompat
-import com.habbitat.app.data.HabitScheduleHelper
-import com.habbitat.app.data.UserPreferences
-import com.habbitat.app.data.local.entity.Habit
-import com.habbitat.app.ui.components.BackgroundMotif
-import com.habbitat.app.ui.components.MotifVariant
-import com.habbitat.app.ui.components.PermissionDialog
-import com.habbitat.app.ui.theme.CardSurface
-import com.habbitat.app.ui.theme.GlassBorder
-import com.habbitat.app.ui.theme.HabbitAtTypography
-import com.habbitat.app.ui.theme.IndigoLight
-import com.habbitat.app.ui.theme.IndigoSecondary
-import com.habbitat.app.ui.theme.InkMuted
-import com.habbitat.app.ui.theme.InkPrimary
-import com.habbitat.app.ui.theme.InkSecondary
-import com.habbitat.app.ui.theme.SaffronPrimary
-import com.habbitat.app.ui.theme.WarmIvory
+import com.habitAt.app.data.HabitScheduleHelper
+import com.habitAt.app.data.UserPreferences
+import com.habitAt.app.data.local.entity.Habit
+import com.habitAt.app.ui.components.BackgroundMotif
+import com.habitAt.app.ui.components.MotifVariant
+import com.habitAt.app.ui.components.PermissionDialog
+import com.habitAt.app.ui.theme.CardSurface
+import com.habitAt.app.ui.theme.GlassBorder
+import com.habitAt.app.ui.theme.habitAtTypography
+import com.habitAt.app.ui.theme.IndigoLight
+import com.habitAt.app.ui.theme.IndigoSecondary
+import com.habitAt.app.ui.theme.InkMuted
+import com.habitAt.app.ui.theme.InkPrimary
+import com.habitAt.app.ui.theme.InkSecondary
+import com.habitAt.app.ui.theme.SaffronPrimary
+import com.habitAt.app.ui.theme.WarmIvory
 
 enum class HomeViewMode {
     COMPACT_LIST,   // Default compact list
@@ -214,7 +214,7 @@ fun HomeScreen(
                         val displayName = userPrefs.nickname.ifBlank { "User" }
                         Text(
                             text = "Welcome $displayName,",
-                            style = HabbitAtTypography.bodyMedium.copy(
+                            style = habitAtTypography.bodyMedium.copy(
                                 fontStyle = androidx.compose.ui.text.font.FontStyle.Italic,
                                 fontSize = 15.sp,
                                 fontWeight = FontWeight.Medium
@@ -224,7 +224,7 @@ fun HomeScreen(
                         Spacer(modifier = Modifier.height(1.dp))
                         Text(
                             text = "HabitAt",
-                            style = HabbitAtTypography.displayMedium.copy(
+                            style = habitAtTypography.displayMedium.copy(
                                 fontSize = 26.sp,
                                 fontWeight = FontWeight.Bold
                             ),
@@ -233,7 +233,7 @@ fun HomeScreen(
                         Spacer(modifier = Modifier.height(1.dp))
                         Text(
                             text = "Today's Discipline & Proof Ledger",
-                            style = HabbitAtTypography.labelMedium.copy(
+                            style = habitAtTypography.labelMedium.copy(
                                 fontSize = 12.sp
                             ),
                             color = InkSecondary
@@ -279,7 +279,7 @@ fun HomeScreen(
                                 if (searchQuery.isEmpty()) {
                                     Text(
                                         text = "Search habits...",
-                                        style = HabbitAtTypography.bodyMedium,
+                                        style = habitAtTypography.bodyMedium,
                                         color = InkMuted
                                     )
                                 }
@@ -287,7 +287,7 @@ fun HomeScreen(
                                     value = searchQuery,
                                     onValueChange = { searchQuery = it },
                                     singleLine = true,
-                                    textStyle = HabbitAtTypography.bodyMedium.copy(color = InkPrimary),
+                                    textStyle = habitAtTypography.bodyMedium.copy(color = InkPrimary),
                                     cursorBrush = SolidColor(SaffronPrimary),
                                     modifier = Modifier.fillMaxWidth()
                                 )
@@ -390,13 +390,13 @@ fun HomeScreen(
                             Spacer(modifier = Modifier.height(14.dp))
                             Text(
                                 text = if (searchQuery.isNotBlank()) "No matching habits" else "No habits tracked yet",
-                                style = HabbitAtTypography.headlineMedium,
+                                style = habitAtTypography.headlineMedium,
                                 color = InkPrimary
                             )
                             Spacer(modifier = Modifier.height(6.dp))
                             Text(
                                 text = if (searchQuery.isNotBlank()) "Try searching for a different term." else "Tap + to create a habit and start building your photographic record of discipline.",
-                                style = HabbitAtTypography.bodyMedium,
+                                style = habitAtTypography.bodyMedium,
                                 textAlign = TextAlign.Center,
                                 color = InkSecondary
                             )

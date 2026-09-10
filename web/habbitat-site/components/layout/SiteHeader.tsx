@@ -29,7 +29,7 @@ export default function SiteHeader() {
           <div className="w-10 h-10 md:w-12 md:h-12 relative flex items-center justify-center overflow-hidden shrink-0">
             <Image
               src="/images/icons/HabitAt_Icon_Simplified.svg"
-              alt="HabbitAt logo icon"
+              alt="habitAt logo icon"
               width={48}
               height={48}
               className="object-contain w-full h-full"
@@ -37,7 +37,7 @@ export default function SiteHeader() {
           </div>
           <div className="flex flex-col">
             <span className="font-serif font-bold text-lg md:text-xl leading-none text-ink tracking-tight">
-              HabbitAt
+              habitAt
             </span>
             <span className="text-[10px] text-ink-muted uppercase tracking-wider font-semibold leading-none mt-0.5">
               AI Habit Enforcer
@@ -53,11 +53,10 @@ export default function SiteHeader() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`text-sm font-medium transition-colors py-1 relative ${
-                  isActive
+                className={`text-sm font-medium transition-colors py-1 relative ${isActive
                     ? "text-accent font-semibold"
                     : "text-ink-muted hover:text-ink"
-                }`}
+                  }`}
               >
                 {item.label}
                 {isActive && (
@@ -99,11 +98,10 @@ export default function SiteHeader() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`px-3 py-2 text-base font-medium rounded-[4px] transition-colors ${
-                    isActive
+                  className={`px-3 py-2 text-base font-medium rounded-[4px] transition-colors ${isActive
                       ? "bg-accent/10 text-accent font-semibold border border-accent/20"
                       : "text-ink hover:bg-bg"
-                  }`}
+                    }`}
                 >
                   {item.label}
                 </Link>
@@ -118,7 +116,7 @@ export default function SiteHeader() {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 <ArrowDownToLine size={18} />
-                <span>Get HabbitAt APK</span>
+                <span>Get habitAt APK</span>
               </Button>
             </div>
           </nav>

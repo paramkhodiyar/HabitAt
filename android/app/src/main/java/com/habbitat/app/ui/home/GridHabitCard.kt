@@ -1,4 +1,4 @@
-package com.habbitat.app.ui.home
+package com.habitAt.app.ui.home
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
@@ -38,21 +38,21 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.habbitat.app.data.DueStatusInfo
-import com.habbitat.app.data.local.entity.Habit
-import com.habbitat.app.ui.theme.CardSurface
-import com.habbitat.app.ui.theme.GlassBorder
-import com.habbitat.app.ui.theme.HabbitAtMotion
-import com.habbitat.app.ui.theme.HabbitAtTypography
-import com.habbitat.app.ui.theme.IndigoLight
-import com.habbitat.app.ui.theme.IndigoSecondary
-import com.habbitat.app.ui.theme.InkMuted
-import com.habbitat.app.ui.theme.InkPrimary
-import com.habbitat.app.ui.theme.InkSecondary
-import com.habbitat.app.ui.theme.SaffronGlow
-import com.habbitat.app.ui.theme.SaffronPrimary
-import com.habbitat.app.ui.theme.TurmericGreenSuccess
-import com.habbitat.app.ui.theme.TurmericLight
+import com.habitAt.app.data.DueStatusInfo
+import com.habitAt.app.data.local.entity.Habit
+import com.habitAt.app.ui.theme.CardSurface
+import com.habitAt.app.ui.theme.GlassBorder
+import com.habitAt.app.ui.theme.habitAtMotion
+import com.habitAt.app.ui.theme.habitAtTypography
+import com.habitAt.app.ui.theme.IndigoLight
+import com.habitAt.app.ui.theme.IndigoSecondary
+import com.habitAt.app.ui.theme.InkMuted
+import com.habitAt.app.ui.theme.InkPrimary
+import com.habitAt.app.ui.theme.InkSecondary
+import com.habitAt.app.ui.theme.SaffronGlow
+import com.habitAt.app.ui.theme.SaffronPrimary
+import com.habitAt.app.ui.theme.TurmericGreenSuccess
+import com.habitAt.app.ui.theme.TurmericLight
 
 @Composable
 fun GridHabitCard(
@@ -68,7 +68,7 @@ fun GridHabitCard(
 
     val scale by animateFloatAsState(
         targetValue = if (isPressed) 0.97f else 1.0f,
-        animationSpec = HabbitAtMotion.SpringBouncy,
+        animationSpec = habitAtMotion.SpringBouncy,
         label = "grid_card_scale"
     )
 
@@ -101,7 +101,7 @@ fun GridHabitCard(
                 ) {
                     Text(
                         text = habit.name,
-                        style = HabbitAtTypography.headlineMedium,
+                        style = habitAtTypography.headlineMedium,
                         fontSize = 16.sp,
                         maxLines = 2,
                         overflow = TextOverflow.Ellipsis,
@@ -119,7 +119,7 @@ fun GridHabitCard(
                     ) {
                         Text(
                             text = habit.frequency,
-                            style = HabbitAtTypography.labelSmall,
+                            style = habitAtTypography.labelSmall,
                             fontSize = 10.sp,
                             color = IndigoSecondary,
                             fontWeight = FontWeight.Bold
@@ -140,7 +140,7 @@ fun GridHabitCard(
                     Spacer(modifier = Modifier.width(4.dp))
                     Text(
                         text = "${habit.targetDurationMinutes} min target",
-                        style = HabbitAtTypography.bodyMedium,
+                        style = habitAtTypography.bodyMedium,
                         fontSize = 12.sp,
                         color = InkSecondary,
                         maxLines = 1
@@ -176,7 +176,7 @@ fun GridHabitCard(
                         )
                         Text(
                             text = "$streakCount",
-                            style = HabbitAtTypography.displaySmall,
+                            style = habitAtTypography.displaySmall,
                             fontSize = 14.sp,
                             fontWeight = FontWeight.Bold,
                             color = SaffronPrimary
@@ -186,7 +186,7 @@ fun GridHabitCard(
 
                 Text(
                     text = if (dueStatus.isCompletedPeriod) "Completed" else "Due",
-                    style = HabbitAtTypography.labelSmall,
+                    style = habitAtTypography.labelSmall,
                     fontSize = 11.sp,
                     color = if (dueStatus.isCompletedPeriod) TurmericGreenSuccess else InkSecondary
                 )
@@ -214,7 +214,7 @@ fun GridHabitCard(
                         Spacer(modifier = Modifier.width(4.dp))
                         Text(
                             text = "Verified",
-                            style = HabbitAtTypography.labelSmall,
+                            style = habitAtTypography.labelSmall,
                             color = TurmericGreenSuccess,
                             fontWeight = FontWeight.Bold
                         )
@@ -240,7 +240,7 @@ fun GridHabitCard(
                         Spacer(modifier = Modifier.width(4.dp))
                         Text(
                             text = "Log Proof",
-                            style = HabbitAtTypography.labelSmall,
+                            style = habitAtTypography.labelSmall,
                             color = InkPrimary,
                             fontWeight = FontWeight.Bold
                         )

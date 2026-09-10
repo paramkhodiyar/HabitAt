@@ -1,40 +1,40 @@
-package com.habbitat.app.data.local
+package com.habitAt.app.data.local
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.habbitat.app.data.local.dao.HabitDao
-import com.habbitat.app.data.local.entity.CompletionRecord
-import com.habbitat.app.data.local.entity.Habit
-import com.habbitat.app.data.local.entity.NotificationLog
+import com.habitAt.app.data.local.dao.HabitDao
+import com.habitAt.app.data.local.entity.CompletionRecord
+import com.habitAt.app.data.local.entity.Habit
+import com.habitAt.app.data.local.entity.NotificationLog
 
 @Database(
     entities = [Habit::class, CompletionRecord::class, NotificationLog::class],
     version = 3,
     exportSchema = false
 )
-abstract class HabbitAtDatabase : RoomDatabase() {
+abstract class habitAtDatabase : RoomDatabase() {
     abstract fun habitDao(): HabitDao
 
     companion object {
         @Volatile
-        private var INSTANCE: HabbitAtDatabase? = null
+        private var INSTANCE: habitAtDatabase? = null
 
-        fun getDatabase(context: Context): HabbitAtDatabase {
+        fun getDatabase(context: Context): habitAtDatabase {
             return INSTANCE ?: synchronized(this) {
-                fun buildDb(): HabbitAtDatabase {
+                fun buildDb(): habitAtDatabase {
                     return Room.databaseBuilder(
                         context.applicationContext,
-                        HabbitAtDatabase::class.java,
-                        "habbitat_database"
+                        habitAtDatabase::class.java,
+                        "habitAt_database"
                     )
                         .fallbackToDestructiveMigration()
                         .fallbackToDestructiveMigrationOnDowngrade()
                         .build()
                 }
 
-                var instance: HabbitAtDatabase = buildDb()
+                var instance: habitAtDatabase = buildDb()
                 try {
                     // Force immediate SQLite open and schema validation
                     instance.openHelper.writableDatabase
@@ -43,7 +43,7 @@ abstract class HabbitAtDatabase : RoomDatabase() {
                         instance.close()
                     } catch (_: Throwable) {}
                     try {
-                        context.applicationContext.deleteDatabase("habbitat_database")
+                        context.applicationContext.deleteDatabase("habitAt_database")
                     } catch (_: Throwable) {}
                     instance = buildDb()
                     try {

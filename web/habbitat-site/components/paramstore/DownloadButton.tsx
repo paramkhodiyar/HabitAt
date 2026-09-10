@@ -20,7 +20,7 @@ export default function DownloadButton({
       className={className}
     >
       <ArrowDownToLine size={size === "lg" ? 20 : 16} />
-      <span>Download HabbitAt v{SITE_CONFIG.apk.version} ({SITE_CONFIG.apk.size})</span>
+      <span>Download habitAt v{SITE_CONFIG.apk.version} ({SITE_CONFIG.apk.size})</span>
     </Button>
   );
 }

@@ -1,4 +1,4 @@
-package com.habbitat.app.ui.navigation
+package com.habitAt.app.ui.navigation
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.CalendarToday

@@ -2,7 +2,7 @@
 
 ## Design Philosophy
 
-Premium, quiet, confident. The site should feel like it belongs next to the HabbitAt app itself — light, warm, artistic, with an Indian-modern-minimalist sensibility (drawing on the same jharokha/jali/block-print motif language used in the app's own design docs) — but expressed through layout, typography, and restrained motion rather than through gradients or drop shadows, which are banned outright. Premium is communicated through precise spacing, a strong grid, confident typography, and purposeful motion — not through visual noise.
+Premium, quiet, confident. The site should feel like it belongs next to the habitAt app itself — light, warm, artistic, with an Indian-modern-minimalist sensibility (drawing on the same jharokha/jali/block-print motif language used in the app's own design docs) — but expressed through layout, typography, and restrained motion rather than through gradients or drop shadows, which are banned outright. Premium is communicated through precise spacing, a strong grid, confident typography, and purposeful motion — not through visual noise.
 
 No gradients. No box-shadows. No emojis. These three rules are absolute across every page, every component, every state (including hover/focus/error states).
 
@@ -91,7 +91,7 @@ Flat fills only. Borders use `--color-border` at 1px, sharp corners or minimally
 
 ### Page 3 — About (`/about`)
 
-- Profile block: Param Khodiyar, role/context (drawn from his profile — CS + Data Science, building HabbitAt), contact email `paramkhodiyar1008@gmail.com` (fix the typo pattern if the address is ever written with a stray character — always render as this exact address).
+- Profile block: Param Khodiyar, role/context (drawn from his profile — CS + Data Science, building habitAt), contact email `paramkhodiyar1008@gmail.com` (fix the typo pattern if the address is ever written with a stray character — always render as this exact address).
 - Story block: placeholder container, clearly marked `TODO: story copy pending from Param`, sized and styled as it will appear once real copy is supplied — not left as a blank gap.
 - Social/portfolio links: LinkedIn and GitHub icons (via `lucide-react` generic icon fallback is acceptable if brand icons aren't pulled in; if brand icons are added, use a single small brand-icon package consistently, not a mix). Links themselves are placeholders (`#`) until Param supplies the real URLs — flag as an open dependency, do not guess a URL.
 - Layout: this page can be quieter/more editorial than the landing page — a single strong column within the grid (not full-width text), generous vertical rhythm, no 3D asset required here.

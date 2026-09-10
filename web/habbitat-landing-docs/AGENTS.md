@@ -15,7 +15,7 @@ These rules apply to every phase in this doc set, without exception. If any inst
 - Never use emoji characters in code, comments, copy, commit messages, or alt text.
 - Never use pill-shaped "eyebrow" / "kicker" badges or labels sitting above headings to announce section identity or title (e.g. "Feature Spotlight", "How It Works", "Design System & Token Preview"). Pill radius (`rounded-full`) is strictly reserved for interactive tag/filter UI (e.g. frequency filters), never for decorative heading kickers. Section hierarchy must be communicated through heading scale, grid rhythm, and layout.
 - Never introduce mock data, sample screenshots, or lorem ipsum into a component that ships. If a real asset is not yet available, use a clearly labeled placeholder block (flat rectangle, correct dimensions, label text stating what belongs there) and log it in the phase completion note as an open asset dependency.
-- Never fetch from or write to any HabbitAt app data source (Room DB, Google Drive, Mac sync folder). This site is static/content-driven only, per `INSTRUCTIONS.md`.
+- Never fetch from or write to any habitAt app data source (Room DB, Google Drive, Mac sync folder). This site is static/content-driven only, per `INSTRUCTIONS.md`.
 - Never restructure the design tokens defined in `DESIGN.md` without flagging the change and the reason.
 - Never mark a phase complete without running the full Self-Healing Verification Loop from `00-master-plan.md` and recording the result.
 

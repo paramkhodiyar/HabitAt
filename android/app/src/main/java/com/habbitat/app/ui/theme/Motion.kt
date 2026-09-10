@@ -1,9 +1,9 @@
-package com.habbitat.app.ui.theme
+package com.habitAt.app.ui.theme
 
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
 
-object HabbitAtMotion {
+object habitAtMotion {
     // Spring motion specs for physical UI transitions (DESIGN.md §7)
     val SpringBouncy = spring<Float>(
         dampingRatio = Spring.DampingRatioMediumBouncy,

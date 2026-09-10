@@ -1,4 +1,4 @@
-package com.habbitat.app.data.local.entity
+package com.habitAt.app.data.local.entity
 
 import androidx.compose.runtime.Immutable
 import androidx.room.Entity

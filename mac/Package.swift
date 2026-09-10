@@ -15,7 +15,7 @@ let package = Package(
     targets: [
         .executableTarget(
             name: "HabitAtSync",
-            path: "HabbitAtSync"
+            path: "habitAtSync"
         )
     ]
 )

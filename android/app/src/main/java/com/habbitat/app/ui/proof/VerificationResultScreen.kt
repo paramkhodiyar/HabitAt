@@ -1,4 +1,4 @@
-package com.habbitat.app.ui.proof
+package com.habitAt.app.ui.proof
 
 import android.net.Uri
 import androidx.compose.animation.AnimatedVisibility
@@ -54,26 +54,26 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
-import com.habbitat.app.data.local.entity.Habit
-import com.habbitat.app.ui.components.BackgroundMotif
-import com.habbitat.app.ui.components.MotifVariant
-import com.habbitat.app.ui.theme.CardSurface
-import com.habbitat.app.ui.theme.GlassBorder
-import com.habbitat.app.ui.theme.HabbitAtTypography
-import com.habbitat.app.ui.theme.IndigoLight
-import com.habbitat.app.ui.theme.IndigoSecondary
-import com.habbitat.app.ui.theme.InkPrimary
-import com.habbitat.app.ui.theme.InkSecondary
-import com.habbitat.app.ui.theme.SaffronLight
-import com.habbitat.app.ui.theme.SaffronPrimary
-import com.habbitat.app.ui.theme.TerracottaLight
-import com.habbitat.app.ui.theme.TerracottaTertiary
-import com.habbitat.app.ui.theme.TurmericGreenSuccess
-import com.habbitat.app.ui.theme.TurmericLight
-import com.habbitat.app.ui.theme.WarmIvory
-import com.habbitat.app.verification.ProofVerifier
-import com.habbitat.app.verification.VerificationResult
-import com.habbitat.app.verification.VisionApiProofVerifier
+import com.habitAt.app.data.local.entity.Habit
+import com.habitAt.app.ui.components.BackgroundMotif
+import com.habitAt.app.ui.components.MotifVariant
+import com.habitAt.app.ui.theme.CardSurface
+import com.habitAt.app.ui.theme.GlassBorder
+import com.habitAt.app.ui.theme.habitAtTypography
+import com.habitAt.app.ui.theme.IndigoLight
+import com.habitAt.app.ui.theme.IndigoSecondary
+import com.habitAt.app.ui.theme.InkPrimary
+import com.habitAt.app.ui.theme.InkSecondary
+import com.habitAt.app.ui.theme.SaffronLight
+import com.habitAt.app.ui.theme.SaffronPrimary
+import com.habitAt.app.ui.theme.TerracottaLight
+import com.habitAt.app.ui.theme.TerracottaTertiary
+import com.habitAt.app.ui.theme.TurmericGreenSuccess
+import com.habitAt.app.ui.theme.TurmericLight
+import com.habitAt.app.ui.theme.WarmIvory
+import com.habitAt.app.verification.ProofVerifier
+import com.habitAt.app.verification.VerificationResult
+import com.habitAt.app.verification.VisionApiProofVerifier
 
 @Composable
 fun VerificationResultScreen(
@@ -169,7 +169,7 @@ fun VerificationResultScreen(
 
                     Text(
                         text = "VERIFYING PROOF…",
-                        style = HabbitAtTypography.headlineMedium,
+                        style = habitAtTypography.headlineMedium,
                         color = InkPrimary
                     )
 
@@ -177,7 +177,7 @@ fun VerificationResultScreen(
 
                     Text(
                         text = "Analyzing photo against habit criteria",
-                        style = HabbitAtTypography.bodyMedium,
+                        style = habitAtTypography.bodyMedium,
                         color = InkSecondary
                     )
                 }
@@ -201,7 +201,7 @@ fun VerificationResultScreen(
                             ) {
                                 // Result Icon / GPay Animated Checkmark
                                 if (res.verified) {
-                                    com.habbitat.app.ui.components.GPaySuccessCheckmark(sizeDp = 76)
+                                    com.habitAt.app.ui.components.GPaySuccessCheckmark(sizeDp = 76)
                                 } else {
                                     Box(
                                         modifier = Modifier
@@ -223,7 +223,7 @@ fun VerificationResultScreen(
 
                                 Text(
                                     text = if (res.verified) "Proof Verified!" else "Verification Rejected",
-                                    style = HabbitAtTypography.displaySmall,
+                                    style = habitAtTypography.displaySmall,
                                     color = InkPrimary
                                 )
 
@@ -231,7 +231,7 @@ fun VerificationResultScreen(
 
                                 Text(
                                     text = res.reason,
-                                    style = HabbitAtTypography.bodyMedium,
+                                    style = habitAtTypography.bodyMedium,
                                     color = InkSecondary
                                 )
 
@@ -246,7 +246,7 @@ fun VerificationResultScreen(
                                 ) {
                                     Text(
                                         text = "AI Confidence: ${(res.confidence * 100).toInt()}%",
-                                        style = HabbitAtTypography.labelMedium,
+                                        style = habitAtTypography.labelMedium,
                                         color = IndigoSecondary
                                     )
                                 }
@@ -267,7 +267,7 @@ fun VerificationResultScreen(
                                     ) {
                                         Text(
                                             text = "Done & Update Streak",
-                                            style = HabbitAtTypography.titleMedium,
+                                            style = habitAtTypography.titleMedium,
                                             color = InkPrimary
                                         )
                                     }
@@ -294,7 +294,7 @@ fun VerificationResultScreen(
                                                 text = "Retake Photo",
                                                 maxLines = 1,
                                                 softWrap = false,
-                                                style = HabbitAtTypography.labelMedium
+                                                style = habitAtTypography.labelMedium
                                             )
                                         }
 

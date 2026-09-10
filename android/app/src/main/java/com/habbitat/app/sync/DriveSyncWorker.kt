@@ -1,10 +1,10 @@
-package com.habbitat.app.sync
+package com.habitAt.app.sync
 
 import android.content.Context
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
-import com.habbitat.app.data.local.HabbitAtDatabase
-import com.habbitat.app.data.repository.HabitRepository
+import com.habitAt.app.data.local.habitAtDatabase
+import com.habitAt.app.data.repository.HabitRepository
 
 class DriveSyncWorker(
     context: Context,
@@ -18,7 +18,7 @@ class DriveSyncWorker(
         }
 
         return try {
-            val db = HabbitAtDatabase.getDatabase(applicationContext)
+            val db = habitAtDatabase.getDatabase(applicationContext)
             val repository = HabitRepository(db.habitDao())
 
             val habits = repository.getHabitsList()

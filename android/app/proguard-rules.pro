@@ -1,1 +1,1 @@
-# ProGuard rules for HabbitAt
+# ProGuard rules for habitAt

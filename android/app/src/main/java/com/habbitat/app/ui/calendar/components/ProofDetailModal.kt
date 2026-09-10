@@ -1,4 +1,4 @@
-package com.habbitat.app.ui.calendar.components
+package com.habitAt.app.ui.calendar.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -36,20 +36,20 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import coil.compose.rememberAsyncImagePainter
-import com.habbitat.app.data.local.entity.CompletionRecord
-import com.habbitat.app.data.local.entity.Habit
-import com.habbitat.app.ui.theme.CardSurface
-import com.habbitat.app.ui.theme.GlassBorder
-import com.habbitat.app.ui.theme.HabbitAtTypography
-import com.habbitat.app.ui.theme.IndigoLight
-import com.habbitat.app.ui.theme.IndigoSecondary
-import com.habbitat.app.ui.theme.InkMuted
-import com.habbitat.app.ui.theme.InkPrimary
-import com.habbitat.app.ui.theme.InkSecondary
-import com.habbitat.app.ui.theme.SaffronGlow
-import com.habbitat.app.ui.theme.SaffronPrimary
-import com.habbitat.app.ui.theme.TurmericGreenSuccess
-import com.habbitat.app.ui.theme.TurmericLight
+import com.habitAt.app.data.local.entity.CompletionRecord
+import com.habitAt.app.data.local.entity.Habit
+import com.habitAt.app.ui.theme.CardSurface
+import com.habitAt.app.ui.theme.GlassBorder
+import com.habitAt.app.ui.theme.habitAtTypography
+import com.habitAt.app.ui.theme.IndigoLight
+import com.habitAt.app.ui.theme.IndigoSecondary
+import com.habitAt.app.ui.theme.InkMuted
+import com.habitAt.app.ui.theme.InkPrimary
+import com.habitAt.app.ui.theme.InkSecondary
+import com.habitAt.app.ui.theme.SaffronGlow
+import com.habitAt.app.ui.theme.SaffronPrimary
+import com.habitAt.app.ui.theme.TurmericGreenSuccess
+import com.habitAt.app.ui.theme.TurmericLight
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -89,7 +89,7 @@ fun ProofDetailModal(
                     Column {
                         Text(
                             text = habit?.name ?: "Habit Proof",
-                            style = HabbitAtTypography.displaySmall,
+                            style = habitAtTypography.displaySmall,
                             color = InkPrimary
                         )
                         Spacer(modifier = Modifier.height(2.dp))
@@ -103,7 +103,7 @@ fun ProofDetailModal(
                             Spacer(modifier = Modifier.width(4.dp))
                             Text(
                                 text = completedDateFormatted,
-                                style = HabbitAtTypography.bodyMedium,
+                                style = habitAtTypography.bodyMedium,
                                 color = InkSecondary
                             )
                         }
@@ -164,7 +164,7 @@ fun ProofDetailModal(
                             )
                             Text(
                                 text = "Verified (${(record.confidence * 100).toInt()}%)",
-                                style = HabbitAtTypography.labelMedium,
+                                style = habitAtTypography.labelMedium,
                                 color = TurmericGreenSuccess
                             )
                         }
@@ -188,7 +188,7 @@ fun ProofDetailModal(
                             )
                             Text(
                                 text = "Streak Day ${record.streakAtCompletion}",
-                                style = HabbitAtTypography.labelMedium,
+                                style = habitAtTypography.labelMedium,
                                 color = SaffronPrimary
                             )
                         }

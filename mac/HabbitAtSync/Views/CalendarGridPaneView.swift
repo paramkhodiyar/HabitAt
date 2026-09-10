@@ -168,7 +168,7 @@ struct CalendarGridPaneView: View {
                                 .font(.system(size: 14, weight: .semibold))
                                 .foregroundColor(ThemeTokens.inkPrimary)
 
-                            Text("Drive Ledger Entry: HabbitAt/\(driveSlug(habit.name))/\(tile.dateString).jpg")
+                            Text("Drive Ledger Entry: habitAt/\(driveSlug(habit.name))/\(tile.dateString).jpg")
                                 .font(.system(size: 11))
                                 .foregroundColor(ThemeTokens.inkSecondary)
                         }

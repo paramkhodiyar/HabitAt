@@ -1,4 +1,4 @@
-package com.habbitat.app.ui.settings
+package com.habitAt.app.ui.settings
 
 import android.widget.Toast
 import androidx.compose.foundation.background
@@ -63,32 +63,32 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.rememberCoroutineScope
-import com.habbitat.app.BuildConfig
-import com.habbitat.app.HabbitAtApp
-import com.habbitat.app.data.HabitScheduleHelper
-import com.habbitat.app.data.UserPreferences
-import com.habbitat.app.data.local.entity.Habit
-import com.habbitat.app.notifications.LlmNotificationCopywriter
-import com.habbitat.app.notifications.NotificationHelper
-import com.habbitat.app.sync.GoogleDriveSyncManager
-import com.habbitat.app.ui.components.BackgroundMotif
-import com.habbitat.app.ui.components.MotifVariant
+import com.habitAt.app.BuildConfig
+import com.habitAt.app.habitAtApp
+import com.habitAt.app.data.HabitScheduleHelper
+import com.habitAt.app.data.UserPreferences
+import com.habitAt.app.data.local.entity.Habit
+import com.habitAt.app.notifications.LlmNotificationCopywriter
+import com.habitAt.app.notifications.NotificationHelper
+import com.habitAt.app.sync.GoogleDriveSyncManager
+import com.habitAt.app.ui.components.BackgroundMotif
+import com.habitAt.app.ui.components.MotifVariant
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import com.habbitat.app.ui.theme.CardSurface
-import com.habbitat.app.ui.theme.GlassBorder
-import com.habbitat.app.ui.theme.HabbitAtTypography
-import com.habbitat.app.ui.theme.IndigoLight
-import com.habbitat.app.ui.theme.IndigoSecondary
-import com.habbitat.app.ui.theme.InkPrimary
-import com.habbitat.app.ui.theme.InkSecondary
-import com.habbitat.app.ui.theme.SaffronLight
-import com.habbitat.app.ui.theme.SaffronPrimary
-import com.habbitat.app.ui.theme.TerracottaLight
-import com.habbitat.app.ui.theme.TerracottaTertiary
-import com.habbitat.app.ui.theme.TurmericGreenSuccess
-import com.habbitat.app.ui.theme.TurmericLight
+import com.habitAt.app.ui.theme.CardSurface
+import com.habitAt.app.ui.theme.GlassBorder
+import com.habitAt.app.ui.theme.habitAtTypography
+import com.habitAt.app.ui.theme.IndigoLight
+import com.habitAt.app.ui.theme.IndigoSecondary
+import com.habitAt.app.ui.theme.InkPrimary
+import com.habitAt.app.ui.theme.InkSecondary
+import com.habitAt.app.ui.theme.SaffronLight
+import com.habitAt.app.ui.theme.SaffronPrimary
+import com.habitAt.app.ui.theme.TerracottaLight
+import com.habitAt.app.ui.theme.TerracottaTertiary
+import com.habitAt.app.ui.theme.TurmericGreenSuccess
+import com.habitAt.app.ui.theme.TurmericLight
 
 import androidx.activity.compose.BackHandler
 
@@ -107,7 +107,7 @@ fun SettingsScreen(
 
     val coroutineScope = rememberCoroutineScope()
     var isGeneratingTestNotif by remember { mutableStateOf(false) }
-    val repository = remember { (context.applicationContext as HabbitAtApp).repository }
+    val repository = remember { (context.applicationContext as habitAtApp).repository }
 
     val userPrefs = remember { UserPreferences(context) }
     var currentNickname by remember { mutableStateOf(userPrefs.nickname) }
@@ -153,13 +153,13 @@ fun SettingsScreen(
         ) {
             Text(
                 text = "Settings",
-                style = HabbitAtTypography.displayMedium,
+                style = habitAtTypography.displayMedium,
                 color = InkPrimary
             )
             Spacer(modifier = Modifier.height(2.dp))
             Text(
                 text = "Preferences, Privacy & Sync Controls",
-                style = HabbitAtTypography.bodyMedium,
+                style = habitAtTypography.bodyMedium,
                 color = InkSecondary
             )
 
@@ -189,7 +189,7 @@ fun SettingsScreen(
                             Spacer(modifier = Modifier.width(8.dp))
                             Text(
                                 text = "Reminders",
-                                style = HabbitAtTypography.titleMedium,
+                                style = habitAtTypography.titleMedium,
                                 color = InkPrimary
                             )
                         }
@@ -202,7 +202,7 @@ fun SettingsScreen(
                         ) {
                             Text(
                                 text = "Active",
-                                style = HabbitAtTypography.labelMedium,
+                                style = habitAtTypography.labelMedium,
                                 color = TurmericGreenSuccess
                             )
                         }
@@ -211,7 +211,7 @@ fun SettingsScreen(
                     Spacer(modifier = Modifier.height(6.dp))
                     Text(
                         text = "Keep gentle, timely prompts for the habits you are building.",
-                        style = HabbitAtTypography.bodyMedium,
+                        style = habitAtTypography.bodyMedium,
                         color = InkSecondary
                     )
 
@@ -284,7 +284,7 @@ fun SettingsScreen(
                                 Spacer(modifier = Modifier.width(8.dp))
                                 Text(
                                     text = "Generating AI reminder...",
-                                    style = HabbitAtTypography.labelLarge,
+                                    style = habitAtTypography.labelLarge,
                                     color = SaffronPrimary
                                 )
                             } else {
@@ -297,7 +297,7 @@ fun SettingsScreen(
                                 Spacer(modifier = Modifier.width(8.dp))
                                 Text(
                                     text = "Send a test reminder (AI)",
-                                    style = HabbitAtTypography.labelLarge,
+                                    style = habitAtTypography.labelLarge,
                                     color = SaffronPrimary
                                 )
                             }
@@ -319,13 +319,13 @@ fun SettingsScreen(
                 Column(modifier = Modifier.padding(16.dp)) {
                     Text(
                         text = "Notification Assistant Persona",
-                        style = HabbitAtTypography.titleMedium,
+                        style = habitAtTypography.titleMedium,
                         color = InkPrimary
                     )
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
                         text = "Choose the communication style for habit reminders",
-                        style = HabbitAtTypography.bodyMedium,
+                        style = habitAtTypography.bodyMedium,
                         color = InkSecondary
                     )
 
@@ -351,7 +351,7 @@ fun SettingsScreen(
                             ) {
                                 Text(
                                     text = tone,
-                                    style = HabbitAtTypography.labelMedium,
+                                    style = habitAtTypography.labelMedium,
                                     color = if (isSelected) SaffronPrimary else InkPrimary
                                 )
                             }
@@ -396,12 +396,12 @@ fun SettingsScreen(
                     Column(modifier = Modifier.weight(1f)) {
                         Text(
                             text = "Change Nickname",
-                            style = HabbitAtTypography.titleMedium,
+                            style = habitAtTypography.titleMedium,
                             color = InkPrimary
                         )
                         Text(
                             text = "Current: $currentNickname",
-                            style = HabbitAtTypography.bodyMedium,
+                            style = habitAtTypography.bodyMedium,
                             color = InkSecondary
                         )
                     }
@@ -445,13 +445,13 @@ fun SettingsScreen(
                     Column(modifier = Modifier.weight(1f)) {
                         Text(
                             text = "Developer Credits",
-                            style = HabbitAtTypography.titleMedium,
+                            style = habitAtTypography.titleMedium,
                             color = InkPrimary
                         )
                         Spacer(modifier = Modifier.height(2.dp))
                         Text(
                             text = "Made by Param Khodiyar • Proof or it didn't happen 📸",
-                            style = HabbitAtTypography.bodyMedium,
+                            style = habitAtTypography.bodyMedium,
                             color = InkSecondary
                         )
                     }
@@ -491,12 +491,12 @@ fun SettingsScreen(
                     Column(modifier = Modifier.weight(1f)) {
                         Text(
                             text = "Terms of Service & Privacy Policy",
-                            style = HabbitAtTypography.titleMedium,
+                            style = habitAtTypography.titleMedium,
                             color = InkPrimary
                         )
                         Text(
                             text = "Sovereign data ownership & privacy commitments",
-                            style = HabbitAtTypography.bodyMedium,
+                            style = habitAtTypography.bodyMedium,
                             color = InkSecondary
                         )
                     }
@@ -541,12 +541,12 @@ fun SettingsScreen(
                     Column(modifier = Modifier.weight(1f)) {
                         Text(
                             text = "App status",
-                            style = HabbitAtTypography.titleMedium,
+                            style = habitAtTypography.titleMedium,
                             color = InkPrimary
                         )
                         Text(
                             text = "Check proof, reminder, and sync availability",
-                            style = HabbitAtTypography.bodyMedium,
+                            style = habitAtTypography.bodyMedium,
                             color = InkSecondary
                         )
                     }
@@ -576,13 +576,13 @@ fun SettingsScreen(
                 ) {
                     Text(
                         text = "Terms of Service & Privacy Policy",
-                        style = HabbitAtTypography.displaySmall,
+                        style = habitAtTypography.displaySmall,
                         color = InkPrimary
                     )
                     Spacer(modifier = Modifier.height(2.dp))
                     Text(
                         text = "HabitAt Sovereign Privacy Guarantee",
-                        style = HabbitAtTypography.bodyMedium,
+                        style = habitAtTypography.bodyMedium,
                         color = InkSecondary
                     )
 
@@ -624,7 +624,7 @@ fun SettingsScreen(
                     ) {
                         Text(
                             text = "I Understand & Agree",
-                            style = HabbitAtTypography.labelLarge,
+                            style = habitAtTypography.labelLarge,
                             color = CardSurface
                         )
                     }
@@ -647,13 +647,13 @@ fun SettingsScreen(
                 ) {
                     Text(
                         text = "App status",
-                        style = HabbitAtTypography.displaySmall,
+                        style = habitAtTypography.displaySmall,
                         color = InkPrimary
                     )
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
                         text = "Availability of the services that support your habit flow.",
-                        style = HabbitAtTypography.bodyMedium,
+                        style = habitAtTypography.bodyMedium,
                         color = InkSecondary
                     )
                     Spacer(modifier = Modifier.height(20.dp))
@@ -672,7 +672,7 @@ fun SettingsScreen(
                 title = {
                     Text(
                         text = "Change Nickname",
-                        style = HabbitAtTypography.headlineMedium,
+                        style = habitAtTypography.headlineMedium,
                         color = InkPrimary
                     )
                 },
@@ -680,7 +680,7 @@ fun SettingsScreen(
                     Column {
                         Text(
                             text = "Enter your nickname for daily welcome greetings.",
-                            style = HabbitAtTypography.bodyMedium,
+                            style = habitAtTypography.bodyMedium,
                             color = InkSecondary
                         )
                         Spacer(modifier = Modifier.height(12.dp))
@@ -688,7 +688,7 @@ fun SettingsScreen(
                             value = nicknameInput,
                             onValueChange = { nicknameInput = it },
                             singleLine = true,
-                            textStyle = HabbitAtTypography.bodyMedium.copy(color = InkPrimary),
+                            textStyle = habitAtTypography.bodyMedium.copy(color = InkPrimary),
                             colors = OutlinedTextFieldDefaults.colors(
                                 focusedBorderColor = SaffronPrimary,
                                 unfocusedBorderColor = GlassBorder
@@ -736,7 +736,7 @@ private fun ConfigStatusRow(
     ) {
         Text(
             text = title,
-            style = HabbitAtTypography.bodyMedium,
+            style = habitAtTypography.bodyMedium,
             color = InkPrimary,
             modifier = Modifier.weight(1f)
         )
@@ -759,7 +759,7 @@ private fun ConfigStatusRow(
                 )
                 Text(
                     text = if (isConfigured) "Active" else "Standard",
-                    style = HabbitAtTypography.labelMedium,
+                    style = habitAtTypography.labelMedium,
                     color = if (isConfigured) TurmericGreenSuccess else TerracottaTertiary
                 )
             }
@@ -771,7 +771,7 @@ private fun ConfigStatusRow(
 private fun LegalSectionHeader(title: String) {
     Text(
         text = title,
-        style = HabbitAtTypography.titleMedium,
+        style = habitAtTypography.titleMedium,
         color = InkPrimary
     )
 }
@@ -780,7 +780,7 @@ private fun LegalSectionHeader(title: String) {
 private fun LegalBodyText(text: String) {
     Text(
         text = text,
-        style = HabbitAtTypography.bodyMedium,
+        style = habitAtTypography.bodyMedium,
         color = InkSecondary,
         modifier = Modifier.padding(top = 2.dp)
     )

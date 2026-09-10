@@ -1,11 +1,11 @@
-package com.habbitat.app
+package com.habitAt.app
 
 import android.app.Application
-import com.habbitat.app.data.local.HabbitAtDatabase
-import com.habbitat.app.data.repository.HabitRepository
+import com.habitAt.app.data.local.habitAtDatabase
+import com.habitAt.app.data.repository.HabitRepository
 
-class HabbitAtApp : Application() {
-    val database: HabbitAtDatabase by lazy { HabbitAtDatabase.getDatabase(this) }
+class habitAtApp : Application() {
+    val database: habitAtDatabase by lazy { habitAtDatabase.getDatabase(this) }
     val repository: HabitRepository by lazy { HabitRepository(database.habitDao()) }
 
     override fun onCreate() {
@@ -22,7 +22,7 @@ class HabbitAtApp : Application() {
         }
 
         try {
-            com.habbitat.app.notifications.NotificationHelper.createNotificationChannel(this)
+            com.habitAt.app.notifications.NotificationHelper.createNotificationChannel(this)
         } catch (_: Throwable) {
             // Safety guard
         }

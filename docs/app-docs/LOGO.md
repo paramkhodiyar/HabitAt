@@ -3,7 +3,7 @@
 Same design law as `DESIGN.md` applies here: Modern Indian Minimalism. For the mark itself, go one layer deeper and pull specifically from **Rajasthani visual language** — not generic "Indian pattern," but the actual vocabulary of Rajasthan: jharokha arches, jali lattice screens, block-print (Bagru/Sanganeri) botanicals, the kalash, and the diya flame — all reduced to clean, modern linework. Ornate source, minimal execution. That tension is the whole point.
 
 ## 1. What the mark has to communicate
-HabbitAt is about a streak that's alive and a photographic proof-ledger. The logo should carry at least one of: **fire/flame (the streak)**, **a completed mark (proof/verification)**, or **a window/frame (the jharokha, echoing "looking into your day")**. Don't try to cram all three into one mark — pick the strongest single idea and execute it with total confidence.
+habitAt is about a streak that's alive and a photographic proof-ledger. The logo should carry at least one of: **fire/flame (the streak)**, **a completed mark (proof/verification)**, or **a window/frame (the jharokha, echoing "looking into your day")**. Don't try to cram all three into one mark — pick the strongest single idea and execute it with total confidence.
 
 ## 2. Four concept directions — build all four as quick explorations, then pick one to refine
 

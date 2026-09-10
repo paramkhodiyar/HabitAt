@@ -1,9 +1,9 @@
-package com.habbitat.app.data.repository
+package com.habitAt.app.data.repository
 
-import com.habbitat.app.data.local.dao.HabitDao
-import com.habbitat.app.data.local.entity.CompletionRecord
-import com.habbitat.app.data.local.entity.Habit
-import com.habbitat.app.data.local.entity.NotificationLog
+import com.habitAt.app.data.local.dao.HabitDao
+import com.habitAt.app.data.local.entity.CompletionRecord
+import com.habitAt.app.data.local.entity.Habit
+import com.habitAt.app.data.local.entity.NotificationLog
 import kotlinx.coroutines.flow.Flow
 
 class HabitRepository(private val habitDao: HabitDao) {

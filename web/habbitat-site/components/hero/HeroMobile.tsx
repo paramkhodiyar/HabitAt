@@ -17,14 +17,14 @@ export default function HeroMobile() {
             Habits verified by proof, not promises.
           </h1>
           <p className="text-sm text-ink-muted leading-relaxed font-normal">
-            HabbitAt enforces your habits with timestamped photo proof and vision AI verification. No unearned checkmarks.
+            habitAt enforces your habits with timestamped photo proof and vision AI verification. No unearned checkmarks.
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
             <Button href="/paramstore" variant="primary" size="md" className="min-h-[44px]">
               <ArrowDownToLine size={18} />
-              <span>Get HabbitAt APK</span>
+              <span>Get habitAt APK</span>
             </Button>
             <Button href="#features" variant="outline" size="md" className="min-h-[44px]">
               <span>Explore Mechanics</span>
@@ -53,7 +53,7 @@ export default function HeroMobile() {
                 />
               </div>
               <span className="font-serif font-bold text-sm text-ink">
-                HabbitAt Mobile
+                habitAt Mobile
               </span>
             </div>
             <span className="inline-flex items-center gap-1 text-[11px] font-mono font-semibold text-accent-2 bg-accent-2/10 px-2 py-0.5 rounded-[2px] border border-accent-2/20">

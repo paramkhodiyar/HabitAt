@@ -1,10 +1,10 @@
-package com.habbitat.app.notifications
+package com.habitAt.app.notifications
 
 import android.content.Context
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
-import com.habbitat.app.HabbitAtApp
-import com.habbitat.app.data.local.entity.NotificationLog
+import com.habitAt.app.habitAtApp
+import com.habitAt.app.data.local.entity.NotificationLog
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -18,7 +18,7 @@ class EscalationWorker(
         val habitId = inputData.getLong("habit_id", -1L)
         if (habitId == -1L) return Result.failure()
 
-        val repository = (context.applicationContext as HabbitAtApp).repository
+        val repository = (context.applicationContext as habitAtApp).repository
         val habit = repository.getHabitById(habitId) ?: return Result.failure()
 
         val todayDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())

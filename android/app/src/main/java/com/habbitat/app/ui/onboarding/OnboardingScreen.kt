@@ -1,4 +1,4 @@
-package com.habbitat.app.ui.onboarding
+package com.habitAt.app.ui.onboarding
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
@@ -59,25 +59,25 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.habbitat.app.HabbitAtApp
-import com.habbitat.app.data.UserPreferences
-import com.habbitat.app.data.local.entity.Habit
-import com.habbitat.app.ui.components.BackgroundMotif
-import com.habbitat.app.ui.components.MotifVariant
-import com.habbitat.app.ui.theme.CardSurface
-import com.habbitat.app.ui.theme.GlassBorder
-import com.habbitat.app.ui.theme.HabbitAtMotion
-import com.habbitat.app.ui.theme.HabbitAtTypography
-import com.habbitat.app.ui.theme.IndigoLight
-import com.habbitat.app.ui.theme.IndigoSecondary
-import com.habbitat.app.ui.theme.InkMuted
-import com.habbitat.app.ui.theme.InkPrimary
-import com.habbitat.app.ui.theme.InkSecondary
-import com.habbitat.app.ui.theme.SaffronGlow
-import com.habbitat.app.ui.theme.SaffronPrimary
-import com.habbitat.app.ui.theme.TurmericGreenSuccess
-import com.habbitat.app.ui.theme.TurmericLight
-import com.habbitat.app.ui.theme.WarmIvory
+import com.habitAt.app.habitAtApp
+import com.habitAt.app.data.UserPreferences
+import com.habitAt.app.data.local.entity.Habit
+import com.habitAt.app.ui.components.BackgroundMotif
+import com.habitAt.app.ui.components.MotifVariant
+import com.habitAt.app.ui.theme.CardSurface
+import com.habitAt.app.ui.theme.GlassBorder
+import com.habitAt.app.ui.theme.habitAtMotion
+import com.habitAt.app.ui.theme.habitAtTypography
+import com.habitAt.app.ui.theme.IndigoLight
+import com.habitAt.app.ui.theme.IndigoSecondary
+import com.habitAt.app.ui.theme.InkMuted
+import com.habitAt.app.ui.theme.InkPrimary
+import com.habitAt.app.ui.theme.InkSecondary
+import com.habitAt.app.ui.theme.SaffronGlow
+import com.habitAt.app.ui.theme.SaffronPrimary
+import com.habitAt.app.ui.theme.TurmericGreenSuccess
+import com.habitAt.app.ui.theme.TurmericLight
+import com.habitAt.app.ui.theme.WarmIvory
 import androidx.compose.material.icons.rounded.Book
 import androidx.compose.material.icons.rounded.Code
 import androidx.compose.material.icons.rounded.DirectionsRun
@@ -88,8 +88,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextOverflow
 import android.app.Activity
 import androidx.activity.compose.BackHandler
-import com.habbitat.app.ui.components.ExitConfirmationDialog
-import com.habbitat.app.ui.components.GPaySuccessCheckmark
+import com.habitAt.app.ui.components.ExitConfirmationDialog
+import com.habitAt.app.ui.components.GPaySuccessCheckmark
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -111,7 +111,7 @@ fun OnboardingScreen(
     val context = LocalContext.current
     val coroutineScope = rememberCoroutineScope()
     val userPrefs = remember { UserPreferences(context) }
-    val repository = remember { (context.applicationContext as HabbitAtApp).repository }
+    val repository = remember { (context.applicationContext as habitAtApp).repository }
 
     var step by remember { mutableStateOf(1) }
     var nicknameInput by remember { mutableStateOf("") }
@@ -220,7 +220,7 @@ fun OnboardingScreen(
 
                     Text(
                         text = "Setup Completed",
-                        style = HabbitAtTypography.headlineLarge,
+                        style = habitAtTypography.headlineLarge,
                         color = InkPrimary
                     )
 
@@ -228,7 +228,7 @@ fun OnboardingScreen(
 
                     Text(
                         text = "Your photographic proof ledger is active and ready.",
-                        style = HabbitAtTypography.bodyMedium,
+                        style = habitAtTypography.bodyMedium,
                         textAlign = TextAlign.Center,
                         color = InkSecondary
                     )
@@ -251,7 +251,7 @@ fun OnboardingScreen(
                 ) {
                     Text(
                         text = "HabitAt",
-                        style = HabbitAtTypography.displayMedium,
+                        style = habitAtTypography.displayMedium,
                         color = SaffronPrimary
                     )
 
@@ -293,7 +293,7 @@ fun OnboardingScreen(
 
                             Text(
                                 text = "Welcome to HabitAt",
-                                style = HabbitAtTypography.displayLarge,
+                                style = habitAtTypography.displayLarge,
                                 fontSize = 32.sp,
                                 color = InkPrimary
                             )
@@ -302,7 +302,7 @@ fun OnboardingScreen(
 
                             Text(
                                 text = "Your intelligent habit tracker & photographic proof-of-work ledger. Build unshakeable discipline.",
-                                style = HabbitAtTypography.bodyMedium,
+                                style = habitAtTypography.bodyMedium,
                                 fontSize = 16.sp,
                                 color = InkSecondary
                             )
@@ -319,7 +319,7 @@ fun OnboardingScreen(
                             Row(verticalAlignment = Alignment.CenterVertically) {
                                 Text(
                                     text = "Get Started",
-                                    style = HabbitAtTypography.labelLarge,
+                                    style = habitAtTypography.labelLarge,
                                     color = InkPrimary,
                                     fontSize = 16.sp
                                 )
@@ -349,7 +349,7 @@ fun OnboardingScreen(
                         ) {
                             Text(
                                 text = "What should we call you?",
-                                style = HabbitAtTypography.displayLarge,
+                                style = habitAtTypography.displayLarge,
                                 fontSize = 26.sp,
                                 color = InkPrimary
                             )
@@ -358,7 +358,7 @@ fun OnboardingScreen(
 
                             Text(
                                 text = "Enter your nickname for personalized daily greetings.",
-                                style = HabbitAtTypography.bodyMedium,
+                                style = habitAtTypography.bodyMedium,
                                 color = InkSecondary
                             )
 
@@ -369,7 +369,7 @@ fun OnboardingScreen(
                                 onValueChange = { nicknameInput = it },
                                 singleLine = true,
                                 placeholder = { Text("Enter your name...", color = InkMuted) },
-                                textStyle = HabbitAtTypography.headlineMedium.copy(color = InkPrimary),
+                                textStyle = habitAtTypography.headlineMedium.copy(color = InkPrimary),
                                 colors = OutlinedTextFieldDefaults.colors(
                                     focusedBorderColor = SaffronPrimary,
                                     unfocusedBorderColor = GlassBorder,
@@ -401,7 +401,7 @@ fun OnboardingScreen(
                                 Row(verticalAlignment = Alignment.CenterVertically) {
                                     Text(
                                         text = "Continue",
-                                        style = HabbitAtTypography.labelLarge,
+                                        style = habitAtTypography.labelLarge,
                                         color = InkPrimary,
                                         fontSize = 16.sp
                                     )
@@ -426,7 +426,7 @@ fun OnboardingScreen(
                         ) {
                             Text(
                                 text = "Choose initial habits",
-                                style = HabbitAtTypography.displayLarge,
+                                style = habitAtTypography.displayLarge,
                                 fontSize = 26.sp,
                                 color = InkPrimary
                             )
@@ -435,7 +435,7 @@ fun OnboardingScreen(
 
                             Text(
                                 text = "Select habits to seed your discipline ledger or tap Skip.",
-                                style = HabbitAtTypography.bodyMedium,
+                                style = habitAtTypography.bodyMedium,
                                 color = InkSecondary
                             )
 
@@ -493,13 +493,13 @@ fun OnboardingScreen(
                                             Column(modifier = Modifier.weight(1f)) {
                                                 Text(
                                                     text = preset.name,
-                                                    style = HabbitAtTypography.titleMedium,
+                                                    style = habitAtTypography.titleMedium,
                                                     color = InkPrimary
                                                 )
                                                 Spacer(modifier = Modifier.height(2.dp))
                                                 Text(
                                                     text = "${preset.durationMinutes} min • ${preset.frequency} • ${preset.description}",
-                                                    style = HabbitAtTypography.bodyMedium,
+                                                    style = habitAtTypography.bodyMedium,
                                                     color = InkSecondary,
                                                     fontSize = 12.sp,
                                                     maxLines = 1,
@@ -554,7 +554,7 @@ fun OnboardingScreen(
                             ) {
                                 Text(
                                     text = "Skip",
-                                    style = HabbitAtTypography.labelLarge,
+                                    style = habitAtTypography.labelLarge,
                                     color = IndigoSecondary
                                 )
                             }
@@ -592,7 +592,7 @@ fun OnboardingScreen(
                             ) {
                                 Text(
                                     text = "Complete Setup",
-                                    style = HabbitAtTypography.labelLarge,
+                                    style = habitAtTypography.labelLarge,
                                     color = InkPrimary
                                 )
                             }

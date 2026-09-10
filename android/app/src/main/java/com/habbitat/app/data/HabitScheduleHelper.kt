@@ -1,7 +1,7 @@
-package com.habbitat.app.data
+package com.habitAt.app.data
 
-import com.habbitat.app.data.local.entity.CompletionRecord
-import com.habbitat.app.data.local.entity.Habit
+import com.habitAt.app.data.local.entity.CompletionRecord
+import com.habitAt.app.data.local.entity.Habit
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date

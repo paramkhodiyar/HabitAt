@@ -1,4 +1,4 @@
-package com.habbitat.app.ui.navigation
+package com.habitAt.app.ui.navigation
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.Spring
@@ -37,13 +37,13 @@ import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.habbitat.app.ui.theme.GlassBorder
-import com.habbitat.app.ui.theme.GlassFrostedSurface
-import com.habbitat.app.ui.theme.HabbitAtTypography
-import com.habbitat.app.ui.theme.InkMuted
-import com.habbitat.app.ui.theme.InkPrimary
-import com.habbitat.app.ui.theme.SaffronLight
-import com.habbitat.app.ui.theme.SaffronPrimary
+import com.habitAt.app.ui.theme.GlassBorder
+import com.habitAt.app.ui.theme.GlassFrostedSurface
+import com.habitAt.app.ui.theme.habitAtTypography
+import com.habitAt.app.ui.theme.InkMuted
+import com.habitAt.app.ui.theme.InkPrimary
+import com.habitAt.app.ui.theme.SaffronLight
+import com.habitAt.app.ui.theme.SaffronPrimary
 
 @Composable
 fun FloatingBottomBar(
@@ -151,7 +151,7 @@ fun FloatingBottomBar(
                         ) {
                             Text(
                                 text = screen.title,
-                                style = HabbitAtTypography.labelLarge,
+                                style = habitAtTypography.labelLarge,
                                 color = InkPrimary
                             )
                         }

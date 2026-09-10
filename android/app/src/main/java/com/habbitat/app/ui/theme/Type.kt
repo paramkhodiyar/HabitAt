@@ -1,4 +1,4 @@
-package com.habbitat.app.ui.theme
+package com.habitAt.app.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
@@ -12,7 +12,7 @@ private const val TABULAR_NUMBERS = "tnum"
 val DisplayFontFamily = FontFamily.Serif
 val BodyFontFamily = FontFamily.SansSerif
 
-val HabbitAtTypography = Typography(
+val habitAtTypography = Typography(
     displayLarge = TextStyle(
         fontFamily = DisplayFontFamily,
         fontWeight = FontWeight.Bold,

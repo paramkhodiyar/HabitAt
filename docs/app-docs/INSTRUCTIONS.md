@@ -26,7 +26,7 @@ This is a hard rule, not a style preference:
 
 ## 4. Consistency over cleverness
 - If `DESIGN.md` specifies a component pattern (the floating nav bar, the calendar tile states, the motion spec), use it exactly as specified even if you can think of a "better" variant. Deviations fragment the product's identity over a long build — raise the idea to Param instead of silently substituting it.
-- The same rule applies platform-to-platform: HabbitAt (Android) and HabbitAt Sync (Mac) must feel like the same product, adapted to platform conventions, not two different apps that happen to share a name.
+- The same rule applies platform-to-platform: habitAt (Android) and habitAt Sync (Mac) must feel like the same product, adapted to platform conventions, not two different apps that happen to share a name.
 
 ## 5. When two things conflict
 `INSTRUCTIONS.md` (this file) → process.

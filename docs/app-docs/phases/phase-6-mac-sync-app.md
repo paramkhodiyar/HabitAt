@@ -1,4 +1,4 @@
-# Phase 6 — HabbitAt Sync (macOS app)
+# Phase 6 — habitAt Sync (macOS app)
 
 A real native app, not a script. Depends entirely on the Drive contract defined in Phase 5, Part A — do not start this phase before that contract is stable.
 

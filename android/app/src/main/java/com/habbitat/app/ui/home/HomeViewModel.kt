@@ -1,13 +1,13 @@
-package com.habbitat.app.ui.home
+package com.habitAt.app.ui.home
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.habbitat.app.data.local.entity.CompletionRecord
-import com.habbitat.app.data.local.entity.Habit
-import com.habbitat.app.data.repository.HabitRepository
-import com.habbitat.app.notifications.ReminderScheduler
+import com.habitAt.app.data.local.entity.CompletionRecord
+import com.habitAt.app.data.local.entity.Habit
+import com.habitAt.app.data.repository.HabitRepository
+import com.habitAt.app.notifications.ReminderScheduler
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow

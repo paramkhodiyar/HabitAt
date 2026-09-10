@@ -1,10 +1,10 @@
-package com.habbitat.app.notifications
+package com.habitAt.app.notifications
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import com.habbitat.app.HabbitAtApp
-import com.habbitat.app.data.local.entity.NotificationLog
+import com.habitAt.app.habitAtApp
+import com.habitAt.app.data.local.entity.NotificationLog
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -22,7 +22,7 @@ class ReminderReceiver : BroadcastReceiver() {
 
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val repository = (context.applicationContext as HabbitAtApp).repository
+                val repository = (context.applicationContext as habitAtApp).repository
                 val habit = repository.getHabitById(habitId) ?: return@launch
 
                 val todayDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())

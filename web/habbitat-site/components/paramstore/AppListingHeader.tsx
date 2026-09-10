@@ -13,7 +13,7 @@ export default function AppListingHeader() {
           <div className="w-16 h-16 md:w-20 md:h-20 bg-bg border border-border rounded-[12px] p-2 shrink-0 flex items-center justify-center">
             <Image
               src="/images/icons/HabitAt_Icon_Simplified.svg"
-              alt="HabbitAt App Icon"
+              alt="habitAt App Icon"
               width={64}
               height={64}
               className="object-contain w-full h-full"

@@ -1,4 +1,4 @@
-package com.habbitat.app.ui.calendar
+package com.habitAt.app.ui.calendar
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -44,22 +44,22 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.habbitat.app.data.local.entity.CompletionRecord
-import com.habbitat.app.ui.calendar.components.MonthGrid
-import com.habbitat.app.ui.calendar.components.ProofDetailModal
-import com.habbitat.app.ui.calendar.components.StreakStatsBlock
-import com.habbitat.app.ui.components.BackgroundMotif
-import com.habbitat.app.ui.components.MotifVariant
-import com.habbitat.app.ui.theme.CardSurface
-import com.habbitat.app.ui.theme.GlassBorder
-import com.habbitat.app.ui.theme.HabbitAtTypography
-import com.habbitat.app.ui.theme.IndigoLight
-import com.habbitat.app.ui.theme.IndigoSecondary
-import com.habbitat.app.ui.theme.InkMuted
-import com.habbitat.app.ui.theme.InkPrimary
-import com.habbitat.app.ui.theme.InkSecondary
-import com.habbitat.app.ui.theme.SaffronPrimary
-import com.habbitat.app.ui.theme.WarmIvory
+import com.habitAt.app.data.local.entity.CompletionRecord
+import com.habitAt.app.ui.calendar.components.MonthGrid
+import com.habitAt.app.ui.calendar.components.ProofDetailModal
+import com.habitAt.app.ui.calendar.components.StreakStatsBlock
+import com.habitAt.app.ui.components.BackgroundMotif
+import com.habitAt.app.ui.components.MotifVariant
+import com.habitAt.app.ui.theme.CardSurface
+import com.habitAt.app.ui.theme.GlassBorder
+import com.habitAt.app.ui.theme.habitAtTypography
+import com.habitAt.app.ui.theme.IndigoLight
+import com.habitAt.app.ui.theme.IndigoSecondary
+import com.habitAt.app.ui.theme.InkMuted
+import com.habitAt.app.ui.theme.InkPrimary
+import com.habitAt.app.ui.theme.InkSecondary
+import com.habitAt.app.ui.theme.SaffronPrimary
+import com.habitAt.app.ui.theme.WarmIvory
 
 import androidx.activity.compose.BackHandler
 
@@ -119,13 +119,13 @@ fun CalendarScreen(
             // Header
             Text(
                 text = "Photographic Ledger",
-                style = HabbitAtTypography.displayMedium,
+                style = habitAtTypography.displayMedium,
                 color = InkPrimary
             )
             Spacer(modifier = Modifier.height(2.dp))
             Text(
                 text = "Proof-of-Work History & Calendar",
-                style = HabbitAtTypography.bodyMedium,
+                style = habitAtTypography.bodyMedium,
                 color = InkSecondary
             )
 
@@ -158,7 +158,7 @@ fun CalendarScreen(
                             if (searchQuery.isEmpty()) {
                                 Text(
                                     text = "Search ledger...",
-                                    style = HabbitAtTypography.bodyMedium,
+                                    style = habitAtTypography.bodyMedium,
                                     color = InkMuted
                                 )
                             }
@@ -166,7 +166,7 @@ fun CalendarScreen(
                                 value = searchQuery,
                                 onValueChange = { searchQuery = it },
                                 singleLine = true,
-                                textStyle = HabbitAtTypography.bodyMedium.copy(color = InkPrimary),
+                                textStyle = habitAtTypography.bodyMedium.copy(color = InkPrimary),
                                 cursorBrush = SolidColor(SaffronPrimary),
                                 modifier = Modifier.fillMaxWidth()
                             )
@@ -207,7 +207,7 @@ fun CalendarScreen(
                     ) {
                         Text(
                             text = tag,
-                            style = HabbitAtTypography.labelSmall,
+                            style = habitAtTypography.labelSmall,
                             color = if (isSelected) InkPrimary else InkSecondary
                         )
                     }
@@ -226,7 +226,7 @@ fun CalendarScreen(
                         ) {
                             Text(
                                 text = habit.name,
-                                style = HabbitAtTypography.labelSmall,
+                                style = habitAtTypography.labelSmall,
                                 color = if (isSelected) IndigoSecondary else InkSecondary
                             )
                         }
@@ -261,13 +261,13 @@ fun CalendarScreen(
                         Spacer(modifier = Modifier.height(14.dp))
                         Text(
                             text = if (habits.isEmpty()) "No Habits Tracked" else "No Matching Habits",
-                            style = HabbitAtTypography.headlineMedium,
+                            style = habitAtTypography.headlineMedium,
                             color = InkPrimary
                         )
                         Spacer(modifier = Modifier.height(6.dp))
                         Text(
                             text = if (habits.isEmpty()) "Create a habit to build your photographic ledger of discipline." else "Try clearing filters or search query to view proof ledger.",
-                            style = HabbitAtTypography.bodyMedium,
+                            style = habitAtTypography.bodyMedium,
                             textAlign = TextAlign.Center,
                             color = InkSecondary
                         )

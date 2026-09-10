@@ -1,11 +1,11 @@
-# AGENTS.md — HabbitAt & HabbitAt Sync
+# AGENTS.md — habitAt & habitAt Sync
 
 This file is the entry point for any coding agent (Claude Code, Cursor, Copilot Workspace, or a human following the same discipline) working in this repository. Read this in full before writing a single line of code, and re-read it whenever you're unsure.
 
 ## What this project is
-HabbitAt is a two-app system:
-- **HabbitAt** — Android/Kotlin habit-enforcement app (photo-proof + AI verification + escalating notifications + a photographic calendar history).
-- **HabbitAt Sync** — native macOS/SwiftUI companion that mirrors the same data.
+habitAt is a two-app system:
+- **habitAt** — Android/Kotlin habit-enforcement app (photo-proof + AI verification + escalating notifications + a photographic calendar history).
+- **habitAt Sync** — native macOS/SwiftUI companion that mirrors the same data.
 
 Full product spec, phase breakdown, and design law live in `docs/app-docs/`. This file does not repeat them — it tells you the order to read them in and the rules that apply no matter which phase you're on.
 

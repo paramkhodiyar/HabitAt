@@ -1,12 +1,12 @@
-# HabbitAt — AI-Verified Habit Enforcement System
+# habitAt — AI-Verified Habit Enforcement System
 
 [![Android Version](https://img.shields.io/badge/Android-8.0%2B%20%28API%2026%2B%29-3DDC84?style=flat-square&logo=android&logoColor=white)](https://github.com/paramkhodiyar/HabitAt)
 [![macOS Companion](https://img.shields.io/badge/macOS-14.0%2B%20%28Sonoma%2B%29-000000?style=flat-square&logo=apple&logoColor=white)](https://github.com/paramkhodiyar/HabitAt)
-[![Web App](https://img.shields.io/badge/Next.js-16.3%20%28App%20Router%29-000000?style=flat-square&logo=nextdotjs&logoColor=white)](https://habbitat.app)
+[![Web App](https://img.shields.io/badge/Next.js-16.3%20%28App%20Router%29-000000?style=flat-square&logo=nextdotjs&logoColor=white)](https://habitAt.app)
 [![Developer](https://img.shields.io/badge/Developer-Param%20Khodiyar-B5502E?style=flat-square)](https://www.paramkhodiyar.dev)
 
 > **Habits verified by proof, not promises.**  
-> HabbitAt is a cross-platform habit enforcement ecosystem that replaces unearned checkmarks with timestamped camera proof, vision AI evaluation, honest zero-based streak tracking, and private cloud sync.
+> habitAt is a cross-platform habit enforcement ecosystem that replaces unearned checkmarks with timestamped camera proof, vision AI evaluation, honest zero-based streak tracking, and private cloud sync.
 
 ---
 
@@ -83,24 +83,21 @@ HabitAt/
 - **[Root Agent Guidelines](./AGENTS.md)**: Operating rules and reading order for coding agents.
 - **[App Master Plan](./docs/app-docs/00-master-plan.md)**: Native app architecture and phase breakdown.
 - **[App Design System](./docs/app-docs/DESIGN.md)**: Visual, motion, and typography guidelines.
-- **[Web Landing Specs](./web/habbitat-landing-docs/00-master-plan.md)**: Web platform specifications and design tokens.
+- **[Web Landing Specs](./web/habitAt-landing-docs/00-master-plan.md)**: Web platform specifications and design tokens.
 
 ---
 
 ## Developer & Contact
 
 **Param Khodiyar**  
-*Creator & Lead Engineer, HabbitAt*
+*Creator & Lead Engineer, habitAt*
 
 - **Website**: [paramkhodiyar.dev](https://www.paramkhodiyar.dev)
 - **GitHub**: [@paramkhodiyar](https://github.com/paramkhodiyar)
 - **LinkedIn**: [in/paramkhodiyar](https://www.linkedin.com/in/paramkhodiyar)
 - **Email**: [paramkhodiyar1008@gmail.com](mailto:paramkhodiyar1008@gmail.com)
 
-```
-॥ श्री राम ॥
-॥ कर्मण्येवाधिकारस्ते मा फलेषु कदाचन ॥
-```
+
 
 ---
 

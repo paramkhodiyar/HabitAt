@@ -15,7 +15,7 @@
 ## Project Structure
 
 ```
-habbitat-site/
+habitAt-site/
   app/
     layout.tsx                 (root layout, fonts, metadata defaults)
     page.tsx                   (landing page)

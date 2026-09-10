@@ -1,4 +1,4 @@
-package com.habbitat.app.notifications
+package com.habitAt.app.notifications
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -8,13 +8,13 @@ import android.content.Intent
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import com.habbitat.app.MainActivity
-import com.habbitat.app.R
+import com.habitAt.app.MainActivity
+import com.habitAt.app.R
 
 object NotificationHelper {
 
-    const val CHANNEL_ID = "habbitat_reminders"
-    const val CHANNEL_NAME = "HabbitAt Reminders"
+    const val CHANNEL_ID = "habitAt_reminders"
+    const val CHANNEL_NAME = "habitAt Reminders"
 
     fun createNotificationChannel(context: Context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

@@ -6,7 +6,7 @@ import { constructMetadata } from "@/lib/metadata";
 
 export const metadata = constructMetadata({
   title: "404 — Page Not Found",
-  description: "The requested page does not exist on HabbitAt.",
+  description: "The requested page does not exist on habitAt.",
   noIndex: true,
 });
 
@@ -26,7 +26,7 @@ export default function NotFound() {
             Page Not Found
           </h1>
           <p className="text-base text-ink-muted max-w-md mx-auto leading-relaxed">
-            The page or route you are looking for has been moved, removed, or does not exist on the HabbitAt site.
+            The page or route you are looking for has been moved, removed, or does not exist on the habitAt site.
           </p>
         </div>
 

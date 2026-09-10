@@ -29,11 +29,11 @@ val hasReleaseSigningConfig = listOf(
 ).all(String::isNotBlank)
 
 android {
-    namespace = "com.habbitat.app"
+    namespace = "com.habitAt.app"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.habbitat.app"
+        applicationId = "com.habitAt.app"
         minSdk = 26
         targetSdk = 34
         versionCode = 1

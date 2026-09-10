@@ -1,4 +1,4 @@
-package com.habbitat.app.data.local.dao
+package com.habitAt.app.data.local.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
@@ -6,9 +6,9 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import com.habbitat.app.data.local.entity.CompletionRecord
-import com.habbitat.app.data.local.entity.Habit
-import com.habbitat.app.data.local.entity.NotificationLog
+import com.habitAt.app.data.local.entity.CompletionRecord
+import com.habitAt.app.data.local.entity.Habit
+import com.habitAt.app.data.local.entity.NotificationLog
 import kotlinx.coroutines.flow.Flow
 
 @Dao

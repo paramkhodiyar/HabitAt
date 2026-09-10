@@ -1,4 +1,4 @@
-package com.habbitat.app.ui.calendar.components
+package com.habitAt.app.ui.calendar.components
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
@@ -16,11 +16,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.habbitat.app.ui.calendar.DayTileData
-import com.habbitat.app.ui.calendar.MonthGridData
-import com.habbitat.app.ui.theme.HabbitAtTypography
-import com.habbitat.app.ui.theme.InkMuted
-import com.habbitat.app.ui.theme.InkPrimary
+import com.habitAt.app.ui.calendar.DayTileData
+import com.habitAt.app.ui.calendar.MonthGridData
+import com.habitAt.app.ui.theme.habitAtTypography
+import com.habitAt.app.ui.theme.InkMuted
+import com.habitAt.app.ui.theme.InkPrimary
 
 @Composable
 fun MonthGrid(
@@ -36,7 +36,7 @@ fun MonthGrid(
         // Month Title in Display Serif
         Text(
             text = monthData.monthYearLabel,
-            style = HabbitAtTypography.headlineMedium,
+            style = habitAtTypography.headlineMedium,
             color = InkPrimary
         )
 
@@ -50,7 +50,7 @@ fun MonthGrid(
             dayHeaders.forEach { header ->
                 Text(
                     text = header,
-                    style = HabbitAtTypography.labelMedium,
+                    style = habitAtTypography.labelMedium,
                     color = InkMuted,
                     textAlign = TextAlign.Center,
                     modifier = Modifier.weight(1f)

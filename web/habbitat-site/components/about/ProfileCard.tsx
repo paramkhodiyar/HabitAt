@@ -26,7 +26,7 @@ export default function ProfileCard() {
               Param Khodiyar
             </h1>
             <p className="text-base text-accent font-medium mt-1">
-              Creator &amp; Lead Engineer, HabbitAt
+              Creator &amp; Lead Engineer, habitAt
             </p>
           </div>
 
@@ -42,7 +42,7 @@ export default function ProfileCard() {
           </div>
 
           <p className="text-sm text-ink-muted leading-relaxed">
-            Building HabbitAt as an AI-verified habit enforcement app to solve real commitment problems with photo proof, local ML, and cross-device sync.
+            Building habitAt as an AI-verified habit enforcement app to solve real commitment problems with photo proof, local ML, and cross-device sync.
           </p>
         </div>
       </div>

@@ -82,7 +82,7 @@ export default function HeroScrollController() {
             </h1>
 
             <p className="text-ink-muted text-base sm:text-lg lg:text-xl font-normal max-w-xl leading-relaxed">
-              HabbitAt enforces personal discipline with daily photo-proof, vision AI verification, and honest streak tracking that starts at zero.
+              habitAt enforces personal discipline with daily photo-proof, vision AI verification, and honest streak tracking that starts at zero.
             </p>
 
             {/* Feature Highlights (No eyebrow badges) */}

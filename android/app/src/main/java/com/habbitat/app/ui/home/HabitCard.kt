@@ -1,4 +1,4 @@
-package com.habbitat.app.ui.home
+package com.habitAt.app.ui.home
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
@@ -37,23 +37,23 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.habbitat.app.data.local.entity.Habit
-import com.habbitat.app.ui.theme.CardSurface
-import com.habbitat.app.ui.theme.GlassBorder
-import com.habbitat.app.ui.theme.HabbitAtMotion
-import com.habbitat.app.ui.theme.HabbitAtTypography
-import com.habbitat.app.ui.theme.IndigoLight
-import com.habbitat.app.ui.theme.IndigoSecondary
-import com.habbitat.app.ui.theme.InkMuted
-import com.habbitat.app.ui.theme.InkPrimary
-import com.habbitat.app.ui.theme.InkSecondary
-import com.habbitat.app.ui.theme.SaffronGlow
-import com.habbitat.app.ui.theme.SaffronLight
-import com.habbitat.app.ui.theme.SaffronPrimary
+import com.habitAt.app.data.local.entity.Habit
+import com.habitAt.app.ui.theme.CardSurface
+import com.habitAt.app.ui.theme.GlassBorder
+import com.habitAt.app.ui.theme.habitAtMotion
+import com.habitAt.app.ui.theme.habitAtTypography
+import com.habitAt.app.ui.theme.IndigoLight
+import com.habitAt.app.ui.theme.IndigoSecondary
+import com.habitAt.app.ui.theme.InkMuted
+import com.habitAt.app.ui.theme.InkPrimary
+import com.habitAt.app.ui.theme.InkSecondary
+import com.habitAt.app.ui.theme.SaffronGlow
+import com.habitAt.app.ui.theme.SaffronLight
+import com.habitAt.app.ui.theme.SaffronPrimary
 
 import androidx.compose.material.icons.rounded.CheckCircle
-import com.habbitat.app.ui.theme.TurmericGreenSuccess
-import com.habbitat.app.ui.theme.TurmericLight
+import com.habitAt.app.ui.theme.TurmericGreenSuccess
+import com.habitAt.app.ui.theme.TurmericLight
 
 @Composable
 fun HabitCard(
@@ -69,7 +69,7 @@ fun HabitCard(
 
     val scale by animateFloatAsState(
         targetValue = if (isPressed) 0.98f else 1.0f,
-        animationSpec = HabbitAtMotion.SpringBouncy,
+        animationSpec = habitAtMotion.SpringBouncy,
         label = "card_press_scale"
     )
 
@@ -100,7 +100,7 @@ fun HabitCard(
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Text(
                             text = habit.name,
-                            style = HabbitAtTypography.headlineMedium,
+                            style = habitAtTypography.headlineMedium,
                             color = InkPrimary
                         )
 
@@ -114,7 +114,7 @@ fun HabitCard(
                         ) {
                             Text(
                                 text = habit.frequency,
-                                style = HabbitAtTypography.labelSmall,
+                                style = habitAtTypography.labelSmall,
                                 color = IndigoSecondary,
                                 fontWeight = FontWeight.Bold
                             )
@@ -131,7 +131,7 @@ fun HabitCard(
                         Spacer(modifier = Modifier.width(4.dp))
                         Text(
                             text = "${habit.targetDurationMinutes} min target",
-                            style = HabbitAtTypography.bodyMedium,
+                            style = habitAtTypography.bodyMedium,
                             color = InkSecondary
                         )
                     }
@@ -157,7 +157,7 @@ fun HabitCard(
                         )
                         Text(
                             text = "$streakCount",
-                            style = HabbitAtTypography.displaySmall,
+                            style = habitAtTypography.displaySmall,
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
                             color = SaffronPrimary
@@ -177,7 +177,7 @@ fun HabitCard(
                 ) {
                     Text(
                         text = "Proof: ${habit.proofDescription}",
-                        style = HabbitAtTypography.bodyMedium,
+                        style = habitAtTypography.bodyMedium,
                         color = IndigoSecondary
                     )
                 }
@@ -204,7 +204,7 @@ fun HabitCard(
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
                             text = "Verified & Completed Today",
-                            style = HabbitAtTypography.labelLarge,
+                            style = habitAtTypography.labelLarge,
                             color = TurmericGreenSuccess,
                             fontWeight = FontWeight.Bold
                         )
@@ -234,7 +234,7 @@ fun HabitCard(
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
                         text = "Log Photo Proof",
-                        style = HabbitAtTypography.labelLarge,
+                        style = habitAtTypography.labelLarge,
                         color = InkPrimary
                     )
                 }

@@ -1,4 +1,4 @@
-package com.habbitat.app.ui.theme
+package com.habitAt.app.ui.theme
 
 import android.app.Activity
 import androidx.compose.material3.MaterialTheme
@@ -32,7 +32,7 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun HabbitAtTheme(
+fun habitAtTheme(
     content: @Composable () -> Unit
 ) {
     val colorScheme = LightColorScheme
@@ -48,7 +48,7 @@ fun HabbitAtTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = HabbitAtTypography,
+        typography = habitAtTypography,
         content = content
     )
 }

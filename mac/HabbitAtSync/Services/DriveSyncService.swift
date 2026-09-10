@@ -18,14 +18,14 @@ class DriveSyncService: ObservableObject {
     
     private var syncFileUrl: URL {
         let appSupport = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
-        let dir = appSupport.appendingPathComponent("HabbitAt", isDirectory: true)
+        let dir = appSupport.appendingPathComponent("habitAt", isDirectory: true)
         try? FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
         return dir.appendingPathComponent("sync-metadata.json")
     }
 
     private var altSyncFileUrl: URL {
         let home = FileManager.default.homeDirectoryForCurrentUser
-        let dir = home.appendingPathComponent(".habbitat_sync", isDirectory: true)
+        let dir = home.appendingPathComponent(".habitAt_sync", isDirectory: true)
         try? FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
         return dir.appendingPathComponent("sync-metadata.json")
     }

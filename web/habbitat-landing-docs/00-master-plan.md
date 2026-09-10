@@ -1,8 +1,8 @@
-# 00 — Master Plan: HabbitAt Landing + ParamStore + About Website
+# 00 — Master Plan: habitAt Landing + ParamStore + About Website
 
 ## Project Identity
 
-This is the public web presence for HabbitAt, an AI-verified habit-enforcement Android app (photo-proof submission, AI image verification, real streak tracking, frequency-aware scheduling). This website is a **separate codebase** from the Android app and the Mac sync app. It does not read from Room, Drive, or any app data source. All copy and feature claims come from the docs in this set — nothing is invented by the agent beyond what is specified here.
+This is the public web presence for habitAt, an AI-verified habit-enforcement Android app (photo-proof submission, AI image verification, real streak tracking, frequency-aware scheduling). This website is a **separate codebase** from the Android app and the Mac sync app. It does not read from Room, Drive, or any app data source. All copy and feature claims come from the docs in this set — nothing is invented by the agent beyond what is specified here.
 
 Three pages, one project:
 

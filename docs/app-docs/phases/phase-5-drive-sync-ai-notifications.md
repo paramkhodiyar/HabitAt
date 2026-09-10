@@ -6,7 +6,7 @@ Two related upgrades that both depend on everything before them working. Can be 
 1. Google Sign-In (personal account), scoped only to a dedicated app folder — not full Drive access. OAuth client credentials come from `ENVIRONMENT.md` and will be blank until Param supplies them — build the real Sign-In flow now; see `INSTRUCTIONS.md` for the correct not-yet-configured behavior.
 2. Folder contract (must match exactly, the Mac app in Phase 6 depends on this):
    ```
-   HabbitAt/
+   habitAt/
      <habit-slug>/
        YYYY-MM-DD.jpg
      sync-metadata.json   ← array of CompletionRecord-equivalent entries: habitId, date, driveFileId, verified, confidence, completedAt, streak

@@ -7,7 +7,7 @@ OPENROUTER_API_KEY=
 GOOGLE_OAUTH_CLIENT_ID=
 
 # Required to build an installable release APK.
-RELEASE_STORE_FILE=/absolute/path/to/habbitat-release.jks
+RELEASE_STORE_FILE=/absolute/path/to/habitAt-release.jks
 RELEASE_STORE_PASSWORD=
 RELEASE_KEY_ALIAS=
 RELEASE_KEY_PASSWORD=

@@ -31,7 +31,7 @@ Full Self-Healing Verification Loop, plus a full top-to-bottom scroll-through of
 
 - **What was built**:
   - `components/features/FeatureSection.tsx`: Reusable layout section primitive supporting alternating grid rhythms (`split` 7/5, `split-reverse` 5/7, `triptych` 3-column, `full-bleed` band wrapper) with Framer Motion `whileInView` scroll-reveal animations (`easeOut`, `duration: 0.5s`).
-  - `components/features/FeatureGrid.tsx`: Responsive 4-column "How HabbitAt Enforces Discipline" step sequence grid with staggered entry motion and step numbers (`01` through `04`).
+  - `components/features/FeatureGrid.tsx`: Responsive 4-column "How habitAt Enforces Discipline" step sequence grid with staggered entry motion and step numbers (`01` through `04`).
   - Five feature sections in `app/page.tsx` covering all core mechanics from `DESIGN.md`:
     1. *Photo-Proof + AI Verification* (7/5 split with AI confidence analysis panel).
     2. *Real Streak Tracking* (5/7 reverse split with zero-based streak milestone tracker).

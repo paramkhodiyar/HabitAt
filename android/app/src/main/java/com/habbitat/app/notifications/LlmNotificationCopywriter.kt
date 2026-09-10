@@ -1,6 +1,6 @@
-package com.habbitat.app.notifications
+package com.habitAt.app.notifications
 
-import com.habbitat.app.BuildConfig
+import com.habitAt.app.BuildConfig
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.withTimeoutOrNull
@@ -51,7 +51,7 @@ class LlmNotificationCopywriter : NotificationCopywriter {
         val result = withTimeoutOrNull(5000L) {
             try {
                 val prompt = """
-                    You are an unyielding, brutal AI discipline supervisor for a habit tracking app called HabbitAt.
+                    You are an unyielding, brutal AI discipline supervisor for a habit tracking app called habitAt.
                     Habit Name: "$habitName"
                     Frequency: "${frequency.uppercase()}"
                     Target Duration: $targetDurationMinutes minutes

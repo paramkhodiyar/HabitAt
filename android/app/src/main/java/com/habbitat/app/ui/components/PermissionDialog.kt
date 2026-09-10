@@ -1,4 +1,4 @@
-package com.habbitat.app.ui.components
+package com.habitAt.app.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -36,16 +36,16 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
-import com.habbitat.app.ui.theme.CardSurface
-import com.habbitat.app.ui.theme.GlassBorder
-import com.habbitat.app.ui.theme.HabbitAtTypography
-import com.habbitat.app.ui.theme.IndigoLight
-import com.habbitat.app.ui.theme.IndigoSecondary
-import com.habbitat.app.ui.theme.InkMuted
-import com.habbitat.app.ui.theme.InkPrimary
-import com.habbitat.app.ui.theme.InkSecondary
-import com.habbitat.app.ui.theme.SaffronLight
-import com.habbitat.app.ui.theme.SaffronPrimary
+import com.habitAt.app.ui.theme.CardSurface
+import com.habitAt.app.ui.theme.GlassBorder
+import com.habitAt.app.ui.theme.habitAtTypography
+import com.habitAt.app.ui.theme.IndigoLight
+import com.habitAt.app.ui.theme.IndigoSecondary
+import com.habitAt.app.ui.theme.InkMuted
+import com.habitAt.app.ui.theme.InkPrimary
+import com.habitAt.app.ui.theme.InkSecondary
+import com.habitAt.app.ui.theme.SaffronLight
+import com.habitAt.app.ui.theme.SaffronPrimary
 
 @Composable
 fun PermissionDialog(
@@ -83,7 +83,7 @@ fun PermissionDialog(
 
                 Text(
                     text = "Habit Enforcement Setup",
-                    style = HabbitAtTypography.headlineMedium,
+                    style = habitAtTypography.headlineMedium,
                     color = InkPrimary
                 )
 
@@ -91,7 +91,7 @@ fun PermissionDialog(
 
                 Text(
                     text = "HabitAt needs exact scheduling and notifications to ensure your escalating reminders survive Doze and Standby modes.",
-                    style = HabbitAtTypography.bodyMedium,
+                    style = habitAtTypography.bodyMedium,
                     color = InkSecondary
                 )
 
@@ -143,7 +143,7 @@ fun PermissionDialog(
                 ) {
                     Text(
                         text = "Grant Enforcement Permissions",
-                        style = HabbitAtTypography.labelLarge,
+                        style = habitAtTypography.labelLarge,
                         color = InkPrimary,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
@@ -155,7 +155,7 @@ fun PermissionDialog(
                 TextButton(onClick = onDismiss) {
                     Text(
                         text = "Maybe Later",
-                        style = HabbitAtTypography.labelLarge,
+                        style = habitAtTypography.labelLarge,
                         color = InkMuted
                     )
                 }
@@ -194,12 +194,12 @@ private fun PermissionFeatureItem(
         Column(modifier = Modifier.weight(1f)) {
             Text(
                 text = title,
-                style = HabbitAtTypography.titleMedium,
+                style = habitAtTypography.titleMedium,
                 color = InkPrimary
             )
             Text(
                 text = subtitle,
-                style = HabbitAtTypography.bodyMedium,
+                style = habitAtTypography.bodyMedium,
                 color = InkSecondary
             )
         }

@@ -1,9 +1,9 @@
-package com.habbitat.app.notifications
+package com.habitAt.app.notifications
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import com.habbitat.app.HabbitAtApp
+import com.habitAt.app.habitAtApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -15,7 +15,7 @@ class BootReceiver : BroadcastReceiver() {
             val pendingResult = goAsync()
             CoroutineScope(Dispatchers.IO).launch {
                 try {
-                    val repository = (context.applicationContext as HabbitAtApp).repository
+                    val repository = (context.applicationContext as habitAtApp).repository
                     val habits = repository.getHabitsList()
                     habits.forEach { habit ->
                         ReminderScheduler.scheduleFirstReminder(context, habit)

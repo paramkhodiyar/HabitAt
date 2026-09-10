@@ -38,7 +38,7 @@ export default function AboutPage() {
               About the Developer
             </h1>
             <p className="text-base sm:text-lg text-ink-muted leading-relaxed max-w-2xl">
-              The story, engineering principles, and motivation behind HabbitAt&apos;s commitment enforcement system.
+              The story, engineering principles, and motivation behind habitAt&apos;s commitment enforcement system.
             </p>
           </div>
 

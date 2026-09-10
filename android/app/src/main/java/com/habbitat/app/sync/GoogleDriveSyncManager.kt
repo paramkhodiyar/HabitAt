@@ -1,12 +1,12 @@
-package com.habbitat.app.sync
+package com.habitAt.app.sync
 
 import android.content.Context
 import android.net.Uri
 import com.google.gson.Gson
-import com.habbitat.app.BuildConfig
-import com.habbitat.app.data.local.entity.CompletionRecord
-import com.habbitat.app.data.local.entity.Habit
-import com.habbitat.app.data.repository.HabitRepository
+import com.habitAt.app.BuildConfig
+import com.habitAt.app.data.local.entity.CompletionRecord
+import com.habitAt.app.data.local.entity.Habit
+import com.habitAt.app.data.repository.HabitRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaType
@@ -89,7 +89,7 @@ class GoogleDriveSyncManager {
             )
 
             val jsonString = gson.toJson(metadataFile)
-            // Upload jsonString to HabbitAt/sync-metadata.json
+            // Upload jsonString to habitAt/sync-metadata.json
             true
         } catch (e: Exception) {
             false

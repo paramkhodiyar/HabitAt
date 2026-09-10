@@ -1,4 +1,4 @@
-package com.habbitat.app.ui.calendar.components
+package com.habitAt.app.ui.calendar.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -28,18 +28,18 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
-import com.habbitat.app.ui.calendar.StreakStats
-import com.habbitat.app.ui.theme.CardSurface
-import com.habbitat.app.ui.theme.GlassBorder
-import com.habbitat.app.ui.theme.HabbitAtTypography
-import com.habbitat.app.ui.theme.IndigoLight
-import com.habbitat.app.ui.theme.IndigoSecondary
-import com.habbitat.app.ui.theme.InkPrimary
-import com.habbitat.app.ui.theme.InkSecondary
-import com.habbitat.app.ui.theme.SaffronLight
-import com.habbitat.app.ui.theme.SaffronPrimary
-import com.habbitat.app.ui.theme.TurmericGreenSuccess
-import com.habbitat.app.ui.theme.TurmericLight
+import com.habitAt.app.ui.calendar.StreakStats
+import com.habitAt.app.ui.theme.CardSurface
+import com.habitAt.app.ui.theme.GlassBorder
+import com.habitAt.app.ui.theme.habitAtTypography
+import com.habitAt.app.ui.theme.IndigoLight
+import com.habitAt.app.ui.theme.IndigoSecondary
+import com.habitAt.app.ui.theme.InkPrimary
+import com.habitAt.app.ui.theme.InkSecondary
+import com.habitAt.app.ui.theme.SaffronLight
+import com.habitAt.app.ui.theme.SaffronPrimary
+import com.habitAt.app.ui.theme.TurmericGreenSuccess
+import com.habitAt.app.ui.theme.TurmericLight
 
 @Composable
 fun StreakStatsBlock(
@@ -121,7 +121,7 @@ private fun StatItem(
 
         Text(
             text = valueText,
-            style = HabbitAtTypography.displaySmall,
+            style = habitAtTypography.displaySmall,
             color = InkPrimary
         )
 
@@ -129,7 +129,7 @@ private fun StatItem(
 
         Text(
             text = labelText,
-            style = HabbitAtTypography.labelMedium,
+            style = habitAtTypography.labelMedium,
             color = InkSecondary
         )
     }

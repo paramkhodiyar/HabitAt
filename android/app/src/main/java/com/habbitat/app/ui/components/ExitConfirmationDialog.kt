@@ -1,4 +1,4 @@
-package com.habbitat.app.ui.components
+package com.habitAt.app.ui.components
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
@@ -8,11 +8,11 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
-import com.habbitat.app.ui.theme.CardSurface
-import com.habbitat.app.ui.theme.HabbitAtTypography
-import com.habbitat.app.ui.theme.InkPrimary
-import com.habbitat.app.ui.theme.InkSecondary
-import com.habbitat.app.ui.theme.SaffronPrimary
+import com.habitAt.app.ui.theme.CardSurface
+import com.habitAt.app.ui.theme.habitAtTypography
+import com.habitAt.app.ui.theme.InkPrimary
+import com.habitAt.app.ui.theme.InkSecondary
+import com.habitAt.app.ui.theme.SaffronPrimary
 
 @Composable
 fun ExitConfirmationDialog(
@@ -24,14 +24,14 @@ fun ExitConfirmationDialog(
         title = {
             Text(
                 text = "Exit HabitAt?",
-                style = HabbitAtTypography.headlineMedium,
+                style = habitAtTypography.headlineMedium,
                 color = InkPrimary
             )
         },
         text = {
             Text(
                 text = "Are you sure you want to exit the application?",
-                style = HabbitAtTypography.bodyMedium,
+                style = habitAtTypography.bodyMedium,
                 color = InkSecondary
             )
         },

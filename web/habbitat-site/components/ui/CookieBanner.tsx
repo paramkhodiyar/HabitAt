@@ -11,7 +11,7 @@ export default function CookieBanner() {
     if (!analyticsId) return;
 
     const timer = setTimeout(() => {
-      const consent = localStorage.getItem("habbitat_cookie_consent");
+      const consent = localStorage.getItem("habitAt_cookie_consent");
       if (!consent) {
         setVisible(true);
       }
@@ -25,12 +25,12 @@ export default function CookieBanner() {
   }
 
   const handleAccept = () => {
-    localStorage.setItem("habbitat_cookie_consent", "accepted");
+    localStorage.setItem("habitAt_cookie_consent", "accepted");
     setVisible(false);
   };
 
   const handleDecline = () => {
-    localStorage.setItem("habbitat_cookie_consent", "declined");
+    localStorage.setItem("habitAt_cookie_consent", "declined");
     setVisible(false);
   };
 

@@ -1,8 +1,8 @@
-package com.habbitat.app.ui.theme
+package com.habitAt.app.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-// HabbitAt Color Tokens (DESIGN.md - Modern Indian Minimalism)
+// habitAt Color Tokens (DESIGN.md - Modern Indian Minimalism)
 val WarmIvory = Color(0xFFFAF6EF)
 val CardSurface = Color(0xFFFFFFFF)
 val InkPrimary = Color(0xFF2A2320)

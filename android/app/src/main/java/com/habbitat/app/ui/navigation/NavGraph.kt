@@ -1,4 +1,4 @@
-package com.habbitat.app.ui.navigation
+package com.habitAt.app.ui.navigation
 
 import android.net.Uri
 import androidx.compose.animation.AnimatedContentTransitionScope
@@ -23,13 +23,13 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.habbitat.app.ui.calendar.CalendarScreen
-import com.habbitat.app.ui.calendar.CalendarViewModel
-import com.habbitat.app.ui.home.HomeScreen
-import com.habbitat.app.ui.home.HomeViewModel
-import com.habbitat.app.ui.proof.CameraCaptureScreen
-import com.habbitat.app.ui.proof.VerificationResultScreen
-import com.habbitat.app.ui.settings.SettingsScreen
+import com.habitAt.app.ui.calendar.CalendarScreen
+import com.habitAt.app.ui.calendar.CalendarViewModel
+import com.habitAt.app.ui.home.HomeScreen
+import com.habitAt.app.ui.home.HomeViewModel
+import com.habitAt.app.ui.proof.CameraCaptureScreen
+import com.habitAt.app.ui.proof.VerificationResultScreen
+import com.habitAt.app.ui.settings.SettingsScreen
 
 @Composable
 fun NavGraph(

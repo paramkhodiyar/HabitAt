@@ -1,4 +1,4 @@
-package com.habbitat.app.ui.calendar.components
+package com.habitAt.app.ui.calendar.components
 
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.RepeatMode
@@ -33,16 +33,16 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
-import com.habbitat.app.ui.calendar.DayTileData
-import com.habbitat.app.ui.calendar.TileState
-import com.habbitat.app.ui.theme.CardSurface
-import com.habbitat.app.ui.theme.GlassBorder
-import com.habbitat.app.ui.theme.HabbitAtTypography
-import com.habbitat.app.ui.theme.InkMuted
-import com.habbitat.app.ui.theme.InkPrimary
-import com.habbitat.app.ui.theme.InkSecondary
-import com.habbitat.app.ui.theme.SaffronPrimary
-import com.habbitat.app.ui.theme.TerracottaTertiary
+import com.habitAt.app.ui.calendar.DayTileData
+import com.habitAt.app.ui.calendar.TileState
+import com.habitAt.app.ui.theme.CardSurface
+import com.habitAt.app.ui.theme.GlassBorder
+import com.habitAt.app.ui.theme.habitAtTypography
+import com.habitAt.app.ui.theme.InkMuted
+import com.habitAt.app.ui.theme.InkPrimary
+import com.habitAt.app.ui.theme.InkSecondary
+import com.habitAt.app.ui.theme.SaffronPrimary
+import com.habitAt.app.ui.theme.TerracottaTertiary
 
 @Composable
 fun DayTile(
@@ -82,7 +82,7 @@ fun DayTile(
                     ) {
                         Text(
                             text = "${tileData.dayOfMonth}",
-                            style = HabbitAtTypography.labelLarge,
+                            style = habitAtTypography.labelLarge,
                             color = InkPrimary
                         )
                     }
@@ -124,7 +124,7 @@ fun DayTile(
             ) {
                 Text(
                     text = "${tileData.dayOfMonth}",
-                    style = HabbitAtTypography.labelMedium,
+                    style = habitAtTypography.labelMedium,
                     fontSize = 11.sp,
                     color = InkMuted
                 )
@@ -156,7 +156,7 @@ fun DayTile(
             ) {
                 Text(
                     text = "${tileData.dayOfMonth}",
-                    style = HabbitAtTypography.labelLarge,
+                    style = habitAtTypography.labelLarge,
                     color = SaffronPrimary
                 )
             }
@@ -173,7 +173,7 @@ fun DayTile(
             ) {
                 Text(
                     text = "${tileData.dayOfMonth}",
-                    style = HabbitAtTypography.labelMedium,
+                    style = habitAtTypography.labelMedium,
                     fontSize = 11.sp,
                     color = InkSecondary.copy(alpha = 0.6f)
                 )

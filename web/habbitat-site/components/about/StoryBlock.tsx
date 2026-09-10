@@ -15,7 +15,7 @@ export default function StoryBlock() {
               The Origin Story
             </h2>
             <p className="text-xs text-ink-muted">
-              Why HabbitAt was created &amp; how a lecture room hack became a production app.
+              Why habitAt was created &amp; how a lecture room hack became a production app.
             </p>
           </div>
         </div>
@@ -56,12 +56,12 @@ export default function StoryBlock() {
         </p>
 
         <p>
-          One week of intense Kotlin engineering, agentic pairing in Antigravity, and Android architecture hacking later, the initial production build of <strong className="font-semibold text-ink">HabbitAt</strong> was deployed and live on ParamStore.
+          One week of intense Kotlin engineering, agentic pairing in Antigravity, and Android architecture hacking later, the initial production build of <strong className="font-semibold text-ink">habitAt</strong> was deployed and live on ParamStore.
         </p>
 
         <div className="p-4 bg-bg border border-border rounded-[4px] text-xs text-ink-muted space-y-2">
           <div className="flex items-center gap-2 font-mono font-semibold text-accent uppercase text-[11px]">
-            <Sparkles size={14} /> The HabbitAt Rulebook
+            <Sparkles size={14} /> The habitAt Rulebook
           </div>
           <p className="leading-relaxed">
             No artificial initial streak boosts. No unearned checkmarks. Just timestamped photo proof evaluated by vision AI before your streak advances. Starting strictly at zero.

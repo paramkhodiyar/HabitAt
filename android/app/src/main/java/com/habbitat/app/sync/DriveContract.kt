@@ -1,4 +1,4 @@
-package com.habbitat.app.sync
+package com.habitAt.app.sync
 
 import com.google.gson.annotations.SerializedName
 

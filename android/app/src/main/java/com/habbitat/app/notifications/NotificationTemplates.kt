@@ -1,4 +1,4 @@
-package com.habbitat.app.notifications
+package com.habitAt.app.notifications
 
 object NotificationTemplates {
 

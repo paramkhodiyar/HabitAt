@@ -1,4 +1,4 @@
-# HabbitAt — Design System (canonical, read by every phase)
+# habitAt — Design System (canonical, read by every phase)
 
 This doc is the visual and motion law for both the Android app and the Mac sync app. Any agent implementing any screen reads this first. If a phase doc doesn't mention a visual detail, this doc decides it — don't invent a new pattern ad hoc.
 
@@ -49,7 +49,7 @@ Every screen has a very subtle full-bleed background layer of line-art motif (ko
 - Loading states are motion, not spinners: skeleton shimmer or the app's own line-art motif animating subtly, never a bare circular progress indicator.
 
 ## 8. Calendar/grid component (signature UI — detailed further in Phase 4)
-Borrowing the *interaction concept* from the "One Photo / Day" reference screenshot: months stack chronologically, each day is a small rounded tile, completed days show a thumbnail of the actual submitted proof. HabbitAt's version adds state beyond "has photo or not":
+Borrowing the *interaction concept* from the "One Photo / Day" reference screenshot: months stack chronologically, each day is a small rounded tile, completed days show a thumbnail of the actual submitted proof. habitAt's version adds state beyond "has photo or not":
 - ✓ completed → proof thumbnail, subtle saffron corner accent
 - ✗ missed → dark/muted empty tile, terracotta hairline border, no shame-red
 - 🔥 today, incomplete → animated pulsing outline, not filled

@@ -1,4 +1,4 @@
-package com.habbitat.app.ui.home
+package com.habitAt.app.ui.home
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -44,17 +44,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.habbitat.app.ui.theme.CardSurface
-import com.habbitat.app.ui.theme.GlassBorder
-import com.habbitat.app.ui.theme.HabbitAtTypography
-import com.habbitat.app.ui.theme.IndigoLight
-import com.habbitat.app.ui.theme.IndigoSecondary
-import com.habbitat.app.ui.theme.InkMuted
-import com.habbitat.app.ui.theme.InkPrimary
-import com.habbitat.app.ui.theme.InkSecondary
-import com.habbitat.app.ui.theme.SaffronLight
-import com.habbitat.app.ui.theme.SaffronPrimary
-import com.habbitat.app.ui.theme.TerracottaTertiary
+import com.habitAt.app.ui.theme.CardSurface
+import com.habitAt.app.ui.theme.GlassBorder
+import com.habitAt.app.ui.theme.habitAtTypography
+import com.habitAt.app.ui.theme.IndigoLight
+import com.habitAt.app.ui.theme.IndigoSecondary
+import com.habitAt.app.ui.theme.InkMuted
+import com.habitAt.app.ui.theme.InkPrimary
+import com.habitAt.app.ui.theme.InkSecondary
+import com.habitAt.app.ui.theme.SaffronLight
+import com.habitAt.app.ui.theme.SaffronPrimary
+import com.habitAt.app.ui.theme.TerracottaTertiary
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 data class QuickPresetIdea(
@@ -116,7 +116,7 @@ fun CreateHabitSheet(
             ) {
                 Text(
                     text = "Craft a Habit",
-                    style = HabbitAtTypography.displaySmall,
+                    style = habitAtTypography.displaySmall,
                     color = InkPrimary
                 )
                 IconButton(onClick = onDismiss) {
@@ -133,7 +133,7 @@ fun CreateHabitSheet(
             // Quick Idea Preset Pills
             Text(
                 text = "Quick Inspiration",
-                style = HabbitAtTypography.labelMedium,
+                style = habitAtTypography.labelMedium,
                 color = InkSecondary
             )
             Spacer(modifier = Modifier.height(6.dp))
@@ -158,7 +158,7 @@ fun CreateHabitSheet(
                     ) {
                         Text(
                             text = preset.pillName,
-                            style = HabbitAtTypography.labelMedium,
+                            style = habitAtTypography.labelMedium,
                             color = IndigoSecondary
                         )
                     }
@@ -170,7 +170,7 @@ fun CreateHabitSheet(
             // Habit Title Input
             Text(
                 text = "Habit Title",
-                style = HabbitAtTypography.labelLarge,
+                style = habitAtTypography.labelLarge,
                 color = InkPrimary
             )
             Spacer(modifier = Modifier.height(6.dp))
@@ -200,7 +200,7 @@ fun CreateHabitSheet(
             if (isError) {
                 Text(
                     text = "Please enter a habit title",
-                    style = HabbitAtTypography.labelMedium,
+                    style = habitAtTypography.labelMedium,
                     color = TerracottaTertiary,
                     modifier = Modifier.padding(start = 4.dp, top = 4.dp)
                 )
@@ -211,7 +211,7 @@ fun CreateHabitSheet(
             // Optional Habit Description
             Text(
                 text = "Habit Description (Optional)",
-                style = HabbitAtTypography.labelLarge,
+                style = habitAtTypography.labelLarge,
                 color = InkPrimary
             )
             Spacer(modifier = Modifier.height(6.dp))
@@ -241,7 +241,7 @@ fun CreateHabitSheet(
             // Schedule Cadence (Daily, Weekly, Monthly)
             Text(
                 text = "Schedule Cadence",
-                style = HabbitAtTypography.labelLarge,
+                style = habitAtTypography.labelLarge,
                 color = InkPrimary
             )
             Spacer(modifier = Modifier.height(6.dp))
@@ -267,7 +267,7 @@ fun CreateHabitSheet(
                     ) {
                         Text(
                             text = label,
-                            style = HabbitAtTypography.labelMedium,
+                            style = habitAtTypography.labelMedium,
                             color = if (isSelected) SaffronPrimary else InkPrimary,
                             fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal
                         )
@@ -285,12 +285,12 @@ fun CreateHabitSheet(
             ) {
                 Text(
                     text = "Target Duration",
-                    style = HabbitAtTypography.labelLarge,
+                    style = habitAtTypography.labelLarge,
                     color = InkPrimary
                 )
                 Text(
                     text = "$targetDurationMinutes mins",
-                    style = HabbitAtTypography.titleMedium,
+                    style = habitAtTypography.titleMedium,
                     fontWeight = FontWeight.Bold,
                     color = SaffronPrimary
                 )
@@ -344,7 +344,7 @@ fun CreateHabitSheet(
                         ) {
                             Text(
                                 text = "${dur}m",
-                                style = HabbitAtTypography.labelMedium,
+                                style = habitAtTypography.labelMedium,
                                 color = if (isSel) CardSurface else InkPrimary
                             )
                         }
@@ -374,7 +374,7 @@ fun CreateHabitSheet(
             // Photo Proof Description
             Text(
                 text = "Required Photo Proof",
-                style = HabbitAtTypography.labelLarge,
+                style = habitAtTypography.labelLarge,
                 color = InkPrimary
             )
             Spacer(modifier = Modifier.height(6.dp))
@@ -406,12 +406,12 @@ fun CreateHabitSheet(
             ) {
                 Text(
                     text = "Nudge Reminder Frequency",
-                    style = HabbitAtTypography.labelLarge,
+                    style = habitAtTypography.labelLarge,
                     color = InkPrimary
                 )
                 Text(
                     text = "Every $reminderIntervalMinutes mins",
-                    style = HabbitAtTypography.titleSmall,
+                    style = habitAtTypography.titleSmall,
                     color = InkSecondary
                 )
             }
@@ -438,7 +438,7 @@ fun CreateHabitSheet(
                     ) {
                         Text(
                             text = "${interval}m",
-                            style = HabbitAtTypography.labelMedium,
+                            style = habitAtTypography.labelMedium,
                             color = if (isSelected) SaffronPrimary else InkPrimary
                         )
                     }
@@ -480,7 +480,7 @@ fun CreateHabitSheet(
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
                     text = "Create Habit",
-                    style = HabbitAtTypography.titleMedium,
+                    style = habitAtTypography.titleMedium,
                     color = InkPrimary
                 )
             }

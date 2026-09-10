@@ -1,4 +1,4 @@
-package com.habbitat.app.ui.home
+package com.habitAt.app.ui.home
 
 import android.net.Uri
 import androidx.compose.foundation.background
@@ -60,22 +60,22 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.habbitat.app.data.local.entity.CompletionRecord
-import com.habbitat.app.data.local.entity.Habit
-import com.habbitat.app.ui.theme.CardSurface
-import com.habbitat.app.ui.theme.GlassBorder
-import com.habbitat.app.ui.theme.HabbitAtTypography
-import com.habbitat.app.ui.theme.IndigoLight
-import com.habbitat.app.ui.theme.IndigoSecondary
-import com.habbitat.app.ui.theme.InkMuted
-import com.habbitat.app.ui.theme.InkPrimary
-import com.habbitat.app.ui.theme.InkSecondary
-import com.habbitat.app.ui.theme.SaffronGlow
-import com.habbitat.app.ui.theme.SaffronLight
-import com.habbitat.app.ui.theme.SaffronPrimary
-import com.habbitat.app.ui.theme.TerracottaHairline
-import com.habbitat.app.ui.theme.TurmericGreenSuccess
-import com.habbitat.app.ui.theme.TurmericLight
+import com.habitAt.app.data.local.entity.CompletionRecord
+import com.habitAt.app.data.local.entity.Habit
+import com.habitAt.app.ui.theme.CardSurface
+import com.habitAt.app.ui.theme.GlassBorder
+import com.habitAt.app.ui.theme.habitAtTypography
+import com.habitAt.app.ui.theme.IndigoLight
+import com.habitAt.app.ui.theme.IndigoSecondary
+import com.habitAt.app.ui.theme.InkMuted
+import com.habitAt.app.ui.theme.InkPrimary
+import com.habitAt.app.ui.theme.InkSecondary
+import com.habitAt.app.ui.theme.SaffronGlow
+import com.habitAt.app.ui.theme.SaffronLight
+import com.habitAt.app.ui.theme.SaffronPrimary
+import com.habitAt.app.ui.theme.TerracottaHairline
+import com.habitAt.app.ui.theme.TurmericGreenSuccess
+import com.habitAt.app.ui.theme.TurmericLight
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -174,13 +174,13 @@ fun HabitDetailModal(
                 Column(modifier = Modifier.weight(1f)) {
                     Text(
                         text = habit.name,
-                        style = HabbitAtTypography.displayMedium,
+                        style = habitAtTypography.displayMedium,
                         color = InkPrimary
                     )
                     Spacer(modifier = Modifier.height(2.dp))
                     Text(
                         text = "Habit Details & History Ledger",
-                        style = HabbitAtTypography.bodyMedium,
+                        style = habitAtTypography.bodyMedium,
                         color = InkSecondary
                     )
                 }
@@ -271,7 +271,7 @@ fun HabitDetailModal(
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
                             text = habit.description,
-                            style = HabbitAtTypography.bodyMedium,
+                            style = habitAtTypography.bodyMedium,
                             color = InkPrimary
                         )
                     }
@@ -299,7 +299,7 @@ fun HabitDetailModal(
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
                             text = habit.proofDescription,
-                            style = HabbitAtTypography.bodyMedium,
+                            style = habitAtTypography.bodyMedium,
                             color = IndigoSecondary
                         )
                     }
@@ -316,7 +316,7 @@ fun HabitDetailModal(
             ) {
                 Text(
                     text = monthName,
-                    style = HabbitAtTypography.titleMedium,
+                    style = habitAtTypography.titleMedium,
                     color = InkPrimary
                 )
 
@@ -337,7 +337,7 @@ fun HabitDetailModal(
                             Spacer(modifier = Modifier.width(4.dp))
                             Text(
                                 text = "Completed Today",
-                                style = HabbitAtTypography.labelMedium,
+                                style = habitAtTypography.labelMedium,
                                 color = TurmericGreenSuccess,
                                 fontWeight = FontWeight.Bold
                             )
@@ -353,7 +353,7 @@ fun HabitDetailModal(
                 listOf("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun").forEach { day ->
                     Text(
                         text = day,
-                        style = HabbitAtTypography.labelSmall,
+                        style = habitAtTypography.labelSmall,
                         color = InkMuted,
                         textAlign = TextAlign.Center,
                         modifier = Modifier.weight(1f)
@@ -406,7 +406,7 @@ fun HabitDetailModal(
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
                             text = "Verified & Completed Today",
-                            style = HabbitAtTypography.labelLarge,
+                            style = habitAtTypography.labelLarge,
                             color = TurmericGreenSuccess,
                             fontWeight = FontWeight.Bold
                         )
@@ -424,7 +424,7 @@ fun HabitDetailModal(
                 ) {
                     Text(
                         text = "Log Photo Proof",
-                        style = HabbitAtTypography.labelLarge,
+                        style = habitAtTypography.labelLarge,
                         color = InkPrimary
                     )
                 }
@@ -446,7 +446,7 @@ fun HabitDetailModal(
             ) {
                 Text(
                     text = if (isCompletedToday) "Quick Mark (Already Completed Today)" else "Emergency Quick Mark (No Photo)",
-                    style = HabbitAtTypography.labelMedium,
+                    style = habitAtTypography.labelMedium,
                     color = if (isCompletedToday) InkMuted else InkSecondary
                 )
             }
@@ -467,13 +467,13 @@ fun HabitDetailModal(
             ) {
                 Text(
                     text = "Proof Recorded on ${record.date}",
-                    style = HabbitAtTypography.headlineMedium,
+                    style = habitAtTypography.headlineMedium,
                     color = InkPrimary
                 )
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
                     text = "AI Confidence: ${(record.confidence * 100).toInt()}% • Streak: ${record.streakAtCompletion}",
-                    style = HabbitAtTypography.bodyMedium,
+                    style = habitAtTypography.bodyMedium,
                     color = InkSecondary
                 )
 
@@ -508,7 +508,7 @@ fun HabitDetailModal(
                             Spacer(modifier = Modifier.height(8.dp))
                             Text(
                                 text = "Manually Verified Record",
-                                style = HabbitAtTypography.bodyMedium,
+                                style = habitAtTypography.bodyMedium,
                                 color = TurmericGreenSuccess,
                                 fontWeight = FontWeight.Bold
                             )
@@ -545,14 +545,14 @@ fun HabitDetailModal(
             title = {
                 Text(
                     text = "Delete Habit?",
-                    style = HabbitAtTypography.headlineMedium,
+                    style = habitAtTypography.headlineMedium,
                     color = InkPrimary
                 )
             },
             text = {
                 Text(
                     text = "Are you sure you want to delete '${habit.name}'? This will remove all habit parameters.",
-                    style = HabbitAtTypography.bodyMedium,
+                    style = habitAtTypography.bodyMedium,
                     color = InkSecondary
                 )
             },
@@ -641,7 +641,7 @@ private fun DayTile(
         } else {
             Text(
                 text = "${dayInfo.dayNumber}",
-                style = HabbitAtTypography.labelSmall,
+                style = habitAtTypography.labelSmall,
                 color = if (dayInfo.isToday) SaffronPrimary else if (dayInfo.isPast) InkMuted else InkSecondary
             )
         }
@@ -673,7 +673,7 @@ private fun MetaBadge(
             Spacer(modifier = Modifier.width(4.dp))
             Text(
                 text = label,
-                style = HabbitAtTypography.labelSmall,
+                style = habitAtTypography.labelSmall,
                 color = contentColor,
                 fontWeight = FontWeight.SemiBold
             )

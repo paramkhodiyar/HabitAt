@@ -35,7 +35,7 @@ Run the full Self-Healing Verification Loop from `00-master-plan.md`. At this ph
 ## Completion Note
 
 - **What was built**: 
-  - Scaffolded Next.js 16 (App Router + TypeScript) project at `web/habbitat-site`.
+  - Scaffolded Next.js 16 (App Router + TypeScript) project at `web/habitAt-site`.
   - Installed all required animation, 3D, and UI packages (`lucide-react`, `framer-motion`, `gsap`, `@react-three/fiber`, `@react-three/drei`, `three`, `@types/three`).
   - Defined CSS variable color tokens from `DESIGN.md` in `app/globals.css` and extended theme in `tailwind.config.ts`.
   - Explicitly disabled `boxShadow` and gradient utility classes in `tailwind.config.ts` and `app/globals.css`.
@@ -51,5 +51,5 @@ Run the full Self-Healing Verification Loop from `00-master-plan.md`. At this ph
   5. Overflow Check: PASS (`overflow-x: hidden` on html/body, zero scrollbars).
   6. Content Check: PASS (no unapproved mock/lorem content).
 - **Open Dependencies**: None for Phase 0.
-- **Deviations**: Scaffolded project inside `web/habbitat-site` alongside `web/habbitat-landing-docs` to keep docs and site codebase cleanly structured.
+- **Deviations**: Scaffolded project inside `web/habitAt-site` alongside `web/habitAt-landing-docs` to keep docs and site codebase cleanly structured.
 

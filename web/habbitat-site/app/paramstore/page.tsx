@@ -12,7 +12,7 @@ import { constructMetadata } from "@/lib/metadata";
 
 export const metadata = constructMetadata({
   title: "ParamStore — Direct APK Download & Sideload Center",
-  description: "Download verified signed Android APK release builds of HabbitAt directly via ParamStore.",
+  description: "Download verified signed Android APK release builds of habitAt directly via ParamStore.",
   path: "/paramstore",
 });
 
@@ -36,7 +36,7 @@ export default function ParamStorePage() {
                 Direct Sideload Installation Guide
               </h2>
               <p className="text-sm text-ink-muted mt-2 leading-relaxed">
-                HabbitAt is distributed directly via ParamStore as a signed Android APK. Follow these simple steps to install the app on your device.
+                habitAt is distributed directly via ParamStore as a signed Android APK. Follow these simple steps to install the app on your device.
               </p>
             </div>
 
@@ -64,7 +64,7 @@ export default function ParamStorePage() {
                 <IconBadge icon={CheckCircle2} variant="gold" size="md" />
                 <h3 className="font-bold text-base text-ink">3. Install & Launch</h3>
                 <p className="text-xs text-ink-muted leading-relaxed">
-                  Tap Install to complete setup. Open HabbitAt to create your first habit and start your verified streak.
+                  Tap Install to complete setup. Open habitAt to create your first habit and start your verified streak.
                 </p>
               </div>
             </div>

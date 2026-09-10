@@ -1,12 +1,12 @@
-package com.habbitat.app.verification
+package com.habitAt.app.verification
 
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.util.Base64
-import com.habbitat.app.BuildConfig
-import com.habbitat.app.data.local.entity.Habit
+import com.habitAt.app.BuildConfig
+import com.habitAt.app.data.local.entity.Habit
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaType

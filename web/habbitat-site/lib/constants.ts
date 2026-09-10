@@ -5,7 +5,7 @@ export interface ChangelogItem {
 }
 
 export const SITE_CONFIG = {
-  name: "HabbitAt",
+  name: "habitAt",
   tagline: "AI-Verified Habit Enforcement",
   description: "An AI-powered habit enforcer for personal discipline with photographic proof verification and escalating reminders.",
   developer: "Param Khodiyar",
@@ -48,7 +48,7 @@ export const CHANGELOG_DATA: ChangelogItem[] = [
     version: "1.0.0",
     date: "2026-08-20",
     changes: [
-      "Initial release of HabbitAt Android habit-enforcement app.",
+      "Initial release of habitAt Android habit-enforcement app.",
       "Core Room database schema and Jetpack Compose design system implementation.",
     ],
   },

@@ -6,7 +6,7 @@ Build the `/about` page: developer profile, story block, contact, and portfolio 
 
 ## Scope
 
-- `components/about/ProfileCard.tsx`: name (Param Khodiyar), short role/context line drawn from his actual background (CS + Data Science undergraduate, building HabbitAt as an AI-verified habit app — do not invent biographical details beyond what's provided here), contact email displayed as `paramkhodiyar1008@gmail.com` (mailto link).
+- `components/about/ProfileCard.tsx`: name (Param Khodiyar), short role/context line drawn from his actual background (CS + Data Science undergraduate, building habitAt as an AI-verified habit app — do not invent biographical details beyond what's provided here), contact email displayed as `paramkhodiyar1008@gmail.com` (mailto link).
 - `components/about/StoryBlock.tsx`: a correctly-sized, styled placeholder container clearly marked `TODO: story copy pending from Param` — this is the one explicitly allowed placeholder in the whole project per `AGENTS.md`. Build it so dropping in real prose later requires no layout changes.
 - `components/about/SocialLinks.tsx`: LinkedIn and GitHub, icon + label, `href="#"` placeholders until real URLs are supplied — flag as an open dependency in the completion note, do not guess a username or URL.
 - Layout: single strong editorial column within the `Container` grid (not full 12-column width for text), generous vertical rhythm, no 3D asset on this page.

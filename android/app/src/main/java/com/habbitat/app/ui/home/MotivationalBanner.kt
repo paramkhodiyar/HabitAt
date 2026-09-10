@@ -1,4 +1,4 @@
-package com.habbitat.app.ui.home
+package com.habitAt.app.ui.home
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -9,8 +9,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.habbitat.app.ui.theme.HabbitAtTypography
-import com.habbitat.app.ui.theme.InkPrimary
+import com.habitAt.app.ui.theme.habitAtTypography
+import com.habitAt.app.ui.theme.InkPrimary
 
 @Composable
 fun MotivationalBanner(
@@ -24,7 +24,7 @@ fun MotivationalBanner(
     ) {
         Text(
             text = "Welcome $userName,",
-            style = HabbitAtTypography.headlineMedium.copy(
+            style = habitAtTypography.headlineMedium.copy(
                 fontStyle = FontStyle.Italic,
                 fontSize = 20.sp
             ),

@@ -1,4 +1,4 @@
-package com.habbitat.app.ui.proof
+package com.habitAt.app.ui.proof
 
 import android.Manifest
 import android.content.Context
@@ -60,15 +60,15 @@ import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
-import com.habbitat.app.data.local.entity.Habit
-import com.habbitat.app.ui.theme.CardSurface
-import com.habbitat.app.ui.theme.GlassBorder
-import com.habbitat.app.ui.theme.HabbitAtMotion
-import com.habbitat.app.ui.theme.HabbitAtTypography
-import com.habbitat.app.ui.theme.InkPrimary
-import com.habbitat.app.ui.theme.InkSecondary
-import com.habbitat.app.ui.theme.SaffronPrimary
-import com.habbitat.app.ui.theme.WarmIvory
+import com.habitAt.app.data.local.entity.Habit
+import com.habitAt.app.ui.theme.CardSurface
+import com.habitAt.app.ui.theme.GlassBorder
+import com.habitAt.app.ui.theme.habitAtMotion
+import com.habitAt.app.ui.theme.habitAtTypography
+import com.habitAt.app.ui.theme.InkPrimary
+import com.habitAt.app.ui.theme.InkSecondary
+import com.habitAt.app.ui.theme.SaffronPrimary
+import com.habitAt.app.ui.theme.WarmIvory
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -169,13 +169,13 @@ fun CameraCaptureScreen(
             ) {
                 Text(
                     text = "Camera Permission Required",
-                    style = HabbitAtTypography.headlineMedium,
+                    style = habitAtTypography.headlineMedium,
                     color = CardSurface
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
-                    text = "HabbitAt needs camera access to capture habit proof photos.",
-                    style = HabbitAtTypography.bodyMedium,
+                    text = "habitAt needs camera access to capture habit proof photos.",
+                    style = habitAtTypography.bodyMedium,
                     color = InkSecondary
                 )
                 Spacer(modifier = Modifier.height(24.dp))
@@ -211,7 +211,7 @@ fun CameraCaptureScreen(
 
             Text(
                 text = habit.name,
-                style = HabbitAtTypography.titleLarge,
+                style = habitAtTypography.titleLarge,
                 color = CardSurface
             )
 
@@ -269,7 +269,7 @@ fun CameraCaptureScreen(
                 val isPressed by interactionSource.collectIsPressedAsState()
                 val shutterScale by animateFloatAsState(
                     targetValue = if (isPressed) 0.90f else 1.0f,
-                    animationSpec = HabbitAtMotion.SpringBouncy,
+                    animationSpec = habitAtMotion.SpringBouncy,
                     label = "shutter_scale"
                 )
 

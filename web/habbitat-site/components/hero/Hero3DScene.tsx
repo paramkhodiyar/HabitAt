@@ -39,7 +39,7 @@ export default function Hero3DScene({ scrollProgress = 0 }: Hero3DSceneProps) {
 
         {/* Screen Content Wrapper */}
         <div className="w-full h-full bg-bg rounded-[32px] overflow-hidden border border-border flex flex-col justify-between p-4 pt-7 relative">
-          
+
           {/* Top Screen Header */}
           <div className="flex items-center justify-between border-b border-border pb-3">
             <div className="flex items-center gap-2">
@@ -47,7 +47,7 @@ export default function Hero3DScene({ scrollProgress = 0 }: Hero3DSceneProps) {
                 <Flame size={14} />
               </div>
               <span className="font-serif font-bold text-sm text-ink tracking-tight">
-                HabbitAt
+                habitAt
               </span>
             </div>
             {/* Streak Counter Pill */}
@@ -73,7 +73,7 @@ export default function Hero3DScene({ scrollProgress = 0 }: Hero3DSceneProps) {
               <h4 className="font-serif font-bold text-base text-ink leading-tight">
                 Morning 5km Run
               </h4>
-              
+
               {/* Photo Proof Thumbnail Box */}
               <div className="w-full h-24 bg-bg border border-border rounded-[8px] flex flex-col items-center justify-center gap-1 text-ink-muted p-2">
                 <div className="w-8 h-8 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
@@ -99,15 +99,14 @@ export default function Hero3DScene({ scrollProgress = 0 }: Hero3DSceneProps) {
                 {[...Array(14)].map((_, i) => (
                   <div
                     key={i}
-                    className={`h-4 rounded-[3px] border ${
-                      i < 11
+                    className={`h-4 rounded-[3px] border ${i < 11
                         ? "bg-accent-2 border-accent-2"
                         : i === 11
-                        ? "bg-accent border-accent"
-                        : i === 12
-                        ? "bg-accent-3 border-accent-3"
-                        : "bg-bg border-border"
-                    }`}
+                          ? "bg-accent border-accent"
+                          : i === 12
+                            ? "bg-accent-3 border-accent-3"
+                            : "bg-bg border-border"
+                      }`}
                   />
                 ))}
               </div>

@@ -82,7 +82,7 @@ export default function HomePage() {
                     [ Submitted Photo Evidence: Gym Equipment Recognized ]
                   </div>
                   <div className="text-[11px] text-ink-muted">
-                    Analyzed by HabbitAt Vision AI Pipeline
+                    Analyzed by habitAt Vision AI Pipeline
                   </div>
                 </div>
 
@@ -107,7 +107,7 @@ export default function HomePage() {
         <FeatureSection
           rhythm="split-reverse"
           title="Streaks that mean something. Starting honestly at zero."
-          description="Most trackers start your streak with fake participation points. HabbitAt streaks start strictly at zero and advance only when verified proof is submitted on time. Miss a deadline without proof, and the streak resets without excuses."
+          description="Most trackers start your streak with fake participation points. habitAt streaks start strictly at zero and advance only when verified proof is submitted on time. Miss a deadline without proof, and the streak resets without excuses."
           leftContent={
             <div className="space-y-3 pt-2">
               <div className="flex items-center gap-3">
@@ -172,11 +172,10 @@ export default function HomePage() {
           {/* Card 1: Daily */}
           <div
             onClick={() => setActiveFrequency("daily")}
-            className={`border p-6 rounded-[4px] space-y-4 cursor-pointer transition-colors ${
-              activeFrequency === "daily"
+            className={`border p-6 rounded-[4px] space-y-4 cursor-pointer transition-colors ${activeFrequency === "daily"
                 ? "bg-surface border-accent"
                 : "bg-surface border-border hover:border-ink/30"
-            }`}
+              }`}
           >
             <div className="flex items-center justify-between">
               <IconBadge icon={Clock} variant="accent" size="md" />
@@ -193,11 +192,10 @@ export default function HomePage() {
           {/* Card 2: Weekly */}
           <div
             onClick={() => setActiveFrequency("weekly")}
-            className={`border p-6 rounded-[4px] space-y-4 cursor-pointer transition-colors ${
-              activeFrequency === "weekly"
+            className={`border p-6 rounded-[4px] space-y-4 cursor-pointer transition-colors ${activeFrequency === "weekly"
                 ? "bg-surface border-accent-2"
                 : "bg-surface border-border hover:border-ink/30"
-            }`}
+              }`}
           >
             <div className="flex items-center justify-between">
               <IconBadge icon={Calendar} variant="jade" size="md" />
@@ -214,11 +212,10 @@ export default function HomePage() {
           {/* Card 3: Monthly */}
           <div
             onClick={() => setActiveFrequency("monthly")}
-            className={`border p-6 rounded-[4px] space-y-4 cursor-pointer transition-colors ${
-              activeFrequency === "monthly"
+            className={`border p-6 rounded-[4px] space-y-4 cursor-pointer transition-colors ${activeFrequency === "monthly"
                 ? "bg-surface border-accent-3"
                 : "bg-surface border-border hover:border-ink/30"
-            }`}
+              }`}
           >
             <div className="flex items-center justify-between">
               <IconBadge icon={ShieldCheck} variant="gold" size="md" />
@@ -277,15 +274,14 @@ export default function HomePage() {
                   return (
                     <div
                       key={idx}
-                      className={`h-9 rounded-[4px] border flex items-center justify-center relative text-[10px] font-mono ${
-                        isCompleted
+                      className={`h-9 rounded-[4px] border flex items-center justify-center relative text-[10px] font-mono ${isCompleted
                           ? "bg-accent-2/15 border-accent-2 text-accent-2 font-bold"
                           : isMissed
-                          ? "bg-accent/10 border-accent text-accent font-semibold"
-                          : isToday
-                          ? "bg-surface border-accent border-2 text-ink font-bold animate-pulse"
-                          : "bg-bg border-border text-ink-muted"
-                      }`}
+                            ? "bg-accent/10 border-accent text-accent font-semibold"
+                            : isToday
+                              ? "bg-surface border-accent border-2 text-ink font-bold animate-pulse"
+                              : "bg-bg border-border text-ink-muted"
+                        }`}
                     >
                       {idx + 1}
                       {isCompleted && (
@@ -412,7 +408,7 @@ export default function HomePage() {
           <Container className="space-y-12">
             <div className="max-w-2xl">
               <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-ink">
-                How HabbitAt Enforces Discipline
+                How habitAt Enforces Discipline
               </h2>
               <p className="text-ink-muted text-base md:text-lg mt-3 leading-relaxed">
                 A transparent 4-step execution loop designed for real behavioral consistency.
@@ -428,12 +424,12 @@ export default function HomePage() {
         <FeatureSection
           rhythm="full-bleed"
           title="Ready to build discipline that's actually verified?"
-          description="Download HabbitAt directly via ParamStore — our sideload APK distribution channel."
+          description="Download habitAt directly via ParamStore — our sideload APK distribution channel."
         >
           <div className="flex flex-wrap items-center gap-4 pt-6">
             <Button href="/paramstore" variant="primary" size="lg">
               <ArrowDownToLine size={18} />
-              <span>Get HabbitAt APK</span>
+              <span>Get habitAt APK</span>
             </Button>
             <Button href="/paramstore" variant="outline" size="lg">
               <span>Explore ParamStore</span>

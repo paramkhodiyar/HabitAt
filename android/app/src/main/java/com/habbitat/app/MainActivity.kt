@@ -1,4 +1,4 @@
-package com.habbitat.app
+package com.habitAt.app
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -14,25 +14,25 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import com.habbitat.app.data.UserPreferences
-import com.habbitat.app.ui.calendar.CalendarViewModel
-import com.habbitat.app.ui.calendar.CalendarViewModelFactory
-import com.habbitat.app.ui.home.HomeViewModel
-import com.habbitat.app.ui.home.HomeViewModelFactory
-import com.habbitat.app.ui.navigation.FloatingBottomBar
-import com.habbitat.app.ui.navigation.NavGraph
-import com.habbitat.app.ui.onboarding.OnboardingScreen
-import com.habbitat.app.ui.theme.HabbitAtTheme
-import com.habbitat.app.ui.theme.WarmIvory
+import com.habitAt.app.data.UserPreferences
+import com.habitAt.app.ui.calendar.CalendarViewModel
+import com.habitAt.app.ui.calendar.CalendarViewModelFactory
+import com.habitAt.app.ui.home.HomeViewModel
+import com.habitAt.app.ui.home.HomeViewModelFactory
+import com.habitAt.app.ui.navigation.FloatingBottomBar
+import com.habitAt.app.ui.navigation.NavGraph
+import com.habitAt.app.ui.onboarding.OnboardingScreen
+import com.habitAt.app.ui.theme.habitAtTheme
+import com.habitAt.app.ui.theme.WarmIvory
 
 class MainActivity : ComponentActivity() {
 
     private val homeViewModel: HomeViewModel by viewModels {
-        HomeViewModelFactory((application as HabbitAtApp).repository)
+        HomeViewModelFactory((application as habitAtApp).repository)
     }
 
     private val calendarViewModel: CalendarViewModel by viewModels {
-        CalendarViewModelFactory((application as HabbitAtApp).repository)
+        CalendarViewModelFactory((application as habitAtApp).repository)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,7 +46,7 @@ class MainActivity : ComponentActivity() {
         val userPrefs = UserPreferences(this)
 
         setContent {
-            HabbitAtTheme {
+            habitAtTheme {
                 var isOnboardingDone by remember { mutableStateOf(userPrefs.isOnboardingCompleted) }
 
                 if (!isOnboardingDone) {

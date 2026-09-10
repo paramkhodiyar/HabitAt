@@ -1,8 +1,8 @@
-package com.habbitat.app.verification
+package com.habitAt.app.verification
 
 import android.content.Context
 import android.net.Uri
-import com.habbitat.app.data.local.entity.Habit
+import com.habitAt.app.data.local.entity.Habit
 
 data class VerificationResult(
     val verified: Boolean,

@@ -1,4 +1,4 @@
-package com.habbitat.app.ui.components
+package com.habitAt.app.ui.components
 
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
@@ -16,7 +16,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.dp
-import com.habbitat.app.ui.theme.LineArtMuted
+import com.habitAt.app.ui.theme.LineArtMuted
 import kotlin.math.cos
 import kotlin.math.sin
 
